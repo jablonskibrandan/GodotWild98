@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bui5rstvv5pa1" path="res://scripts/tools/distraction_tool.gd" id="4_distraction"]
 [ext_resource type="Script" uid="uid://cnjnjyw5bsp31" path="res://scripts/player/player_controller.gd" id="5_player"]
 [ext_resource type="Script" uid="uid://clc1phwuj8tqs" path="res://scripts/player/target_cursor.gd" id="6_target"]
+[ext_resource type="PackedScene" uid="uid://dm48ti74qwqcc" path="res://scenes/monster.tscn" id="7_6d0m4"]
 
 [node name="FloorOne" type="Node2D" unique_id=1776846106]
 script = ExtResource("1_floor")
@@ -31,6 +32,9 @@ script = ExtResource("5_player")
 
 [node name="TargetCursor" type="Node2D" parent="." unique_id=1575986569]
 script = ExtResource("6_target")
+
+[node name="Monster" parent="." unique_id=1813013398 node_paths=PackedStringArray("player") instance=ExtResource("7_6d0m4")]
+player = NodePath("../Player")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1173174004]
 

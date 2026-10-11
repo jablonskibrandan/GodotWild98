@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dm48ti74qwqcc"]
+
+[ext_resource type="Script" uid="uid://d1vvchxqlwit8" path="res://scripts/monsters/base_monster.gd" id="1_1cbnp"]
+[ext_resource type="Script" uid="uid://c6k0obt5upiwb" path="res://scripts/monsters/monster_target_finder.gd" id="2_c47ug"]
+
+[node name="Monster" type="Node2D" unique_id=1813013398]
+script = ExtResource("1_1cbnp")
+
+[node name="TargetFinder" type="Node2D" parent="." unique_id=1955017602]
+script = ExtResource("2_c47ug")
