@@ -9,11 +9,10 @@ var player: Node2D
 @export_range(0.0, 200.0, 1.0) var hearing: float = 80.0
 # seconds monster will remember hearing or seeing something
 @export_range(0.0, 30.0, 1.0) var memory: float = 5.0
-# percentage monster will focus on current target (extending memory) over other targets
+# percentage monster will focus on current target (extending memory and increasing senses) over other targets
 @export_range(0.1, 1.0, 0.01) var focus: float = .40 #keep within range, do not make 0
-# amount boost to stats (increasing priority) when sensing current target
-@export_range(0.0, 100.0, 1.0) var alertness: float = 50.0
 
+# targets monster remembers sensing, along with last known position
 var target_infos: Dictionary[int, MonsterTargetInfo] = {} 
 var chosen_target: int = 0
 # priority monster has to chase current target
@@ -37,19 +36,19 @@ func get_chosen_target_position(): # -> Vector 2 or null
 func look_around():
 	if player != null:
 		var distance := global_position.distance_to(player.global_position)
-		var alert_vision := vision
+		var focus_vision := vision
 		if player.get_instance_id() == chosen_target:
-			alert_vision += alertness
-		if distance <= alert_vision:
-			var priority := int((alert_vision-distance))
+			focus_vision *= (1 + focus)
+		if distance <= focus_vision:
+			var priority := int((focus_vision-distance))
 			notice(player, priority)
 
 func hear(source_node: Node2D, volume: int):
-	var alert_hearing := hearing
+	var focus_hearing := hearing
 	if source_node.get_instance_id() == chosen_target:
-		alert_hearing += alertness
-	if alert_hearing > volume:
-		var priority := int(alert_hearing - volume)
+		focus_hearing *= (1 + focus)
+	if focus_hearing > volume:
+		var priority := int(focus_hearing - volume)
 		notice(source_node, priority)
 
 func _draw() -> void:
@@ -69,10 +68,10 @@ func notice(target_node: Node2D, priority: int):
 
 func remember_targets(delta: float):
 	for target in target_infos.keys():
-		var focused_delta := delta
+		var focus_delta := delta
 		if target == chosen_target:
-			focused_delta *= (1 - (focus/2.0))
-		var last_noticed := target_infos[target].pass_time(focused_delta)
+			focus_delta *= (1 - (focus/2.0))
+		var last_noticed := target_infos[target].pass_time(focus_delta)
 		if last_noticed > memory:
 			forget_target(target)
 
