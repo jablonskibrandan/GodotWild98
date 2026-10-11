@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://ckoynux4h2wsw"]
+
+[ext_resource type="Script" uid="uid://bac8vldusi5uv" path="res://scripts/Menu/main_menu.gd" id="1_l6cm7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rgto8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iww3o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dvrs8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_28f0c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7jfqk"]
+
+[node name="MainMenu" type="Control" unique_id=1007356474 node_paths=PackedStringArray("start_button", "quit_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+game_scene_path = "uid://co1af6n6xrm5h"
+start_button = NodePath("ButtonContainer/VBoxContainer/StartButton")
+quit_button = NodePath("ButtonContainer/VBoxContainer/QuitButton")
+
+[node name="ButtonContainer" type="CenterContainer" parent="." unique_id=589881563]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 141.0
+offset_right = 6.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ButtonContainer" unique_id=722667133]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="StartButton" type="Button" parent="ButtonContainer/VBoxContainer" unique_id=1284817554]
+z_index = 10
+custom_minimum_size = Vector2(220, 84)
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxTexture_rgto8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iww3o")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iww3o")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_iww3o")
+text = "START"
+
+[node name="QuitButton" type="Button" parent="ButtonContainer/VBoxContainer" unique_id=64806923]
+z_index = 10
+custom_minimum_size = Vector2(220, 84)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_dvrs8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_28f0c")
+theme_override_styles/hover = SubResource("StyleBoxTexture_28f0c")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_7jfqk")
+text = "QUIT"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2009237436]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -58.0
+offset_right = 2.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.1199996)
+mouse_filter = 2
+expand_mode = 1

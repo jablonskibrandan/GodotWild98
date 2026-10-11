@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://co1af6n6xrm5h"]
+
+[ext_resource type="Script" uid="uid://depx2n8wea3mt" path="res://scripts/controllers/floor_controller.gd" id="1_floor"]
+[ext_resource type="Script" uid="uid://cnnns32du66xc" path="res://scripts/player/tool_manager.gd" id="2_tool_manager"]
+[ext_resource type="Script" uid="uid://d2eevr6h1pfbo" path="res://scripts/tools/flashlight_tool.gd" id="3_flashlight"]
+[ext_resource type="Script" uid="uid://bui5rstvv5pa1" path="res://scripts/tools/distraction_tool.gd" id="4_distraction"]
+[ext_resource type="Script" uid="uid://cnjnjyw5bsp31" path="res://scripts/player/player_controller.gd" id="5_player"]
+[ext_resource type="Script" uid="uid://clc1phwuj8tqs" path="res://scripts/player/target_cursor.gd" id="6_target"]
+
+[node name="FloorOne" type="Node2D" unique_id=1776846106]
+script = ExtResource("1_floor")
+
+[node name="ToolManager" type="Node2D" parent="." unique_id=1764216630]
+script = ExtResource("2_tool_manager")
+
+[node name="Flashlight" type="Node2D" parent="ToolManager" unique_id=739247795]
+script = ExtResource("3_flashlight")
+display_name = "Flashlight"
+target_color = Color(1, 0.886275, 0.478431, 1)
+
+[node name="Distraction" type="Node2D" parent="ToolManager" unique_id=1344790946]
+script = ExtResource("4_distraction")
+display_name = "Distraction"
+target_color = Color(0.266667, 0.847059, 0.937255, 1)
+
+[node name="DistractionEffects" type="Node2D" parent="." unique_id=1987103813]
+
+[node name="Player" type="Node2D" parent="." unique_id=1370523761]
+position = Vector2(480, 316)
+script = ExtResource("5_player")
+
+[node name="TargetCursor" type="Node2D" parent="." unique_id=1575986569]
+script = ExtResource("6_target")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1173174004]
+
+[node name="Panel" type="PanelContainer" parent="HUD" unique_id=162088003]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 355.0
+offset_bottom = 155.0
+mouse_filter = 2
+
+[node name="VBox" type="VBoxContainer" parent="HUD/Panel" unique_id=1232421606]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="Tool" type="Label" parent="HUD/Panel/VBox" unique_id=1581175472]
+layout_mode = 2
+text = "Selected: Flashlight"
+
+[node name="Light" type="Label" parent="HUD/Panel/VBox" unique_id=1354974325]
+layout_mode = 2
+text = "Flashlight: OFF"
+
+[node name="Target" type="Label" parent="HUD/Panel/VBox" unique_id=1309305219]
+layout_mode = 2
+text = "Target: (0, 0)"
+
+[node name="Help" type="Label" parent="HUD/Panel/VBox" unique_id=1433380757]
+layout_mode = 2
+text = "WASD Move  |  RMB Next  |  LMB Use  |  F Light"
