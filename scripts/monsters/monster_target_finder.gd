@@ -3,14 +3,21 @@ extends Node2D
 
 var player: Node2D
 
-const MAX_HEARING = 200.0
-
+# distance monster can see
 @export_range(0.0, 200.0, 1.0) var vision: float = 200.0
-@export_range(0.0, MAX_HEARING, 1.0) var hearing: float = 100.0
+# monster needs hearing higher than sound volume to notice it
+@export_range(0.0, 200.0, 1.0) var hearing: float = 80.0
+# seconds monster will remember hearing or seeing something
 @export_range(0.0, 30.0, 1.0) var memory: float = 5.0
+# percentage monster will focus on current target (extending memory) over other targets
+@export_range(0.1, 1.0, 0.01) var focus: float = .40 #keep within range, do not make 0
+# amount boost to stats (increasing priority) when sensing current target
+@export_range(0.0, 100.0, 1.0) var alertness: float = 50.0
 
 var target_infos: Dictionary[int, MonsterTargetInfo] = {} 
 var chosen_target: int = 0
+# priority monster has to chase current target
+# correlated to distance for vision, and excess volume for hearing
 @export var chosen_priority:int = 0
 
 ########################################################################### 
@@ -30,14 +37,19 @@ func get_chosen_target_position(): # -> Vector 2 or null
 func look_around():
 	if player != null:
 		var distance := global_position.distance_to(player.global_position)
-		if distance <= vision:
-			var priority := int((vision-distance))
+		var alert_vision := vision
+		if player.get_instance_id() == chosen_target:
+			alert_vision += alertness
+		if distance <= alert_vision:
+			var priority := int((alert_vision-distance))
 			notice(player, priority)
 
-# needs a method connected to a signal to call this whenever the player makes sound
 func hear(source_node: Node2D, volume: int):
-	if hearing >= volume:
-		var priority := int(hearing - volume)
+	var alert_hearing := hearing
+	if source_node.get_instance_id() == chosen_target:
+		alert_hearing += alertness
+	if alert_hearing > volume:
+		var priority := int(alert_hearing - volume)
 		notice(source_node, priority)
 
 func _draw() -> void:
@@ -57,8 +69,11 @@ func notice(target_node: Node2D, priority: int):
 
 func remember_targets(delta: float):
 	for target in target_infos.keys():
-		var last_noticed := target_infos[target].pass_time(delta)
-		if (last_noticed > memory):
+		var focused_delta := delta
+		if target == chosen_target:
+			focused_delta *= (1 - (focus/2.0))
+		var last_noticed := target_infos[target].pass_time(focused_delta)
+		if last_noticed > memory:
 			forget_target(target)
 
 func find_new_target():
