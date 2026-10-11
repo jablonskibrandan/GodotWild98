@@ -1,6 +1,6 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bmyheov7megag"]
 
 [ext_resource type="Script" uid="uid://drnhopsdxcigy" path="res://scripts/tools/distraction_pulse.gd" id="1_pulse"]
 
-[node name="DistractionPulse" type="Node2D"]
+[node name="DistractionPulse" type="Node2D" unique_id=639523963]
 script = ExtResource("1_pulse")

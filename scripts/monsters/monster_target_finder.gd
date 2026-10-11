@@ -3,8 +3,10 @@ extends Node2D
 
 var player: Node2D
 
+const MAX_HEARING = 200.0
+
 @export_range(0.0, 200.0, 1.0) var vision: float = 200.0
-@export_range(0.0, 200.0, 1.0) var hearing: float = 100.0
+@export_range(0.0, MAX_HEARING, 1.0) var hearing: float = 100.0
 @export_range(0.0, 30.0, 1.0) var memory: float = 5.0
 
 var target_infos: Dictionary[int, MonsterTargetInfo] = {} 
@@ -33,9 +35,10 @@ func look_around():
 			notice(player, priority)
 
 # needs a method connected to a signal to call this whenever the player makes sound
-func hear(source_node: Node2D):
-	var priority := int(hearing)
-	notice(source_node, priority)
+func hear(source_node: Node2D, volume: int):
+	if hearing >= volume:
+		var priority := int(hearing - volume)
+		notice(source_node, priority)
 
 func _draw() -> void:
 	draw_arc(Vector2.ZERO, vision, 0, TAU, 64, Color("98c50080"), 3)

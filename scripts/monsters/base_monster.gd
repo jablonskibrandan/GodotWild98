@@ -22,6 +22,9 @@ func _physics_process(delta: float) -> void:
 	
 	target_finder.queue_redraw()
 
+func hear_sound_made(source: Node2D, volume: float):
+	target_finder.hear(source, volume)
+
 func direction_to_target() -> Vector2:
 	var target_position = target_finder.get_chosen_target_position()
 	if target_position != null && target_position is Vector2 && global_position.distance_to(target_position) > radius:

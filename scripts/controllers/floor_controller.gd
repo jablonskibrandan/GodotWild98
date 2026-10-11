@@ -9,7 +9,8 @@ extends Node2D
 @onready var tool_manager: ToolManager = $ToolManager
 @onready var flashlight: FlashlightTool = $ToolManager/Flashlight
 @onready var distraction: DistractionTool = $ToolManager/Distraction
-@onready var effects: Node2D = $DistractionEffects
+@onready var effects: DistractionManager = $DistractionEffects
+@onready var monster_manager: BaseMonster = $Monster #replace with monster manager once made
 
 @onready var tool_label: Label = $HUD/Panel/VBox/Tool
 @onready var light_label: Label = $HUD/Panel/VBox/Light
@@ -24,6 +25,7 @@ func _ready() -> void:
 	tool_manager.tool_changed.connect(_on_tool_changed)
 	flashlight.state_changed.connect(_on_flashlight_state_changed)
 	cursor.target_moved.connect(_on_target_moved)
+	effects.sound_made.connect(_on_sound_made)
 
 	# Signals emitted by child _ready methods occur before the parent's _ready.
 	# Explicitly seed the initial HUD state here.
@@ -46,6 +48,8 @@ func _on_flashlight_state_changed(is_enabled: bool) -> void:
 func _on_target_moved(target: Vector2) -> void:
 	target_label.text = "Target: (%d, %d)" % [roundi(target.x), roundi(target.y)]
 
+func _on_sound_made(source: Node2D, volume: float):
+	monster_manager.hear_sound_made(source, volume)
 
 func _draw() -> void:
 	draw_rect(Rect2(Vector2.ZERO, get_viewport_rect().size), Color("#101722"), true)

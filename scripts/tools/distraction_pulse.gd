@@ -3,6 +3,7 @@ extends Node2D
 
 @export_range(0.1, 20.0, 0.1) var duration: float = 2.0
 @export_range(1.0, 500.0, 1.0) var max_radius: float = 95.0
+@export_range(1.0, 100.0, 1.0) var volume: float = 50.0
 
 var _elapsed: float = 0.0
 

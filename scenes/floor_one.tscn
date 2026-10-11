@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://d2eevr6h1pfbo" path="res://scripts/tools/flashlight_tool.gd" id="3_flashlight"]
 [ext_resource type="Script" uid="uid://bui5rstvv5pa1" path="res://scripts/tools/distraction_tool.gd" id="4_distraction"]
 [ext_resource type="Script" uid="uid://cnjnjyw5bsp31" path="res://scripts/player/player_controller.gd" id="5_player"]
+[ext_resource type="Script" uid="uid://bur0ibmglvosm" path="res://scenes/distraction_manager.gd" id="5_xmt1j"]
 [ext_resource type="Script" uid="uid://clc1phwuj8tqs" path="res://scripts/player/target_cursor.gd" id="6_target"]
 [ext_resource type="PackedScene" uid="uid://dm48ti74qwqcc" path="res://scenes/monster.tscn" id="7_6d0m4"]
 
@@ -25,6 +26,7 @@ display_name = "Distraction"
 target_color = Color(0.266667, 0.847059, 0.937255, 1)
 
 [node name="DistractionEffects" type="Node2D" parent="." unique_id=1987103813]
+script = ExtResource("5_xmt1j")
 
 [node name="Player" type="Node2D" parent="." unique_id=1370523761]
 position = Vector2(480, 316)
