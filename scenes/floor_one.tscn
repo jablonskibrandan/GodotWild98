@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://d2eevr6h1pfbo" path="res://scripts/tools/flashlight_tool.gd" id="3_flashlight"]
 [ext_resource type="Script" uid="uid://bui5rstvv5pa1" path="res://scripts/tools/distraction_tool.gd" id="4_distraction"]
 [ext_resource type="Script" uid="uid://cnjnjyw5bsp31" path="res://scripts/player/player_controller.gd" id="5_player"]
-[ext_resource type="Script" uid="uid://bur0ibmglvosm" path="res://scenes/distraction_manager.gd" id="5_xmt1j"]
+[ext_resource type="Script" uid="uid://bur0ibmglvosm" path="res://scripts/tools/distraction_manager.gd" id="5_xmt1j"]
 [ext_resource type="Script" uid="uid://clc1phwuj8tqs" path="res://scripts/player/target_cursor.gd" id="6_target"]
 [ext_resource type="PackedScene" uid="uid://dm48ti74qwqcc" path="res://scenes/monster.tscn" id="7_6d0m4"]
 [ext_resource type="Texture2D" uid="uid://bw6hly1gbcf34" path="res://visuals/tilesets/wall_tiles.png" id="9_panii"]

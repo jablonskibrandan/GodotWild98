@@ -43,7 +43,7 @@ func look_around():
 			var priority := int((focus_vision-distance))
 			notice(player, priority)
 
-func hear(source_node: Node2D, volume: int):
+func hear(source_node: Node2D, volume: float):
 	var focus_hearing := hearing
 	if source_node.get_instance_id() == chosen_target:
 		focus_hearing *= (1 + focus)

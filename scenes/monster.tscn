@@ -8,3 +8,11 @@ script = ExtResource("1_1cbnp")
 
 [node name="TargetFinder" type="Node2D" parent="." unique_id=1955017602]
 script = ExtResource("2_c47ug")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1754214499]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+path_postprocessing = 1
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.59468883, 0.18581569, 0.029100718, 1)

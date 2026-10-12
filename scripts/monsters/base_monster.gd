@@ -7,6 +7,7 @@ extends Node2D
 @export_range(1.0, 100.0, 1.0) var radius: float = 15.0
 @export_range(1.0, 1000.0, 1.0) var move_speed: float = 100.0
 @onready var target_finder: MonsterTargetFinder = $TargetFinder
+@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
 func _ready():
 	target_finder.player = player
@@ -27,8 +28,11 @@ func hear_sound_made(source: Node2D, volume: float):
 
 func direction_to_target() -> Vector2:
 	var target_position = target_finder.get_chosen_target_position()
+	
 	if target_position != null && target_position is Vector2 && global_position.distance_to(target_position) > radius:
-		return global_position.direction_to(target_position)
+		navigation_agent.target_position = target_position
+		var path_position := navigation_agent.get_next_path_position()
+		return global_position.direction_to(path_position)
 	else:
 		return Vector2.ZERO
 
