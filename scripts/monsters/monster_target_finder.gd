@@ -4,7 +4,7 @@ extends Node2D
 var player: Node2D
 
 # distance monster can see
-@export_range(0.0, 200.0, 1.0) var vision: float = 200.0
+@export_range(0.0, 200.0, 1.0) var vision: float = 120.0
 # monster needs hearing higher than sound volume to notice it
 @export_range(0.0, 200.0, 1.0) var hearing: float = 80.0
 # seconds monster will remember hearing or seeing something

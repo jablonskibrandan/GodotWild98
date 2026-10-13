@@ -52,12 +52,13 @@ func _on_sound_made(source: Node2D, volume: float):
 	monster_manager.hear_sound_made(source, volume)
 
 func _draw() -> void:
-	draw_rect(Rect2(Vector2.ZERO, get_viewport_rect().size), Color("#101722"), true)
-	draw_rect(play_area, Color("#202c3a"), true)
-
-	for x in range(int(play_area.position.x), int(play_area.end.x) + 1, grid_size):
-		draw_line(Vector2(x, play_area.position.y), Vector2(x, play_area.end.y), Color("#2c3949"), 1.0)
-	for y in range(int(play_area.position.y), int(play_area.end.y) + 1, grid_size):
-		draw_line(Vector2(play_area.position.x, y), Vector2(play_area.end.x, y), Color("#2c3949"), 1.0)
-
-	draw_rect(play_area, Color("#63748a"), false, 3.0)
+	pass
+	#draw_rect(Rect2(Vector2.ZERO, get_viewport_rect().size), Color("#101722"), true)
+	#draw_rect(play_area, Color("#202c3a"), true)
+#
+	#for x in range(int(play_area.position.x), int(play_area.end.x) + 1, grid_size):
+		#draw_line(Vector2(x, play_area.position.y), Vector2(x, play_area.end.y), Color("#2c3949"), 1.0)
+	#for y in range(int(play_area.position.y), int(play_area.end.y) + 1, grid_size):
+		#draw_line(Vector2(play_area.position.x, y), Vector2(play_area.end.x, y), Color("#2c3949"), 1.0)
+#
+	#draw_rect(play_area, Color("#63748a"), false, 3.0)
