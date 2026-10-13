@@ -3,7 +3,7 @@ extends BaseTool
 
 signal state_changed(is_enabled: bool)
 
-@export_range(1.0, 1000.0, 1.0) var beam_length: float = 260.0
+@export_range(1.0, 1000.0, 1.0) var beam_length: float = 120.0
 @export_range(1.0, 89.0, 1.0) var half_angle_degrees: float = 28.0
 @export_range(4, 128, 1) var beam_segments: int = 28
 

@@ -4,8 +4,8 @@ extends Node2D
 #remove this reference once vision is properly implemented
 @export var player: Node2D
 
-@export_range(1.0, 100.0, 1.0) var radius: float = 15.0
-@export_range(1.0, 1000.0, 1.0) var move_speed: float = 100.0
+@export_range(1.0, 100.0, 1.0) var radius: float = 8.0
+@export_range(1.0, 1000.0, 1.0) var move_speed: float = 50.0
 @onready var target_finder: MonsterTargetFinder = $TargetFinder
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 

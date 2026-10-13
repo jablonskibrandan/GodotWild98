@@ -1,8 +1,8 @@
 class_name PlayerController
 extends CharacterBody2D
 
-@export_range(1.0, 1000.0, 1.0) var move_speed: float = 175.0
-@export_range(1.0, 100.0, 1.0) var radius: float = 15.0
+@export_range(1.0, 1000.0, 1.0) var move_speed: float = 100.0
+#@export_range(1.0, 100.0, 1.0) var radius: float = 15.0
 
 var _movement_bounds: Rect2
 var _cursor: TargetCursor

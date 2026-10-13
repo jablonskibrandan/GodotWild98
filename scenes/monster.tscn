@@ -8,6 +8,7 @@ script = ExtResource("1_1cbnp")
 
 [node name="TargetFinder" type="Node2D" parent="." unique_id=1955017602]
 script = ExtResource("2_c47ug")
+vision = 90.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1754214499]
 path_postprocessing = 1
