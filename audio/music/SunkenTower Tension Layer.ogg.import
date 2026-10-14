@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://brk7j0qxprtuv"
+path="res://.godot/imported/SunkenTower Tension Layer.ogg-a90cba550e9471a4b52d9056b4b2067b.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/music/SunkenTower Tension Layer.ogg"
+dest_files=["res://.godot/imported/SunkenTower Tension Layer.ogg-a90cba550e9471a4b52d9056b4b2067b.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=120.0
+beat_count=0
+bar_beats=4
