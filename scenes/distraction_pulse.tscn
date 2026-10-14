@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://bmyheov7megag"]
 
 [ext_resource type="Script" uid="uid://drnhopsdxcigy" path="res://scripts/tools/distraction_pulse.gd" id="1_pulse"]
+[ext_resource type="AudioStream" uid="uid://c1ytrb6em37uv" path="res://audio/sfx/Sunken Tower Distraction Ping.wav" id="2_a3g5w"]
 
 [node name="DistractionPulse" type="Node2D" unique_id=639523963]
 script = ExtResource("1_pulse")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="." unique_id=1404917722]
+stream = ExtResource("2_a3g5w")
+max_distance = 2500.0
+bus = &"SFX"
