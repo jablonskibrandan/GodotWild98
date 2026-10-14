@@ -1,3 +1,4 @@
+
 class_name ToolManager
 extends Node2D
 

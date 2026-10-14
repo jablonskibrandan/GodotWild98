@@ -37,4 +37,5 @@ func direction_to_target() -> Vector2:
 		return Vector2.ZERO
 
 func _draw() -> void:
-	draw_circle(Vector2.ZERO, radius, Color("4e6700ff"))
+	pass
+	#draw_circle(Vector2.ZERO, radius, Color("4e6700ff"))

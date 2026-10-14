@@ -13,8 +13,8 @@ func configure(valid_area: Rect2, effects_parent: DistractionManager) -> void:
 
 
 func activate(target: Vector2) -> void:
-	if not _valid_area.has_point(target) or _effects_parent == null:
-		return
+	#if not _valid_area.has_point(target) or _effects_parent == null:
+	#	return
 
 	var pulse: DistractionPulse = PULSE_SCENE.instantiate() as DistractionPulse
 	_effects_parent.add_child(pulse)
