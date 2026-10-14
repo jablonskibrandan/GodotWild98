@@ -1,40 +1,74 @@
 class_name BaseMonster
-extends Node2D
+extends CharacterBody2D
 
 #remove this reference once vision is properly implemented
 @export var player: Node2D
 
 @export_range(1.0, 100.0, 1.0) var radius: float = 8.0
-@export_range(1.0, 1000.0, 1.0) var move_speed: float = 50.0
+@export_range(1.0, 1000.0, 1.0) var chase_speed: float = 50.0
+@export_range(1.0, 1000.0, 1.0) var wander_speed: float = 10.0
+@export_range(1.0, 100.0, 1.0) var wander_distance: float = 60.0
 @onready var target_finder: MonsterTargetFinder = $TargetFinder
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+var starting_position: Vector2 = Vector2.ZERO
+var wander_position: Vector2 = Vector2.ZERO
 
 func _ready():
 	target_finder.player = player
+	starting_position = global_position
+	wander_position = starting_position
 
-func _physics_process(delta: float) -> void:
-	var direction: Vector2 = direction_to_target()
-	if direction != Vector2.ZERO:
-		global_position += direction * move_speed * delta
-		#global_position = Vector2(
-			#clampf(global_position.x, _movement_bounds.position.x + radius, _movement_bounds.end.x - radius),
-			#clampf(global_position.y, _movement_bounds.position.y + radius, _movement_bounds.end.y - radius)
-		#)
+func _physics_process(_delta: float) -> void:
+	var target_velocity:= velocity_to_target()
+	velocity = target_velocity
 	
-	target_finder.queue_redraw()
+	move_and_slide()
+	#target_finder.queue_redraw()
+
+func _process(_delta: float) -> void:
+	animated_sprite.speed_scale = clampf(velocity.length() / wander_speed, 0.5, 3)
+	
+	if velocity.x < 0:
+		animated_sprite.flip_h = false
+	elif velocity.x > 0:
+		animated_sprite.flip_h = true
 
 func hear_sound_made(source: Node2D, volume: float):
 	target_finder.hear(source, volume)
 
-func direction_to_target() -> Vector2:
+func velocity_to_target() -> Vector2:
 	var target_position = target_finder.get_chosen_target_position()
 	
-	if target_position != null && target_position is Vector2 && global_position.distance_to(target_position) > radius:
-		navigation_agent.target_position = target_position
-		var path_position := navigation_agent.get_next_path_position()
-		return global_position.direction_to(path_position)
-	else:
-		return Vector2.ZERO
+	if target_position != null && target_position is Vector2: #has target
+		if global_position.distance_to(target_position) > radius:
+			return chase_velocity(target_position)
+		else:
+			return Vector2.ZERO
+	else: #return to wandering around starting position
+		return wander_velocity(starting_position)
+
+func chase_velocity(target_position: Vector2) -> Vector2:
+	return navigation_direction(target_position) * chase_speed
+
+func wander_velocity(target_position: Vector2) -> Vector2:
+	if (wander_position == starting_position 
+	|| wander_position.distance_to(target_position) > wander_distance
+	|| global_position.distance_to(wander_position) <= radius
+	|| velocity.length() < (wander_speed * 0.1)): #in case stuck on wall
+		wander_position = new_wander_position(target_position)
+	return navigation_direction(wander_position) * wander_speed
+
+func new_wander_position(target_position: Vector2) -> Vector2:
+	var angle = randf_range(0.0, TAU)
+	var distance = randf_range(0.1, 1.0) * wander_distance
+	return target_position + (Vector2.from_angle(angle) * distance)
+
+func navigation_direction(target_position: Vector2):
+	navigation_agent.target_position = target_position
+	var path_position := navigation_agent.get_next_path_position()
+	return global_position.direction_to(path_position)
 
 func _draw() -> void:
 	pass

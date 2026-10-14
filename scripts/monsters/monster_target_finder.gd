@@ -52,9 +52,10 @@ func hear(source_node: Node2D, volume: float):
 		notice(source_node, priority)
 
 func _draw() -> void:
-	draw_arc(Vector2.ZERO, vision, 0, TAU, 64, Color("98c50080"), 3)
-	if chosen_target != null && target_infos.has(chosen_target):
-		draw_circle(target_infos[chosen_target].position - global_position, 10.0, Color("9c351f80"))
+	pass
+	#draw_arc(Vector2.ZERO, vision, 0, TAU, 64, Color("98c50080"), 3)
+	#if chosen_target != null && target_infos.has(chosen_target):
+		#draw_circle(target_infos[chosen_target].position - global_position, 10.0, Color("9c351f80"))
 
 ########################################################################### 
 
