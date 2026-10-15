@@ -1,5 +1,7 @@
 [gd_scene format=4 uid="uid://co1af6n6xrm5h"]
 
+[ext_resource type="Script" path="res://scripts/player/bubble_health.gd" id="11_bubble_health"]
+[ext_resource type="PackedScene" path="res://scenes/bubble_bar.tscn" id="12_bubble_bar"]
 [ext_resource type="Script" uid="uid://depx2n8wea3mt" path="res://scripts/controllers/floor_controller.gd" id="1_floor"]
 [ext_resource type="Script" uid="uid://cnnns32du66xc" path="res://scripts/player/tool_manager.gd" id="2_tool_manager"]
 [ext_resource type="Script" uid="uid://d2eevr6h1pfbo" path="res://scripts/tools/flashlight_tool.gd" id="3_flashlight"]
@@ -803,6 +805,9 @@ collision_layer = 4
 collision_mask = 11
 script = ExtResource("5_player")
 
+[node name="Bubble_Health" type="Node" parent="Player"]
+script = ExtResource("11_bubble_health")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1280238822]
 modulate = Color(0.974014, 0.810853, 1, 1)
 texture_filter = 1
@@ -862,3 +867,6 @@ text = "Target: (0, 0)"
 [node name="Help" type="Label" parent="HUD/Panel/VBox" unique_id=1433380757]
 layout_mode = 2
 text = "WASD Move  |  RMB Next  |  LMB Use  |  F Light"
+
+[node name="BubbleBar" parent="HUD" instance=ExtResource("12_bubble_bar")]
+bubble_health_path = NodePath("../../Player/Bubble_Health")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/bubble_bar.gd" id="1_bubble_bar"]
+
+[node name="BubbleBar" type="HBoxContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_constants/separation = 2
+script = ExtResource("1_bubble_bar")
