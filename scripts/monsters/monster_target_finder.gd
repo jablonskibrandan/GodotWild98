@@ -1,10 +1,14 @@
 class_name MonsterTargetFinder
 extends Node2D
 
-var player: Node2D
-
 # distance monster can see
 @export_range(0.0, 200.0, 1.0) var vision: float = 120.0
+#field of vision (degrees)
+@export_range(45.0, 360.0, 45.0) var field_of_vision: float = 270.0
+#how far in front of monster to have vision
+var radius: float = 0.0
+#direction monster is facing
+var facing: Vector2 = Vector2.LEFT
 # monster needs hearing higher than sound volume to notice it
 @export_range(0.0, 200.0, 1.0) var hearing: float = 80.0
 # seconds monster will remember hearing or seeing something
@@ -12,6 +16,7 @@ var player: Node2D
 # percentage monster will focus on current target (extending memory and increasing senses) over other targets
 @export_range(0.1, 1.0, 0.01) var focus: float = .40 #keep within range, do not make 0
 
+var player: Node2D
 # targets monster remembers sensing, along with last known position
 var target_infos: Dictionary[int, MonsterTargetInfo] = {} 
 var chosen_target: int = 0
@@ -32,16 +37,29 @@ func get_chosen_target_position(): # -> Vector 2 or null
 	else:
 		return null
 
-# needs fixed with proper vision logic and remove reference to player
 func look_around():
 	if player != null:
 		var distance := global_position.distance_to(player.global_position)
 		var focus_vision := vision
 		if player.get_instance_id() == chosen_target:
 			focus_vision *= (1 + focus)
-		if distance <= focus_vision:
+		if distance <= focus_vision && has_line_of_sight(player):
 			var priority := int((focus_vision-distance))
 			notice(player, priority)
+
+func has_line_of_sight(target_node: Node2D) -> bool:
+	var space_state = get_world_2d().direct_space_state
+	const environment_layer := 1
+	var collision_mask := (1 << (environment_layer-1))
+	var query = PhysicsRayQueryParameters2D.create(global_position + (facing * radius), target_node.position, collision_mask)
+	var result = space_state.intersect_ray(query)
+	var view_obstructed = result.size() > 0
+	
+	var direction_to_target := global_position.direction_to(target_node.global_position)
+	var angle_to_target: float = abs(facing.angle_to(direction_to_target))
+	var in_field_of_vision = angle_to_target <= deg_to_rad(field_of_vision / 2.0)
+	
+	return in_field_of_vision && !view_obstructed
 
 func hear(source_node: Node2D, volume: float):
 	var focus_hearing := hearing

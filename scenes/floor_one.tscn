@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bbhokhr8ntf8v" path="res://audio/sfx/Sunken Tower Flashlight Off.wav" id="7_dptav"]
 [ext_resource type="Texture2D" uid="uid://bw6hly1gbcf34" path="res://visuals/tilesets/wall_tiles.png" id="9_panii"]
 [ext_resource type="Texture2D" uid="uid://d0jy1aj7v7fn5" path="res://visuals/player/cap_frog.png" id="9_y0f35"]
+[ext_resource type="Script" uid="uid://dsmqmerm578de" path="res://scripts/monsters/monster_manager.gd" id="10_0sur2"]
 [ext_resource type="Texture2D" uid="uid://dkqv01mpxtc8h" path="res://visuals/tilesets/floor_tiles.png" id="10_gnqv8"]
 [ext_resource type="Script" uid="uid://dady07nhex7xv" path="res://scripts/player/bubble_health.gd" id="11_bubble_health"]
 [ext_resource type="PackedScene" path="res://scenes/bubble_bar.tscn" id="12_bubble_bar"]
@@ -815,9 +816,11 @@ target_color = Color(0.266667, 0.847059, 0.937255, 1)
 [node name="DistractionEffects" type="Node2D" parent="." unique_id=1987103813]
 script = ExtResource("5_xmt1j")
 
-[node name="Monster" parent="." unique_id=1813013398 node_paths=PackedStringArray("player") instance=ExtResource("7_6d0m4")]
+[node name="MonsterManager" type="Node2D" parent="." unique_id=1820516849]
+script = ExtResource("10_0sur2")
+
+[node name="Monster" parent="MonsterManager" unique_id=1813013398 instance=ExtResource("7_6d0m4")]
 position = Vector2(206, 281)
-player = NodePath("../Player")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1781135234]
 position = Vector2(50, 135)

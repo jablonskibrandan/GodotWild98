@@ -10,7 +10,7 @@ extends Node2D
 @onready var flashlight: FlashlightTool = $ToolManager/Flashlight
 @onready var distraction: DistractionTool = $ToolManager/Distraction
 @onready var effects: DistractionManager = $DistractionEffects
-@onready var monster_manager: BaseMonster = $Monster #replace with monster manager once made
+@onready var monster_manager: MonsterManager = $MonsterManager
 
 @onready var tool_label: Label = $HUD/Panel/VBox/Tool
 @onready var light_label: Label = $HUD/Panel/VBox/Light
@@ -21,6 +21,7 @@ func _ready() -> void:
 	player.configure(play_area, cursor)
 	flashlight.configure(player, cursor)
 	distraction.configure(play_area, effects)
+	monster_manager.configure(player)
 
 	tool_manager.tool_changed.connect(_on_tool_changed)
 	flashlight.state_changed.connect(_on_flashlight_state_changed)
@@ -49,7 +50,7 @@ func _on_target_moved(target: Vector2) -> void:
 	target_label.text = "Target: (%d, %d)" % [roundi(target.x), roundi(target.y)]
 
 func _on_sound_made(source: Node2D, volume: float):
-	monster_manager.hear_sound_made(source, volume)
+	monster_manager.sound_made(source, volume)
 
 func _draw() -> void:
 	pass

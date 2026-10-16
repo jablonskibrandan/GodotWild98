@@ -1,10 +1,7 @@
 class_name BaseMonster
 extends CharacterBody2D
 
-#remove this reference once vision is properly implemented
-@export var player: Node2D
-
-@export_range(1.0, 100.0, 1.0) var radius: float = 8.0
+@export_range(1.0, 100.0, 1.0) var radius: float = 10.0
 @export_range(1.0, 1000.0, 1.0) var chase_speed: float = 50.0
 @export_range(1.0, 1000.0, 1.0) var wander_speed: float = 10.0
 @export_range(1.0, 100.0, 1.0) var wander_distance: float = 60.0
@@ -16,9 +13,13 @@ var starting_position: Vector2 = Vector2.ZERO
 var wander_position: Vector2 = Vector2.ZERO
 
 func _ready():
-	target_finder.player = player
 	starting_position = global_position
 	wander_position = starting_position
+
+func configure_target_finder(player: Node2D):
+	target_finder.player = player
+	target_finder.radius = radius
+	target_finder.facing = Vector2.LEFT
 
 func _physics_process(_delta: float) -> void:
 	var target_velocity:= velocity_to_target()
@@ -32,8 +33,10 @@ func _process(_delta: float) -> void:
 	
 	if velocity.x < 0:
 		animated_sprite.flip_h = false
+		target_finder.facing = Vector2.LEFT
 	elif velocity.x > 0:
 		animated_sprite.flip_h = true
+		target_finder.facing = Vector2.RIGHT
 
 func hear_sound_made(source: Node2D, volume: float):
 	target_finder.hear(source, volume)
