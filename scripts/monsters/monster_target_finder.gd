@@ -50,7 +50,8 @@ func look_around():
 func has_line_of_sight(target_node: Node2D) -> bool:
 	var space_state = get_world_2d().direct_space_state
 	const environment_layer := 1
-	var collision_mask := (1 << (environment_layer-1))
+	const hidden_room_door_layer := 5
+	var collision_mask := (1 << (environment_layer-1)) + (1 << (hidden_room_door_layer-1))
 	var query = PhysicsRayQueryParameters2D.create(global_position + (facing * radius), target_node.position, collision_mask)
 	var result = space_state.intersect_ray(query)
 	var view_obstructed = result.size() > 0

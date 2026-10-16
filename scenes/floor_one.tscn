@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://depx2n8wea3mt" path="res://scripts/controllers/floor_controller.gd" id="1_floor"]
 [ext_resource type="Script" uid="uid://cnnns32du66xc" path="res://scripts/player/tool_manager.gd" id="2_tool_manager"]
 [ext_resource type="Script" uid="uid://d2eevr6h1pfbo" path="res://scripts/tools/flashlight_tool.gd" id="3_flashlight"]
+[ext_resource type="PackedScene" uid="uid://weoo7vtkfd4t" path="res://scenes/hidden_room_door.tscn" id="4_ap1ie"]
 [ext_resource type="Script" uid="uid://bui5rstvv5pa1" path="res://scripts/tools/distraction_tool.gd" id="4_distraction"]
 [ext_resource type="Script" uid="uid://cnjnjyw5bsp31" path="res://scripts/player/player_controller.gd" id="5_player"]
 [ext_resource type="Script" uid="uid://bur0ibmglvosm" path="res://scripts/tools/distraction_manager.gd" id="5_xmt1j"]
@@ -804,6 +805,10 @@ tile_set = SubResource("TileSet_bhunq")
 collision_enabled = false
 navigation_enabled = false
 
+[node name="StaticBody2D" parent="Background" unique_id=1096912862 instance=ExtResource("4_ap1ie")]
+position = Vector2(144, 152)
+scale = Vector2(2, 1)
+
 [node name="ToolManager" type="Node2D" parent="." unique_id=1764216630]
 script = ExtResource("2_tool_manager")
 
@@ -824,16 +829,10 @@ target_color = Color(0.266667, 0.847059, 0.937255, 1)
 [node name="DistractionEffects" type="Node2D" parent="." unique_id=1987103813]
 script = ExtResource("5_xmt1j")
 
-[node name="MonsterManager" type="Node2D" parent="." unique_id=1820516849]
-script = ExtResource("10_0sur2")
-
-[node name="Monster" parent="MonsterManager" unique_id=1813013398 instance=ExtResource("7_6d0m4")]
-position = Vector2(206, 281)
-
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1781135234]
 position = Vector2(50, 135)
 collision_layer = 4
-collision_mask = 11
+collision_mask = 3
 script = ExtResource("5_player")
 
 [node name="Bubble_Health" type="Node" parent="Player" unique_id=949573052]
@@ -870,9 +869,15 @@ energy = 0.5
 range_item_cull_mask = 2
 shadow_color = Color(0, 0, 0, 1)
 texture = SubResource("GradientTexture2D_qr0ht")
-offset = Vector2(0, -8)
-texture_scale = 0.25
+offset = Vector2(0, -6)
+texture_scale = 0.2
 metadata/_edit_lock_ = true
+
+[node name="MonsterManager" type="Node2D" parent="." unique_id=1820516849]
+script = ExtResource("10_0sur2")
+
+[node name="Monster" parent="MonsterManager" unique_id=1813013398 instance=ExtResource("7_6d0m4")]
+position = Vector2(206, 281)
 
 [node name="TargetCursor" type="Node2D" parent="." unique_id=1575986569]
 script = ExtResource("6_target")
