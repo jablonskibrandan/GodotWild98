@@ -911,8 +911,9 @@ scale_amount_curve = SubResource("Curve_fio2n")
 [node name="FlashlightSprite" type="Sprite2D" parent="Player" unique_id=852483478]
 show_behind_parent = true
 rotation = 1.5707964
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("15_bkyrt")
+hframes = 2
 
 [node name="MonsterManager" type="Node2D" parent="." unique_id=1820516849]
 script = ExtResource("10_0sur2")

@@ -60,6 +60,7 @@ func _play_toggle_sound() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("flashlight_toggle"):
 		toggle()
+		_player.flashlight_power(enabled)
 		get_viewport().set_input_as_handled()
 
 

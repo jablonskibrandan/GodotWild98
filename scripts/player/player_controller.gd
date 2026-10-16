@@ -50,16 +50,16 @@ func _physics_process(_delta: float) -> void:
 	elif facing_animation == "up":
 		flashlight_sprite.show_behind_parent = true
 		flashlight_sprite.position.x = -6
-		flashlight_sprite.position.y = 2
+		flashlight_sprite.position.y = 4
 	elif facing_animation == "right":
 		flashlight_sprite.show_behind_parent = true
 		flashlight_sprite.position.x = 0
-		flashlight_sprite.position.y = 2
+		flashlight_sprite.position.y = 3
 	elif facing_animation == "left":
 		flashlight_sprite.show_behind_parent = false
 		flashlight_sprite.position.x = 0
-		flashlight_sprite.position.y = 2
-	
+		flashlight_sprite.position.y = 3
+	flashlight_sprite.frame
 	flashlight_sprite.rotation = cursor_direction.angle()
 
 func update_facing(direction: Vector2):
@@ -90,6 +90,12 @@ func update_cursor():
 		direction = Vector2.RIGHT
 	
 	cursor_direction = direction
+
+func flashlight_power(on: bool):
+	if on:
+		flashlight_sprite.frame = 1
+	else:
+		flashlight_sprite.frame = 0
 
 func _draw() -> void:
 	pass
