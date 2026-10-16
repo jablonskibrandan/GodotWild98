@@ -1,10 +1,13 @@
 class_name BaseMonster
 extends CharacterBody2D
 
+signal monster_bit_player()
+
 @export_range(1.0, 100.0, 1.0) var radius: float = 9.0
 @export_range(1.0, 1000.0, 1.0) var chase_speed: float = 50.0
 @export_range(1.0, 1000.0, 1.0) var wander_speed: float = 10.0
 @export_range(1.0, 100.0, 1.0) var wander_distance: float = 60.0
+@export_range(1.0, 10.0, 0.5) var bite_cooldown: float = 2.0
 @onready var target_finder: MonsterTargetFinder = $TargetFinder
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -12,32 +15,54 @@ extends CharacterBody2D
 var starting_position: Vector2 = Vector2.ZERO
 var wander_position: Vector2 = Vector2.ZERO
 
+var bite_cooldown_time_left: float = 0.0
+var animation_locked: bool = false
+
 func _ready():
 	starting_position = global_position
 	wander_position = starting_position
+	
+	animated_sprite.animation_finished.connect(on_animation_finished)
 
 func configure_target_finder(player: Node2D):
-	target_finder.player = player
-	target_finder.radius = radius
-	target_finder.facing = Vector2.LEFT
+	target_finder.configure(player, radius, Vector2.LEFT)
 
 func _physics_process(_delta: float) -> void:
-	var target_velocity:= velocity_to_target()
-	velocity = target_velocity
+	if !animation_locked:
+		var target_velocity:= velocity_to_target()
+		velocity = target_velocity
 	
 	move_and_slide()
 	#target_finder.queue_redraw()
 
-func _process(_delta: float) -> void:
-	animated_sprite.speed_scale = clampf((abs(velocity.x) + (abs(velocity.y)/10)) / wander_speed, 0.5, 2)
-
+func _process(delta: float) -> void:
+	if bite_cooldown_time_left > 0:
+		bite_cooldown_time_left = clampf(bite_cooldown_time_left - delta, 0, bite_cooldown)
 	
-	if velocity.x < 0:
-		animated_sprite.flip_h = false
-		target_finder.facing = Vector2.LEFT
-	elif velocity.x > 0:
-		animated_sprite.flip_h = true
-		target_finder.facing = Vector2.RIGHT
+	if !animation_locked:
+		animated_sprite.speed_scale = clampf((abs(velocity.x) + (abs(velocity.y)/6)) / wander_speed, 0.5, 2)
+
+		if velocity.x < 0:
+			animated_sprite.flip_h = false
+			target_finder.facing = Vector2.LEFT
+		elif velocity.x > 0:
+			animated_sprite.flip_h = true
+			target_finder.facing = Vector2.RIGHT
+		
+		if bite_cooldown_time_left <= 0 && target_finder.should_bite():
+			start_biting()
+
+func on_animation_finished():
+	if animation_locked:
+		animation_locked = false
+		animated_sprite.play("swim")
+
+func start_biting():
+	animated_sprite.speed_scale = 1.0
+	animated_sprite.play("bite")
+	animation_locked = true;
+	bite_cooldown_time_left = bite_cooldown
+	monster_bit_player.emit()
 
 func hear_sound_made(source: Node2D, volume: float):
 	target_finder.hear(source, volume)

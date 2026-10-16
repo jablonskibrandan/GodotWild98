@@ -975,3 +975,5 @@ pop_duration = 1.0
 material = SubResource("ShaderMaterial_riqys")
 mesh = SubResource("QuadMesh_bhunq")
 metadata/_edit_lock_ = true
+
+[editable path="MonsterManager/Monster"]

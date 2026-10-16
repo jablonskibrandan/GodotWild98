@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dqkagqihwkoc1"
+path="res://.godot/imported/Tension Center.ogg-a459ad199f784322fab2e3bf5650902a.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/music/Tension Center.ogg"
+dest_files=["res://.godot/imported/Tension Center.ogg-a459ad199f784322fab2e3bf5650902a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -31,11 +31,20 @@ func _process(delta: float) -> void:
 	remember_targets(delta)
 	look_around()
 
+func configure(_player: Node2D, _radius: float, _facing: Vector2):
+	player = _player
+	radius = _radius
+	facing = _facing
+
 func get_chosen_target_position(): # -> Vector 2 or null
 	if chosen_target != 0 && target_infos.has(chosen_target):
 		return target_infos[chosen_target].position
 	else:
 		return null
+
+func should_bite():
+	return (player != null && player.get_instance_id() == chosen_target
+			&& global_position.distance_to(player.global_position) < radius*2.0)
 
 func look_around():
 	if player != null:

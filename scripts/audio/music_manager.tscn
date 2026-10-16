@@ -2,15 +2,20 @@
 
 [ext_resource type="Script" uid="uid://yhdytckpgks0" path="res://scripts/audio/music_manager.gd" id="1_music"]
 [ext_resource type="AudioStream" uid="uid://bm5cp0l6xne7b" path="res://audio/music/SunkenTower Main Theme V2.ogg" id="2_theme"]
-[ext_resource type="AudioStream" uid="uid://brk7j0qxprtuv" path="res://audio/music/SunkenTower Tension Layer.ogg" id="3_tension"]
+[ext_resource type="AudioStream" uid="uid://dqkagqihwkoc1" path="res://audio/music/Tension Center.ogg" id="3_center"]
+[ext_resource type="AudioStream" uid="uid://b8537xnuovfx1" path="res://audio/music/Tension Pan.ogg" id="4_pan"]
 
 [node name="MusicManager" type="Node" unique_id=1581934207]
 script = ExtResource("1_music")
 base_track = ExtResource("2_theme")
-tension_stem = ExtResource("3_tension")
-tension_start_distance = 164.0
+volume = 0.63
+tension_center = ExtResource("3_center")
+tension_pan = ExtResource("4_pan")
+center_trim_db = -0.5
+pan_trim_db = 1.6999999999999993
+chase_min_level = 0.23
+tension_start_distance = 91.0
 tension_full_distance = 4.0
-tension_max_db = 2.0
-tension_attack = 1.65
-tension_release = 2.0
-tension_while_chasing = 0.49
+tension_attack = 1.75
+tension_release = 3.45
+max_pan = 0.33
