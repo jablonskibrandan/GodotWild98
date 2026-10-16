@@ -142,10 +142,7 @@ frame_progress = 0.15811062
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=2009398952]
 position = Vector2(-1, 5)
-color = Color(0.5529412, 1, 1, 1)
 energy = 0.5
-shadow_enabled = true
-shadow_color = Color(0, 0, 0, 1)
 texture = SubResource("GradientTexture2D_c47ug")
 
 [node name="PointLight2D" type="PointLight2D" parent="PointLight2D" unique_id=1787844453]

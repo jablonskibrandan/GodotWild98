@@ -17,7 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://dkqv01mpxtc8h" path="res://visuals/tilesets/floor_tiles.png" id="10_gnqv8"]
 [ext_resource type="Script" uid="uid://dady07nhex7xv" path="res://scripts/player/bubble_health.gd" id="11_bubble_health"]
 [ext_resource type="PackedScene" path="res://scenes/bubble_bar.tscn" id="12_bubble_bar"]
+[ext_resource type="Texture2D" uid="uid://dp4illl5bapcx" path="res://visuals/ui/air_release.png" id="14_fio2n"]
 [ext_resource type="Shader" uid="uid://bogy8vvctkjss" path="res://visuals/crt_shader.gdshader" id="17_ap1ie"]
+[ext_resource type="Texture2D" uid="uid://nxd5y2sdikfy" path="res://visuals/ui/bubble_bar.png" id="19_tc85r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gnqv8"]
 texture = ExtResource("9_panii")
@@ -488,6 +490,22 @@ sources/1 = SubResource("TileSetAtlasSource_fs03o")
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iff7v"]
 light_mode = 2
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_iff7v"]
+atlas = ExtResource("9_y0f35")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sur2"]
+atlas = ExtResource("9_y0f35")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap1ie"]
+atlas = ExtResource("9_y0f35")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q86r"]
+atlas = ExtResource("9_y0f35")
+region = Rect2(64, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_y0f35"]
 atlas = ExtResource("9_y0f35")
 region = Rect2(0, 32, 32, 32)
@@ -552,22 +570,6 @@ region = Rect2(64, 224, 32, 32)
 atlas = ExtResource("9_y0f35")
 region = Rect2(96, 224, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iff7v"]
-atlas = ExtResource("9_y0f35")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0sur2"]
-atlas = ExtResource("9_y0f35")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ap1ie"]
-atlas = ExtResource("9_y0f35")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2q86r"]
-atlas = ExtResource("9_y0f35")
-region = Rect2(64, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_tc85r"]
 atlas = ExtResource("9_y0f35")
 region = Rect2(0, 128, 32, 32)
@@ -600,24 +602,41 @@ region = Rect2(64, 64, 32, 32)
 atlas = ExtResource("9_y0f35")
 region = Rect2(96, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wa67b"]
-atlas = ExtResource("9_y0f35")
-region = Rect2(0, 192, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_3s0ep"]
 atlas = ExtResource("9_y0f35")
 region = Rect2(32, 192, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_381xd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wa67b"]
 atlas = ExtResource("9_y0f35")
-region = Rect2(64, 192, 32, 32)
+region = Rect2(0, 192, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h536b"]
 atlas = ExtResource("9_y0f35")
 region = Rect2(96, 192, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_381xd"]
+atlas = ExtResource("9_y0f35")
+region = Rect2(64, 192, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_wd5ij"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iff7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sur2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ap1ie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q86r")
+}],
+"loop": 1,
+"name": &"down",
+"speed": 6.0
+}, {
 "frames": [{
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_y0f35")
@@ -633,7 +652,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"idle_down",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 2.0,
@@ -650,7 +669,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"idle_left",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 2.0,
@@ -667,7 +686,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"idle_right",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 2.0,
@@ -684,24 +703,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"idle_up",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iff7v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0sur2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ap1ie")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2q86r")
-}],
-"loop": 1,
-"name": &"walk_down",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -717,8 +719,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_8uit6")
 }],
 "loop": 1,
-"name": &"walk_left",
-"speed": 5.0
+"name": &"left",
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -734,25 +736,25 @@ animations = [{
 "texture": SubResource("AtlasTexture_2md2d")
 }],
 "loop": 1,
-"name": &"walk_right",
-"speed": 5.0
+"name": &"right",
+"speed": 6.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wa67b")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3s0ep")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_381xd")
+"texture": SubResource("AtlasTexture_wa67b")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h536b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_381xd")
 }],
 "loop": 1,
-"name": &"walk_up",
-"speed": 5.0
+"name": &"up",
+"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3p8w"]
@@ -770,6 +772,20 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.2, 0.1)
 metadata/_snap_enabled = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhunq"]
+atlas = ExtResource("14_fio2n")
+region = Rect2(9.351307, 0.0532341, 5.241253, 7.946766)
+
+[sub_resource type="Curve" id="Curve_fio2n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.09473693), -0.22365329, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_fio2n"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tc85r"]
+texture = SubResource("CanvasTexture_fio2n")
+modulate_color = Color(1, 1, 1, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_riqys"]
 shader = ExtResource("17_ap1ie")
@@ -830,9 +846,11 @@ target_color = Color(0.266667, 0.847059, 0.937255, 1)
 script = ExtResource("5_xmt1j")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1781135234]
+texture_filter = 1
 position = Vector2(50, 135)
 collision_layer = 4
 collision_mask = 3
+motion_mode = 1
 script = ExtResource("5_player")
 
 [node name="Bubble_Health" type="Node" parent="Player" unique_id=949573052]
@@ -843,10 +861,11 @@ modulate = Color(0.974014, 0.810853, 1, 1)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_wd5ij")
 animation = &"idle_down"
-frame_progress = 0.16918927
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=853646388]
+visible = false
+process_callback = 0
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1492954828]
@@ -873,6 +892,21 @@ offset = Vector2(0, -6)
 texture_scale = 0.2
 metadata/_edit_lock_ = true
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player" unique_id=1459888908]
+modulate = Color(1, 1, 1, 0.37300003)
+position = Vector2(0, -8)
+amount = 4
+texture = SubResource("AtlasTexture_bhunq")
+lifetime = 10.0
+explosiveness = 0.15
+randomness = 1.0
+lifetime_randomness = 1.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 8.0
+scale_amount_curve = SubResource("Curve_fio2n")
+
 [node name="MonsterManager" type="Node2D" parent="." unique_id=1820516849]
 script = ExtResource("10_0sur2")
 
@@ -885,18 +919,27 @@ circle_radius = 4.0
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1173174004]
 
+[node name="Sprite2D" type="Sprite2D" parent="HUD" unique_id=786385202]
+modulate = Color(0.11207495, 0.5847179, 1, 1)
+texture_filter = 1
+position = Vector2(44, 12)
+texture = ExtResource("19_tc85r")
+
 [node name="Panel" type="PanelContainer" parent="HUD" unique_id=162088003]
+visible = false
 offset_right = 364.0
 offset_bottom = 104.0
 scale = Vector2(0.5, 0.5)
 mouse_filter = 2
 
 [node name="VBox" type="VBoxContainer" parent="HUD/Panel" unique_id=1232421606]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 4
 
 [node name="Tool" type="Label" parent="HUD/Panel/VBox" unique_id=1581175472]
+visible = false
 layout_mode = 2
 text = "Selected: Flashlight"
 
@@ -912,11 +955,23 @@ text = "Target: (0, 0)"
 layout_mode = 2
 text = "WASD Move  |  RMB Next  |  LMB Use  |  F Light"
 
-[node name="BubbleBar" parent="HUD" unique_id=347332869 instance=ExtResource("12_bubble_bar")]
-bubble_health_path = NodePath("../../Player/Bubble_Health")
+[node name="Panel2" type="PanelContainer" parent="HUD" unique_id=1380320365]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 24.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_tc85r")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=985874040]
+[node name="BubbleBar" parent="HUD/Panel2" unique_id=347332869 instance=ExtResource("12_bubble_bar")]
+layout_mode = 2
+bubble_health_path = NodePath("../../../Player/Bubble_Health")
+pop_duration = 1.0
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer" unique_id=2070907544]
+[node name="CanvasLayer" type="CanvasLayer" parent="HUD" unique_id=985874040]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="HUD/CanvasLayer" unique_id=2070907544]
 material = SubResource("ShaderMaterial_riqys")
 mesh = SubResource("QuadMesh_bhunq")
+metadata/_edit_lock_ = true
