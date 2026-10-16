@@ -72,7 +72,7 @@ func _draw() -> void:
 	if not enabled or _player == null or _cursor == null:
 		return
 
-	var origin: Vector2 = to_local(_player.global_position)
+	var origin: Vector2 = to_local(_player.flashlight_sprite.global_position)
 	var aim: Vector2 = to_local(_cursor.global_position) - origin
 	if aim.length_squared() < 0.01:
 		aim = Vector2.RIGHT

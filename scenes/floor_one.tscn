@@ -18,8 +18,9 @@
 [ext_resource type="Script" uid="uid://dady07nhex7xv" path="res://scripts/player/bubble_health.gd" id="11_bubble_health"]
 [ext_resource type="PackedScene" path="res://scenes/bubble_bar.tscn" id="12_bubble_bar"]
 [ext_resource type="Texture2D" uid="uid://dp4illl5bapcx" path="res://visuals/ui/air_release.png" id="14_fio2n"]
+[ext_resource type="Texture2D" uid="uid://deo156ulol0mh" path="res://visuals/player/flashlight_small.png" id="15_bkyrt"]
 [ext_resource type="Shader" uid="uid://bogy8vvctkjss" path="res://visuals/crt_shader.gdshader" id="17_ap1ie"]
-[ext_resource type="Texture2D" uid="uid://nxd5y2sdikfy" path="res://visuals/ui/bubble_bar.png" id="19_tc85r"]
+[ext_resource type="Texture2D" uid="uid://qud7y6guapj7" path="res://visuals/ui/bubble_bar.png" id="19_tc85r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gnqv8"]
 texture = ExtResource("9_panii")
@@ -906,6 +907,12 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 2.0
 initial_velocity_max = 8.0
 scale_amount_curve = SubResource("Curve_fio2n")
+
+[node name="FlashlightSprite" type="Sprite2D" parent="Player" unique_id=852483478]
+show_behind_parent = true
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_bkyrt")
 
 [node name="MonsterManager" type="Node2D" parent="." unique_id=1820516849]
 script = ExtResource("10_0sur2")

@@ -6,56 +6,20 @@ extends CharacterBody2D
 
 var _movement_bounds: Rect2
 var _cursor: TargetCursor
-var facing_direction : String = "down"
+var input_direction : Vector2 = Vector2.ZERO
+var facing_animation : String = "down"
+var cursor_direction : Vector2 = Vector2.DOWN
 @onready var sprite = $AnimatedSprite2D
+@onready var flashlight_sprite = $FlashlightSprite
 
-func _get_facing() -> Vector2:
+func _process(_delta: float) -> void:
+	animate()
 
-	var combined_angle : float
-	var facing_vector : Vector2 = Input.get_vector(
-		"move_left", "move_right", "move_up", "move_down"
-	)
-
-	if facing_vector == Vector2.ZERO:
-		return Vector2.ZERO
-	combined_angle = snappedf(facing_vector.angle(),PI/4)
-	facing_vector = Vector2(cos(combined_angle),sin(combined_angle))
-	
-	return facing_vector
-
-func _animate(vector: Vector2 = Vector2.ZERO):
-
-	if vector == Vector2.ZERO:
-		sprite.play("idle_"+facing_direction)
-		return
-
-	var snapped_vector = Vector2(snapped(cos(vector.angle()),1),snapped(sin(vector.angle()),1))
-	var prev_dir = facing_direction
-	if snapped_vector.y < 0:
-		facing_direction = "up"
-	elif snapped_vector.y > 0:
-		facing_direction = "down"
-	if snapped_vector.x > 0:
-		facing_direction = "right"
-	elif snapped_vector.x < 0:
-		facing_direction = "left"
-	if (snapped_vector.x != 0) && (snapped_vector.y != 0):
-		if prev_dir == "down" && snapped_vector.y < 0:
-			sprite.play(facing_direction)
-			return
-		if prev_dir == "up" && snapped_vector.y > 0:
-			sprite.play(facing_direction)
-			return
-		if prev_dir == "left" && snapped_vector.x > 0:
-			sprite.play(facing_direction)
-			return
-		if prev_dir == "right" && snapped_vector.x < 0:
-			sprite.play(facing_direction)
-			return
-		sprite.play(prev_dir)
-		facing_direction = prev_dir
-		return
-	sprite.play(facing_direction)
+func animate():
+	if input_direction == Vector2.ZERO:
+		sprite.play("idle_"+facing_animation)
+	else:
+		sprite.play(facing_animation)
 
 func configure(bounds: Rect2, cursor: TargetCursor) -> void:
 	_movement_bounds = bounds
@@ -66,21 +30,68 @@ func _physics_process(_delta: float) -> void:
 	var direction: Vector2 = Input.get_vector(
 		"move_left", "move_right", "move_up", "move_down"
 	)
+	
 	if direction != Vector2.ZERO:
+		update_facing(direction)
 		velocity = direction * move_speed
 		move_and_slide()
 		#global_position = Vector2(
 			#clampf(global_position.x, _movement_bounds.position.x + radius, _movement_bounds.end.x - radius),
 			#clampf(global_position.y, _movement_bounds.position.y + radius, _movement_bounds.end.y - radius)
 		#)
+	
+	input_direction = direction
+	
+	update_cursor()
+	if facing_animation == "down":
+		flashlight_sprite.show_behind_parent = false
+		flashlight_sprite.position.x = 6
+		flashlight_sprite.position.y = 6
+	elif facing_animation == "up":
+		flashlight_sprite.show_behind_parent = true
+		flashlight_sprite.position.x = -6
+		flashlight_sprite.position.y = 2
+	elif facing_animation == "right":
+		flashlight_sprite.show_behind_parent = true
+		flashlight_sprite.position.x = 0
+		flashlight_sprite.position.y = 2
+	elif facing_animation == "left":
+		flashlight_sprite.show_behind_parent = false
+		flashlight_sprite.position.x = 0
+		flashlight_sprite.position.y = 2
+	
+	flashlight_sprite.rotation = cursor_direction.angle()
 
-	# The aiming line also changes when the mouse moves without player movement.
-	queue_redraw()
+func update_facing(direction: Vector2):
+	if direction == Vector2.ZERO:
+		return
+	elif direction == Vector2.RIGHT:
+		facing_animation = "right"
+	elif direction == Vector2.LEFT:
+		facing_animation = "left"
+	elif direction == Vector2.UP:
+		facing_animation = "up"
+	elif direction == Vector2.DOWN:
+		facing_animation = "down"
+	#up/down plus left/right defaults to left/right, unless already facing one of the directions
+	elif (direction.x > 0 
+		&& facing_animation != "up" && facing_animation != "down"):
+		facing_animation = "right"
+	elif (direction.x < 0 
+		&& facing_animation != "up" && facing_animation != "down"):
+		facing_animation = "left"
+	
 
+func update_cursor():
+	if _cursor == null:
+		return
+	var direction: Vector2 = to_local(_cursor.global_position).normalized()
+	if direction == Vector2.ZERO:
+		direction = Vector2.RIGHT
+	
+	cursor_direction = direction
 
 func _draw() -> void:
-
-	_animate(_get_facing())
 	pass
 	#draw_circle(Vector2.ZERO, radius, Color("#ebf2ff"))
 	#draw_circle(Vector2.ZERO, radius * 0.6, Color("#5d87c9"))
