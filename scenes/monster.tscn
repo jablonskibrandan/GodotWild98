@@ -74,7 +74,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"bite",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -135,10 +135,10 @@ debug_path_custom_color = Color(0.59468883, 0.18581569, 0.029100718, 1)
 modulate = Color(0.50878495, 0.490175, 0.47421646, 1)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_bhunq")
-animation = &"swim"
+animation = &"bite"
 autoplay = "swim"
-frame = 4
-frame_progress = 0.15811062
+frame = 6
+frame_progress = 1.0
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=2009398952]
 position = Vector2(-1, 5)

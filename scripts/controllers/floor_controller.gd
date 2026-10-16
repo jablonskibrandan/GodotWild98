@@ -27,6 +27,7 @@ func _ready() -> void:
 	flashlight.state_changed.connect(_on_flashlight_state_changed)
 	cursor.target_moved.connect(_on_target_moved)
 	effects.sound_made.connect(_on_sound_made)
+	monster_manager.player_bitten.connect(_on_player_bitten)
 
 	# Signals emitted by child _ready methods occur before the parent's _ready.
 	# Explicitly seed the initial HUD state here.
@@ -51,6 +52,9 @@ func _on_target_moved(target: Vector2) -> void:
 
 func _on_sound_made(source: Node2D, volume: float):
 	monster_manager.sound_made(source, volume)
+
+func _on_player_bitten():
+	pass
 
 func _draw() -> void:
 	pass

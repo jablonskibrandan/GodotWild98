@@ -920,3 +920,5 @@ bubble_health_path = NodePath("../../Player/Bubble_Health")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer" unique_id=2070907544]
 material = SubResource("ShaderMaterial_riqys")
 mesh = SubResource("QuadMesh_bhunq")
+
+[editable path="MonsterManager/Monster"]
