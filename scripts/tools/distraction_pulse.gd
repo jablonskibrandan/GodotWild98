@@ -38,5 +38,5 @@ func _finish() -> void:
 func _draw() -> void:
 	var progress: float = _elapsed / duration
 	var color := Color(0.25, 0.88, 1.0, 1.0 - progress)
-	draw_circle(Vector2.ZERO, 7.0, color)
+	draw_circle(Vector2.ZERO, 4.0, color)
 	draw_arc(Vector2.ZERO, 10.0 + max_radius * progress, 0.0, TAU, 64, color, 3.0, true)

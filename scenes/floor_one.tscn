@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dkqv01mpxtc8h" path="res://visuals/tilesets/floor_tiles.png" id="10_gnqv8"]
 [ext_resource type="Script" uid="uid://dady07nhex7xv" path="res://scripts/player/bubble_health.gd" id="11_bubble_health"]
 [ext_resource type="PackedScene" path="res://scenes/bubble_bar.tscn" id="12_bubble_bar"]
+[ext_resource type="Shader" uid="uid://bogy8vvctkjss" path="res://visuals/crt_shader.gdshader" id="17_ap1ie"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gnqv8"]
 texture = ExtResource("9_panii")
@@ -769,6 +770,13 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.2, 0.1)
 metadata/_snap_enabled = true
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_riqys"]
+shader = ExtResource("17_ap1ie")
+
+[sub_resource type="QuadMesh" id="QuadMesh_bhunq"]
+size = Vector2(384, 216)
+center_offset = Vector3(192, 108, 0)
+
 [node name="FloorOne" type="Node2D" unique_id=1776846106]
 script = ExtResource("1_floor")
 
@@ -840,7 +848,6 @@ frame_progress = 0.16918927
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=853646388]
-zoom = Vector2(2.75, 2.75)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1492954828]
@@ -869,15 +876,14 @@ metadata/_edit_lock_ = true
 
 [node name="TargetCursor" type="Node2D" parent="." unique_id=1575986569]
 script = ExtResource("6_target")
-square_size = 8.0
+circle_radius = 4.0
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1173174004]
 
 [node name="Panel" type="PanelContainer" parent="HUD" unique_id=162088003]
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 355.0
-offset_bottom = 155.0
+offset_right = 364.0
+offset_bottom = 104.0
+scale = Vector2(0.5, 0.5)
 mouse_filter = 2
 
 [node name="VBox" type="VBoxContainer" parent="HUD/Panel" unique_id=1232421606]
@@ -903,3 +909,9 @@ text = "WASD Move  |  RMB Next  |  LMB Use  |  F Light"
 
 [node name="BubbleBar" parent="HUD" unique_id=347332869 instance=ExtResource("12_bubble_bar")]
 bubble_health_path = NodePath("../../Player/Bubble_Health")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=985874040]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer" unique_id=2070907544]
+material = SubResource("ShaderMaterial_riqys")
+mesh = SubResource("QuadMesh_bhunq")

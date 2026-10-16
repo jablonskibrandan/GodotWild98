@@ -24,9 +24,11 @@ MusicManager="*res://scripts/audio/music_manager.tscn"
 
 [display]
 
-window/size/viewport_width=960
-window/size/viewport_height=600
+window/size/viewport_width=384
+window/size/viewport_height=216
 window/size/resizable=false
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
 
 [dotnet]
 
@@ -81,3 +83,5 @@ tool_use={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_2d=3
+2d/snap/snap_2d_transforms_to_pixel=true

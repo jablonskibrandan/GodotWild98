@@ -3,7 +3,7 @@ extends Node2D
 
 signal target_moved(target: Vector2)
 
-@export_range(4.0, 48.0, 1.0) var square_size: float = 22.0
+@export_range(2.0, 20.0, 1.0) var circle_radius: float = 20.0
 
 @export var target_color: Color = Color("#ffe27a")
 
@@ -36,6 +36,7 @@ func _update_position() -> void:
 
 
 func _draw() -> void:
-	var half_size := Vector2.ONE * square_size * 0.5
-	draw_rect(Rect2(-half_size, Vector2.ONE * square_size), target_color, false, 2.0)
-	draw_circle(Vector2.ZERO, 1.0, target_color)
+	
+	var inner_radius : float = circle_radius / 4.0
+	draw_circle(Vector2.ZERO, circle_radius, target_color,false,2)
+	draw_circle(Vector2.ZERO, inner_radius, target_color)

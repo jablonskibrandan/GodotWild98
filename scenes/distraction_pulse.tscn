@@ -5,6 +5,7 @@
 
 [node name="DistractionPulse" type="Node2D" unique_id=639523963]
 script = ExtResource("1_pulse")
+max_radius = 60.0
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="." unique_id=1404917722]
 stream = ExtResource("2_a3g5w")

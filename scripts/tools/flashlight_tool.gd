@@ -84,6 +84,6 @@ func _draw() -> void:
 		var angle: float = center_angle + deg_to_rad(lerpf(-half_angle_degrees, half_angle_degrees, fraction))
 		beam_points.append(origin + Vector2.RIGHT.rotated(angle) * beam_length)
 
-	draw_colored_polygon(beam_points, Color(1.0, 0.91, 0.39, 0.21))
-	draw_line(origin, beam_points[1], Color(1.0, 0.91, 0.39, 0.38), 1.0)
+	draw_colored_polygon(beam_points, Color(1.0, 0.91, 0.39, 0.139))
+	draw_line(origin, beam_points[1], Color(1.0, 0.91, 0.39, 0.247), 1.0)
 	draw_line(origin, beam_points[beam_points.size() - 1], Color(1.0, 0.91, 0.39, 0.38), 1.0)

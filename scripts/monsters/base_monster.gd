@@ -29,7 +29,8 @@ func _physics_process(_delta: float) -> void:
 	#target_finder.queue_redraw()
 
 func _process(_delta: float) -> void:
-	animated_sprite.speed_scale = clampf(velocity.length() / wander_speed, 0.5, 3)
+	animated_sprite.speed_scale = clampf((abs(velocity.x) + (abs(velocity.y)/10)) / wander_speed, 0.5, 2)
+
 	
 	if velocity.x < 0:
 		animated_sprite.flip_h = false
