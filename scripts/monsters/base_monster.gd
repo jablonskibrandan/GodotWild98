@@ -28,9 +28,8 @@ func configure_target_finder(player: Node2D):
 	target_finder.configure(player, radius, Vector2.LEFT)
 
 func _physics_process(_delta: float) -> void:
-	if !animation_locked:
-		var target_velocity:= velocity_to_target()
-		velocity = target_velocity
+	var target_velocity:= velocity_to_target()
+	velocity = target_velocity
 	
 	move_and_slide()
 	#target_finder.queue_redraw()
@@ -39,18 +38,32 @@ func _process(delta: float) -> void:
 	if bite_cooldown_time_left > 0:
 		bite_cooldown_time_left = clampf(bite_cooldown_time_left - delta, 0, bite_cooldown)
 	
+	# face towards last known player location, with 1 seconds grace to help with corner vision
+	var face_target_player_direction = target_finder.get_face_target_player_direction()
+	if face_target_player_direction != null && face_target_player_direction is Vector2:
+		if face_target_player_direction.x < 0:
+			face_left()
+		else:
+			face_right()
+	# using 1 instead of 0 to help prevent repeated flips
+	elif velocity.x < 1:
+		face_left()
+	elif velocity.x > 1:
+		face_right()
+	
 	if !animation_locked:
 		animated_sprite.speed_scale = clampf((abs(velocity.x) + (abs(velocity.y)/6)) / wander_speed, 0.5, 2)
-
-		if velocity.x < 0:
-			animated_sprite.flip_h = false
-			target_finder.facing = Vector2.LEFT
-		elif velocity.x > 0:
-			animated_sprite.flip_h = true
-			target_finder.facing = Vector2.RIGHT
 		
 		if bite_cooldown_time_left <= 0 && target_finder.should_bite():
 			start_biting()
+
+func face_left():
+	animated_sprite.flip_h = false
+	target_finder.facing = Vector2.LEFT
+
+func face_right():
+	animated_sprite.flip_h = true
+	target_finder.facing = Vector2.RIGHT
 
 func on_animation_finished():
 	if animation_locked:

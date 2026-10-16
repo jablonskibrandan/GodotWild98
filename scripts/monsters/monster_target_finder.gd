@@ -9,6 +9,8 @@ extends Node2D
 var radius: float = 0.0
 #direction monster is facing
 var facing: Vector2 = Vector2.LEFT
+#direction towards player with 1 seconds grace
+var face_target_player_direction: Vector2 = Vector2.ZERO
 # monster needs hearing higher than sound volume to notice it
 @export_range(0.0, 200.0, 1.0) var hearing: float = 80.0
 # seconds monster will remember hearing or seeing something
@@ -42,6 +44,15 @@ func get_chosen_target_position(): # -> Vector 2 or null
 	else:
 		return null
 
+func get_face_target_player_direction(): 
+	#if has seen player in the last second, face towards player
+	if chosen_target != 0 && target_infos.has(chosen_target) && player.get_instance_id() == chosen_target:
+		if target_infos[chosen_target].last_noticed <= 1.0:
+			face_target_player_direction = global_position.direction_to(player.global_position)
+		return face_target_player_direction
+	else:
+		return null
+
 func should_bite():
 	return (player != null && player.get_instance_id() == chosen_target
 			&& global_position.distance_to(player.global_position) < radius*2.0)
@@ -52,7 +63,7 @@ func look_around():
 		var focus_vision := vision
 		if player.get_instance_id() == chosen_target:
 			focus_vision *= (1 + focus)
-		if distance <= focus_vision && (distance <= radius*3 || has_line_of_sight(player)):
+		if distance <= focus_vision && has_line_of_sight(player):
 			var priority := int((focus_vision-distance))
 			notice(player, priority)
 
@@ -61,13 +72,14 @@ func has_line_of_sight(target_node: Node2D) -> bool:
 	const environment_layer := 1
 	const hidden_room_door_layer := 5
 	var collision_mask := (1 << (environment_layer-1)) + (1 << (hidden_room_door_layer-1))
-	var query = PhysicsRayQueryParameters2D.create(global_position + (facing * radius), target_node.position, collision_mask)
+	var query = PhysicsRayQueryParameters2D.create(global_position + (facing * radius), target_node.global_position, collision_mask)
 	var result = space_state.intersect_ray(query)
 	var view_obstructed = result.size() > 0
 	
+	var distance_to_target := global_position.distance_to(target_node.global_position)
 	var direction_to_target := global_position.direction_to(target_node.global_position)
 	var angle_to_target: float = abs(facing.angle_to(direction_to_target))
-	var in_field_of_vision = angle_to_target <= deg_to_rad(field_of_vision / 2.0)
+	var in_field_of_vision = angle_to_target <= deg_to_rad(field_of_vision / 2.0) || distance_to_target <= radius*3
 	
 	return in_field_of_vision && !view_obstructed
 
