@@ -1,5 +1,13 @@
 [gd_resource type="AudioBusLayout" format=3 uid="uid://d3wu6h17y5cyl"]
 
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_j3pel"]
+resource_name = "Compressor"
+threshold = -20.2
+ratio = 3.7
+gain = 5.4
+attack_us = 187.0
+release_ms = 413.0
+
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
 resource_name = "Reverb"
 room_size = 0.81
@@ -7,6 +15,9 @@ hipass = 0.29
 wet = 0.34
 
 [resource]
+bus/0/volume_db = 0.46499825
+bus/0/effect/0/effect = SubResource("AudioEffectCompressor_j3pel")
+bus/0/effect/0/enabled = true
 bus/1/name = &"Music"
 bus/1/solo = false
 bus/1/mute = false
@@ -17,7 +28,7 @@ bus/2/name = &"SFX"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = -0.032730103
+bus/2/volume_db = -1.1215086
 bus/2/send = &"Master"
 bus/2/effect/0/effect = SubResource("AudioEffectReverb_j3pel")
 bus/2/effect/0/enabled = true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b8537xnuovfx1"
+path="res://.godot/imported/Tension Pan.ogg-6271b009f15947d031fc5f439a12a22d.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/music/Tension Pan.ogg"
+dest_files=["res://.godot/imported/Tension Pan.ogg-6271b009f15947d031fc5f439a12a22d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

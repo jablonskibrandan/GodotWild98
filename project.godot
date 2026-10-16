@@ -18,6 +18,10 @@ config/name="GodotWild98"
 run/main_scene="uid://ckoynux4h2wsw"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
+[audio]
+
+buses/default_bus_layout="uid://d3wu6h17y5cyl"
+
 [autoload]
 
 MusicManager="*res://scripts/audio/music_manager.tscn"

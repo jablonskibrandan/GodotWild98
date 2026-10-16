@@ -165,6 +165,7 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_wd5ij")
 
 [node name="AlertSound" type="AudioStreamPlayer2D" parent="." unique_id=1207734519]
+volume_db = 0.78
 max_distance = 2500.0
 bus = &"SFX"
 script = ExtResource("4_alert")
