@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://d1vvchxqlwit8" path="res://scripts/monsters/base_monster.gd" id="1_1cbnp"]
 [ext_resource type="Script" uid="uid://c6k0obt5upiwb" path="res://scripts/monsters/monster_target_finder.gd" id="2_c47ug"]
 [ext_resource type="Texture2D" uid="uid://bkjneps6wb5ph" path="res://visuals/enemies/enemy_fish.png" id="3_c47ug"]
+[ext_resource type="Script" uid="uid://bkpybvya36lat" path="res://scripts/audio/monster_alert_sound.gd" id="4_alert"]
+[ext_resource type="AudioStream" uid="uid://c6yuor817v64w" path="res://audio/sfx/Monster Alert Player.wav" id="5_alertp"]
+[ext_resource type="AudioStream" uid="uid://bschwhcq26xnw" path="res://audio/sfx/MOster Alert Distraction.wav" id="6_alertd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c47ug"]
 atlas = ExtResource("3_c47ug")
@@ -160,3 +163,11 @@ texture_scale = 0.2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2053910371]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_wd5ij")
+
+[node name="AlertSound" type="AudioStreamPlayer2D" parent="." unique_id=1207734519]
+max_distance = 2500.0
+bus = &"SFX"
+script = ExtResource("4_alert")
+player_alert = ExtResource("5_alertp")
+distraction_alert = ExtResource("6_alertd")
+pitch_variation = 0.09
