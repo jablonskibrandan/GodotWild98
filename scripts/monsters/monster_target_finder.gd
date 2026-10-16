@@ -2,7 +2,7 @@ class_name MonsterTargetFinder
 extends Node2D
 
 # distance monster can see
-@export_range(0.0, 200.0, 1.0) var vision: float = 120.0
+@export_range(0.0, 200.0, 1.0) var vision: float = 100.0
 #field of vision (degrees)
 @export_range(45.0, 360.0, 45.0) var field_of_vision: float = 270.0
 #how far in front of monster to have vision
@@ -43,7 +43,7 @@ func look_around():
 		var focus_vision := vision
 		if player.get_instance_id() == chosen_target:
 			focus_vision *= (1 + focus)
-		if distance <= focus_vision && has_line_of_sight(player):
+		if distance <= focus_vision && (distance <= radius*3 || has_line_of_sight(player)):
 			var priority := int((focus_vision-distance))
 			notice(player, priority)
 

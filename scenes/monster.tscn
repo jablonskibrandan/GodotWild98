@@ -114,17 +114,15 @@ metadata/_snap_enabled = true
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wd5ij"]
 radius = 7.0
-height = 18.0
+height = 19.0
 
 [node name="Monster" type="CharacterBody2D" unique_id=447894495]
 collision_layer = 8
 collision_mask = 9
 script = ExtResource("1_1cbnp")
-radius = 8.0
 
 [node name="TargetFinder" type="Node2D" parent="." unique_id=1955017602]
 script = ExtResource("2_c47ug")
-vision = 90.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1754214499]
 path_desired_distance = 5.0

@@ -1,7 +1,7 @@
 class_name BaseMonster
 extends CharacterBody2D
 
-@export_range(1.0, 100.0, 1.0) var radius: float = 10.0
+@export_range(1.0, 100.0, 1.0) var radius: float = 9.0
 @export_range(1.0, 1000.0, 1.0) var chase_speed: float = 50.0
 @export_range(1.0, 1000.0, 1.0) var wander_speed: float = 10.0
 @export_range(1.0, 100.0, 1.0) var wander_distance: float = 60.0
