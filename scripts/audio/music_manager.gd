@@ -7,7 +7,8 @@ extends Node
 ## Uses two players so tracks can crossfade.
 ##
 ## Tension layer: if a tension stem is set, it plays in sync with the base
-## track and fades in as the nearest monster gets closer to the player.
+## track. It stays silent until a monster is chasing the player, then comes in
+## and gets louder the closer that monster gets.
 ## Tune everything below in the Inspector by opening music_manager.tscn.
 ##
 ## Usage from any script:
@@ -27,19 +28,21 @@ const SILENT := 0.0001
 @export_group("Tension Layer")
 ## Stem that plays in sync with the base track. Must be the same length and tempo.
 @export var tension_stem: AudioStream
-## Monster farther than this (pixels): tension layer is silent.
+## Level of the layer the moment a chase starts, however far away the monster
+## is (0..1). The layer only plays while a monster is chasing the player.
+@export_range(0.0, 1.0, 0.01) var chase_min_level: float = 0.35
+## Chasing monster farther than this (pixels): layer sits at Chase Min Level.
+## Closer than this, it starts getting louder.
 @export_range(0.0, 2000.0, 1.0, "suffix:px") var tension_start_distance: float = 220.0
-## Monster closer than this (pixels): tension layer is at full level.
+## Chasing monster closer than this (pixels): layer is at full level.
 @export_range(0.0, 2000.0, 1.0, "suffix:px") var tension_full_distance: float = 60.0
 ## Level of the tension layer when fully in.
 @export_range(-24.0, 12.0, 0.1, "suffix:dB") var tension_max_db: float = 0.0
 ## Seconds to swell in when the monster closes in (lower = more reactive).
 @export_range(0.0, 10.0, 0.05, "suffix:s") var tension_attack: float = 0.75
-## Seconds to settle back down when the monster backs off (higher = lingers).
+## Seconds to settle back down when the monster backs off or gives up the
+## chase (higher = lingers).
 @export_range(0.0, 20.0, 0.05, "suffix:s") var tension_release: float = 3.0
-## Minimum tension while the monster is chasing something, at any distance.
-## 0 = distance only.
-@export_range(0.0, 1.0, 0.01) var tension_while_chasing: float = 0.0
 
 ## Current tension, 0..1 (read-only; handy for debugging or other systems).
 var tension: float = 0.0
@@ -145,25 +148,28 @@ func _target_tension(delta: float) -> float:
 	if not is_instance_valid(_player_node):
 		return 0.0
 
+	# Only monsters currently chasing the player count; closest one wins.
 	var nearest := INF
-	var chasing := false
 	for monster in _monsters:
 		if not is_instance_valid(monster) or not monster.is_inside_tree():
 			continue
+		if not _is_chasing_player(monster):
+			continue
 		nearest = minf(nearest, _player_node.global_position.distance_to(monster.global_position))
-		var finder = monster.get("target_finder")
-		if finder != null and finder.get("chosen_target") != 0:
-			chasing = true
 
 	if nearest == INF:
 		return 0.0
 
 	var span := maxf(tension_start_distance - tension_full_distance, 0.001)
 	var t := clampf((tension_start_distance - nearest) / span, 0.0, 1.0)
-	t = smoothstep(0.0, 1.0, t)
-	if chasing:
-		t = maxf(t, tension_while_chasing)
-	return t
+	return lerpf(chase_min_level, 1.0, smoothstep(0.0, 1.0, t))
+
+
+func _is_chasing_player(monster: Node) -> bool:
+	var finder = monster.get("target_finder")
+	if finder == null:
+		return false
+	return finder.get("chosen_target") == _player_node.get_instance_id()
 
 
 func _scan_scene() -> void:
