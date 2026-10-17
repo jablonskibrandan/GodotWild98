@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dady07nhex7xv" path="res://scripts/player/bubble_health.gd" id="2_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://dp4illl5bapcx" path="res://visuals/ui/air_release.png" id="4_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://deo156ulol0mh" path="res://visuals/player/flashlight_small.png" id="5_fjrip"]
+[ext_resource type="Script" uid="uid://cqng1rrye2of0" path="res://scenes/flashlight_sprite.gd" id="6_tuyoq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iff7v"]
 atlas = ExtResource("2_qhqgy")
@@ -317,7 +318,6 @@ animation = &"idle_down"
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=349987340]
-visible = false
 process_callback = 0
 metadata/_edit_lock_ = true
 
@@ -365,6 +365,13 @@ rotation = 1.5707964
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("5_fjrip")
 hframes = 2
+script = ExtResource("6_tuyoq")
+
+[node name="Flashlight_Point_Left" type="Node2D" parent="FlashlightSprite" unique_id=1116433502]
+position = Vector2(80, 20)
+
+[node name="Flashlight_Point_Right" type="Node2D" parent="FlashlightSprite" unique_id=1791227228]
+position = Vector2(80, -20)
 
 [node name="BitableArea" type="Area2D" parent="." unique_id=331601644]
 collision_layer = 2

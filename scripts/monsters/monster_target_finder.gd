@@ -18,7 +18,7 @@ var face_target_player_direction: Vector2 = Vector2.ZERO
 # percentage monster will focus on current target (extending memory and increasing senses) over other targets
 @export_range(0.1, 1.0, 0.01) var focus: float = .40 #keep within range, do not make 0
 
-var player: Node2D
+var player: PlayerController
 # targets monster remembers sensing, along with last known position
 var target_infos: Dictionary[int, MonsterTargetInfo] = {} 
 var chosen_target: int = 0
@@ -61,27 +61,39 @@ func should_bite():
 
 func look_around():
 	if player != null:
-		var distance := global_position.distance_to(player.global_position)
 		var focus_vision := vision
-		var chasing := false
-		if player.get_instance_id() == chosen_target:
+		var flashlight_beam_positions := player.flashlight_beam_positions()
+		var sneaking := flashlight_beam_positions.size() == 0
+		if player.get_instance_id() == chosen_target: #chasing
 			focus_vision *= (1 + focus)
-			chasing = true
-		if distance <= focus_vision && has_line_of_sight(player, chasing):
-			var priority := int((focus_vision-distance))
-			notice(player, priority)
+			sneaking = false
+		
+		var spotted := see(player.global_position, focus_vision, sneaking)
+		if !spotted:
+			for beam_position in flashlight_beam_positions:
+				spotted = see(beam_position, focus_vision, false)
+				if spotted:
+					break
 
-func has_line_of_sight(target_node: Node2D, chasing: bool) -> bool:
+func see(target_position: Vector2, effective_vision: float, sneaking: bool) -> bool:
+	var distance := global_position.distance_to(target_position)
+	if distance <= effective_vision && has_line_of_sight(target_position, sneaking):
+		var priority := int((effective_vision-distance))
+		notice(player, priority, target_position)
+		return true
+	return false
+
+func has_line_of_sight(target_position: Vector2, sneaking: bool) -> bool:
 	var space_state = get_world_2d().direct_space_state
 	const environment_layer := 1
 	const hidden_room_door_layer := 5
 	const seaweed_layer := 6
 	var collision_mask := (1 << (environment_layer-1)) + (1 << (hidden_room_door_layer-1))
-	if !chasing:
+	if sneaking:
 		collision_mask += (1 << (seaweed_layer-1))
 	
 	#first ray moved towards eye to get around corners
-	var query_ray = PhysicsRayQueryParameters2D.create(global_position + (facing * radius), target_node.global_position, collision_mask)
+	var query_ray = PhysicsRayQueryParameters2D.create(global_position + (facing * radius), target_position, collision_mask)
 	var result_ray = space_state.intersect_ray(query_ray)
 	var view_obstructed = result_ray.size() > 0
 	
@@ -95,12 +107,12 @@ func has_line_of_sight(target_node: Node2D, chasing: bool) -> bool:
 
 	if view_obstructed:
 		#second ray towards center to avoid getting stuck on walls
-		var query2 = PhysicsRayQueryParameters2D.create(global_position + (facing * 2), target_node.global_position, collision_mask)
+		var query2 = PhysicsRayQueryParameters2D.create(global_position + (facing * 2), target_position, collision_mask)
 		var result2 = space_state.intersect_ray(query2)
 		view_obstructed = result2.size() > 0
 	
-	var distance_to_target := global_position.distance_to(target_node.global_position)
-	var direction_to_target := global_position.direction_to(target_node.global_position)
+	var distance_to_target := global_position.distance_to(target_position)
+	var direction_to_target := global_position.direction_to(target_position)
 	var angle_to_target: float = abs(facing.angle_to(direction_to_target))
 	var in_field_of_vision = angle_to_target <= deg_to_rad(field_of_vision / 2.0) || distance_to_target <= radius*3
 	
@@ -124,9 +136,14 @@ func _draw() -> void:
 
 # helper functions
 
-func notice(target_node: Node2D, priority: int):
+func notice(target_node: Node2D, priority: int, alternate_position = null):
 	var target_info: MonsterTargetInfo = MonsterTargetInfo.new()
-	target_info.notice(target_node.global_position, priority)
+	
+	if alternate_position != null && alternate_position is Vector2:
+		target_info.notice(alternate_position, priority)
+	else:
+		target_info.notice(target_node.global_position, priority)
+	
 	target_infos[target_node.get_instance_id()] = target_info
 	compare_and_choose_target(target_node.get_instance_id())
 

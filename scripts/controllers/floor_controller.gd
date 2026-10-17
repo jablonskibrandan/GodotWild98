@@ -26,6 +26,7 @@ func _ready() -> void:
 	distraction.configure(play_area, effects, player)
 	monster_manager.configure(player)
 	naval_mine.configure(play_area, naval_mines)
+	
 	tool_manager.tool_changed.connect(_on_tool_changed)
 	flashlight.state_changed.connect(_on_flashlight_state_changed)
 	cursor.target_moved.connect(_on_target_moved)
@@ -48,6 +49,7 @@ func _on_tool_changed(tool: BaseTool) -> void:
 
 func _on_flashlight_state_changed(is_enabled: bool) -> void:
 	light_label.text = "Flashlight: " + ("ON" if is_enabled else "OFF")
+	player.toggle_flashlight(is_enabled)
 
 
 func _on_target_moved(target: Vector2) -> void:
@@ -60,4 +62,3 @@ func _on_player_bitten() -> void:
 	print("Player bitten!")
 	bubble_health.take_bubble_hit(1)
 	print("Bubbles remaining: ", bubble_health.bubble_amount)
-	print("stealth: ", player.stealth)

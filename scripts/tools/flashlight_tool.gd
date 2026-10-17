@@ -3,10 +3,6 @@ extends BaseTool
 
 signal state_changed(is_enabled: bool)
 
-@export_range(1.0, 1000.0, 1.0) var beam_length: float = 100.0
-@export_range(1.0, 89.0, 1.0) var half_angle_degrees: float = 28.0
-@export_range(4, 128, 1) var beam_segments: int = 28
-
 @export_group("Audio")
 ## Plays when the flashlight turns on.
 @export var on_sound: AudioStream
@@ -42,7 +38,6 @@ func activate(_target: Vector2) -> void:
 func toggle() -> void:
 	enabled = not enabled
 	state_changed.emit(enabled)
-	queue_redraw()
 	_play_toggle_sound()
 
 
@@ -61,7 +56,6 @@ func _play_toggle_sound() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("flashlight_toggle"):
 		toggle()
-		_player.flashlight_power(enabled)
 		get_viewport().set_input_as_handled()
 
 
@@ -74,18 +68,4 @@ func _draw() -> void:
 	if not enabled or _player == null or _cursor == null:
 		return
 
-	var origin: Vector2 = to_local(_player.flashlight_sprite.global_position)
-	var aim: Vector2 = to_local(_cursor.global_position) - origin
-	if aim.length_squared() < 0.01:
-		aim = Vector2.RIGHT
-	var center_angle: float = aim.angle()
-
-	var beam_points := PackedVector2Array([origin])
-	for i in range(beam_segments + 1):
-		var fraction: float = float(i) / float(beam_segments)
-		var angle: float = center_angle + deg_to_rad(lerpf(-half_angle_degrees, half_angle_degrees, fraction))
-		beam_points.append(origin + Vector2.RIGHT.rotated(angle) * beam_length)
-
-	draw_colored_polygon(beam_points, Color(1.0, 0.91, 0.39, 0.139))
-	draw_line(origin, beam_points[1], Color(1.0, 0.91, 0.39, 0.247), 1.0)
-	draw_line(origin, beam_points[beam_points.size() - 1], Color(1.0, 0.91, 0.39, 0.38), 1.0)
+	
