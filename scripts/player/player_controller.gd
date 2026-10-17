@@ -41,11 +41,15 @@ func configure(bounds: Rect2, cursor: TargetCursor) -> void:
 func toolUsed(tool = BaseTool) -> void:
 	if (tool is DistractionTool):
 		$Timers/DistractionSignal_Timer.start()
+	if (tool is NavalMineTool):
+		$Timers/DistractionSignal_Timer.start()
 	return
 
 func get_time_left(tool = BaseTool) -> float:
 	var timeLeft
 	if (tool is DistractionTool):
+		timeLeft = $Timers/DistractionSignal_Timer.time_left
+	if (tool is NavalMineTool):
 		timeLeft = $Timers/DistractionSignal_Timer.time_left
 	return timeLeft
 

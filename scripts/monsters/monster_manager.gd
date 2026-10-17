@@ -13,6 +13,9 @@ func _ready():
 			monsters.append(monster)
 			monster.monster_bit_player.connect(_on_monster_bit_player)
 
+func kill_monster(monster: BaseMonster) -> void:
+	monsters.erase(monster)
+	return
 
 func configure(player: Node2D) -> void:
 	for monster in monsters:

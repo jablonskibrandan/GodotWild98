@@ -133,3 +133,7 @@ func navigation_direction(target_position: Vector2):
 func _draw() -> void:
 	pass
 	#draw_circle(Vector2.ZERO, radius, Color("4e6700ff"))
+
+func die() -> void:
+	get_parent().kill_monster(self)
+	queue_free()

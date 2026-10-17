@@ -25,7 +25,7 @@ func _ready() -> void:
 	flashlight.configure(player, cursor)
 	distraction.configure(play_area, effects, player)
 	monster_manager.configure(player)
-	naval_mine.configure(play_area, naval_mines)
+	naval_mine.configure(play_area, naval_mines, player)
 	
 	tool_manager.tool_changed.connect(_on_tool_changed)
 	flashlight.state_changed.connect(_on_flashlight_state_changed)

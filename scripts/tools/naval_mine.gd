@@ -83,7 +83,7 @@ func explode(target: Node2D) -> void:
 
 	# Damage/kill monsters.
 	if target is BaseMonster:
-		target.queue_free()
+		target.die()
 
 	# Damage the player using the existing BubbleHealth.
 	elif target is PlayerController:
