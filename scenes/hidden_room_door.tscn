@@ -3,7 +3,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd5ij"]
 size = Vector2(16, 16)
 
-[node name="StaticBody2D" type="StaticBody2D" unique_id=1096912862]
+[node name="HiddenRoomDoor" type="StaticBody2D" unique_id=1096912862]
 collision_layer = 16
 collision_mask = 0
 

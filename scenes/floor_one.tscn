@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://d2eevr6h1pfbo" path="res://scripts/tools/flashlight_tool.gd" id="3_flashlight"]
 [ext_resource type="PackedScene" uid="uid://weoo7vtkfd4t" path="res://scenes/hidden_room_door.tscn" id="4_ap1ie"]
 [ext_resource type="Script" uid="uid://bui5rstvv5pa1" path="res://scripts/tools/distraction_tool.gd" id="4_distraction"]
+[ext_resource type="PackedScene" uid="uid://dpwd50owx3p4e" path="res://scenes/seaweed_patch.tscn" id="5_8uit6"]
 [ext_resource type="Script" uid="uid://cnjnjyw5bsp31" path="res://scripts/player/player_controller.gd" id="5_player"]
 [ext_resource type="Script" uid="uid://bur0ibmglvosm" path="res://scripts/tools/distraction_manager.gd" id="5_xmt1j"]
 [ext_resource type="AudioStream" uid="uid://cgismexgs6pve" path="res://audio/sfx/Sunken Tower Flash Light On.wav" id="6_h4j6i"]
@@ -797,9 +798,11 @@ size = Vector2(384, 216)
 center_offset = Vector3(192, 108, 0)
 
 [node name="FloorOne" type="Node2D" unique_id=1776846106]
+y_sort_enabled = true
 script = ExtResource("1_floor")
 
 [node name="Background" type="Node2D" parent="." unique_id=1031679089]
+y_sort_enabled = true
 
 [node name="FakeWalls" type="TileMapLayer" parent="Background" unique_id=526704774]
 texture_filter = 1
@@ -823,9 +826,21 @@ tile_set = SubResource("TileSet_bhunq")
 collision_enabled = false
 navigation_enabled = false
 
-[node name="StaticBody2D" parent="Background" unique_id=1096912862 instance=ExtResource("4_ap1ie")]
+[node name="HiddenRoomDoor" parent="Background" unique_id=1096912862 instance=ExtResource("4_ap1ie")]
 position = Vector2(144, 152)
 scale = Vector2(2, 1)
+
+[node name="SeaweedPatch" parent="Background" unique_id=1327779863 instance=ExtResource("5_8uit6")]
+position = Vector2(28, 262)
+
+[node name="SeaweedPatch2" parent="Background" unique_id=962194062 instance=ExtResource("5_8uit6")]
+position = Vector2(163, 76)
+
+[node name="SeaweedPatch3" parent="Background" unique_id=1697066773 instance=ExtResource("5_8uit6")]
+position = Vector2(239, 153)
+
+[node name="SeaweedPatch4" parent="Background" unique_id=1093436318 instance=ExtResource("5_8uit6")]
+position = Vector2(191, 76)
 
 [node name="ToolManager" type="Node2D" parent="." unique_id=1764216630]
 script = ExtResource("2_tool_manager")
@@ -917,9 +932,11 @@ texture = ExtResource("15_bkyrt")
 hframes = 2
 
 [node name="MonsterManager" type="Node2D" parent="." unique_id=1820516849]
+y_sort_enabled = true
 script = ExtResource("10_0sur2")
 
 [node name="Monster" parent="MonsterManager" unique_id=1813013398 instance=ExtResource("7_6d0m4")]
+y_sort_enabled = false
 position = Vector2(206, 281)
 
 [node name="TargetCursor" type="Node2D" parent="." unique_id=1575986569]

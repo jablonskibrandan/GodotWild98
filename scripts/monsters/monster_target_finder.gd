@@ -61,17 +61,22 @@ func look_around():
 	if player != null:
 		var distance := global_position.distance_to(player.global_position)
 		var focus_vision := vision
+		var chasing := false
 		if player.get_instance_id() == chosen_target:
 			focus_vision *= (1 + focus)
-		if distance <= focus_vision && has_line_of_sight(player):
+			chasing = true
+		if distance <= focus_vision && has_line_of_sight(player, chasing):
 			var priority := int((focus_vision-distance))
 			notice(player, priority)
 
-func has_line_of_sight(target_node: Node2D) -> bool:
+func has_line_of_sight(target_node: Node2D, chasing: bool) -> bool:
 	var space_state = get_world_2d().direct_space_state
 	const environment_layer := 1
 	const hidden_room_door_layer := 5
+	const seaweed_layer := 6
 	var collision_mask := (1 << (environment_layer-1)) + (1 << (hidden_room_door_layer-1))
+	if !chasing:
+		collision_mask += (1 << (seaweed_layer-1))
 	var query = PhysicsRayQueryParameters2D.create(global_position + (facing * radius), target_node.global_position, collision_mask)
 	var result = space_state.intersect_ray(query)
 	var view_obstructed = result.size() > 0
