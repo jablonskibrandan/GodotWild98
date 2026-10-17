@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://x8a8j8dntaes"]
+
+[ext_resource type="Texture2D" uid="uid://brv0weju3yugd" path="res://visuals/environment/mine.png" id="1_ktgtt"]
+[ext_resource type="Script" uid="uid://cdv3udqskucdg" path="res://scripts/tools/naval_mine.gd" id="1_y6weo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6weo"]
+atlas = ExtResource("1_ktgtt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knsxb"]
+atlas = ExtResource("1_ktgtt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40e12"]
+atlas = ExtResource("1_ktgtt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3e7u"]
+atlas = ExtResource("1_ktgtt")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dmehe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6weo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knsxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40e12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3e7u")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dmehe"]
+
+[node name="NavalMine" type="Node2D" unique_id=1818726148]
+script = ExtResource("1_y6weo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=95695710]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_dmehe")
+frame_progress = 0.64224803
+
+[node name="Area2D" type="Area2D" parent="." unique_id=473908101]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=931144718]
+shape = SubResource("CircleShape2D_dmehe")

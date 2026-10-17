@@ -17,13 +17,15 @@ extends Node2D
 @onready var light_label: Label = $HUD/Panel/VBox/Light
 @onready var target_label: Label = $HUD/Panel/VBox/Target
 
+@onready var naval_mine: NavalMineTool = $ToolManager/NavalMine
+@onready var naval_mines: Node2D = $NavalMines
 
 func _ready() -> void:
 	player.configure(play_area, cursor)
 	flashlight.configure(player, cursor)
 	distraction.configure(play_area, effects)
 	monster_manager.configure(player)
-
+	naval_mine.configure(play_area, naval_mines)
 	tool_manager.tool_changed.connect(_on_tool_changed)
 	flashlight.state_changed.connect(_on_flashlight_state_changed)
 	cursor.target_moved.connect(_on_target_moved)

@@ -36,7 +36,7 @@ func take_bubble_hit(damage_amount: int) -> void:
 	if bubble_current_time <= 0.0:
 		return
 
-	# Each hit removes 15 seconds of oxygen per bubble.
+	# Each hit removes X seconds of oxygen per bubble.
 	bubble_current_time = maxf(
 		bubble_current_time - damage_amount * time_per_bubble_loss,
 		0.0
