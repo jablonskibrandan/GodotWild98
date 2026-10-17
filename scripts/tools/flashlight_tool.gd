@@ -36,6 +36,7 @@ func configure(player: PlayerController, cursor: TargetCursor) -> void:
 
 func activate(_target: Vector2) -> void:
 	toggle()
+	_player.toolUsed(self)
 
 
 func toggle() -> void:

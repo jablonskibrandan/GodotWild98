@@ -9,6 +9,7 @@ var _cursor: TargetCursor
 var input_direction : Vector2 = Vector2.ZERO
 var facing_animation : String = "down"
 var cursor_direction : Vector2 = Vector2.DOWN
+
 @onready var sprite = $AnimatedSprite2D
 @onready var flashlight_sprite = $FlashlightSprite
 
@@ -24,6 +25,17 @@ func animate():
 func configure(bounds: Rect2, cursor: TargetCursor) -> void:
 	_movement_bounds = bounds
 	_cursor = cursor
+
+func toolUsed(tool = BaseTool) -> void:
+	if (tool is DistractionTool):
+		$Timers/DistractionSignal_Timer.start()
+	return
+
+func get_time_left(tool = BaseTool) -> float:
+	var timeLeft
+	if (tool is DistractionTool):
+		timeLeft = $Timers/DistractionSignal_Timer.time_left
+	return timeLeft
 
 
 func _physics_process(_delta: float) -> void:

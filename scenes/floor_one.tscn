@@ -539,16 +539,16 @@ scale = Vector2(2, 1)
 position = Vector2(32, 272)
 
 [node name="SeaweedPatch2" parent="Background" unique_id=962194062 instance=ExtResource("5_8uit6")]
-position = Vector2(163, 80)
+position = Vector2(163, 81)
 
 [node name="SeaweedPatch3" parent="Background" unique_id=1697066773 instance=ExtResource("5_8uit6")]
 position = Vector2(239, 158)
 
 [node name="SeaweedPatch4" parent="Background" unique_id=1093436318 instance=ExtResource("5_8uit6")]
-position = Vector2(192, 80)
+position = Vector2(197, 81)
 
 [node name="SeaweedPatch5" parent="Background" unique_id=1260615049 instance=ExtResource("5_8uit6")]
-position = Vector2(130, 80)
+position = Vector2(129, 81)
 
 [node name="ToolManager" type="Node2D" parent="." unique_id=1764216630]
 script = ExtResource("2_tool_manager")

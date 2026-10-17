@@ -23,7 +23,7 @@ extends Node2D
 func _ready() -> void:
 	player.configure(play_area, cursor)
 	flashlight.configure(player, cursor)
-	distraction.configure(play_area, effects)
+	distraction.configure(play_area, effects, player)
 	monster_manager.configure(player)
 	naval_mine.configure(play_area, naval_mines)
 	tool_manager.tool_changed.connect(_on_tool_changed)
@@ -60,3 +60,4 @@ func _on_player_bitten() -> void:
 	print("Player bitten!")
 	bubble_health.take_bubble_hit(1)
 	print("Bubbles remaining: ", bubble_health.bubble_amount)
+	print("stealth: ", player.stealth)

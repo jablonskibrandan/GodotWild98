@@ -8,3 +8,4 @@ extends Node2D
 
 func activate(_target: Vector2) -> void:
 	push_error("Tool '%s' must implement activate()." % display_name)
+	print("Tool Used: ", self)
