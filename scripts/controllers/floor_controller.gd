@@ -60,4 +60,3 @@ func _on_player_bitten() -> void:
 	print("Player bitten!")
 	bubble_health.take_bubble_hit(1)
 	print("Bubbles remaining: ", bubble_health.bubble_amount)
-	print("stealth: ", player.stealth)

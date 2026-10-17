@@ -18,7 +18,7 @@ signal monster_bit_player()
 @onready var target_finder: MonsterTargetFinder = $TargetFinder
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-
+@onready var point_light: PointLight2D = $PointLight2D
 var starting_position: Vector2 = Vector2.ZERO
 var wander_position: Vector2 = Vector2.ZERO
 
@@ -28,7 +28,7 @@ var animation_locked: bool = false
 func _ready():
 	starting_position = global_position
 	wander_position = starting_position
-	
+	point_light.scale = Vector2(target_finder.vision/100,target_finder.vision/100)
 	animated_sprite.animation_finished.connect(on_animation_finished)
 
 func configure_target_finder(player: Node2D):
