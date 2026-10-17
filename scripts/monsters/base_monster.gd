@@ -70,12 +70,16 @@ func on_animation_finished():
 		animation_locked = false
 		animated_sprite.play("swim")
 
-func start_biting():
+func start_biting() -> void:
+	print("MONSTER STARTED BITING!")
+
 	animated_sprite.speed_scale = 1.0
 	animated_sprite.play("bite")
-	animation_locked = true;
+	animation_locked = true
 	bite_cooldown_time_left = bite_cooldown
+
 	monster_bit_player.emit()
+	print("Monster bite signal emitted!")
 
 func hear_sound_made(source: Node2D, volume: float):
 	target_finder.hear(source, volume)

@@ -11,6 +11,7 @@ extends Node2D
 @onready var distraction: DistractionTool = $ToolManager/Distraction
 @onready var effects: DistractionManager = $DistractionEffects
 @onready var monster_manager: MonsterManager = $MonsterManager
+@onready var bubble_health: BubbleHealth = $Player/Bubble_Health
 
 @onready var tool_label: Label = $HUD/Panel/VBox/Tool
 @onready var light_label: Label = $HUD/Panel/VBox/Light
@@ -53,17 +54,7 @@ func _on_target_moved(target: Vector2) -> void:
 func _on_sound_made(source: Node2D, volume: float):
 	monster_manager.sound_made(source, volume)
 
-func _on_player_bitten():
-	pass
-
-func _draw() -> void:
-	pass
-	#draw_rect(Rect2(Vector2.ZERO, get_viewport_rect().size), Color("#101722"), true)
-	#draw_rect(play_area, Color("#202c3a"), true)
-#
-	#for x in range(int(play_area.position.x), int(play_area.end.x) + 1, grid_size):
-		#draw_line(Vector2(x, play_area.position.y), Vector2(x, play_area.end.y), Color("#2c3949"), 1.0)
-	#for y in range(int(play_area.position.y), int(play_area.end.y) + 1, grid_size):
-		#draw_line(Vector2(play_area.position.x, y), Vector2(play_area.end.x, y), Color("#2c3949"), 1.0)
-#
-	#draw_rect(play_area, Color("#63748a"), false, 3.0)
+func _on_player_bitten() -> void:
+	print("Player bitten!")
+	bubble_health.take_bubble_hit(1)
+	print("Bubbles remaining: ", bubble_health.bubble_amount)
