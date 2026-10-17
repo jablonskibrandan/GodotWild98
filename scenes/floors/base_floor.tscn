@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://co1af6n6xrm5h"]
+
+[ext_resource type="Script" uid="uid://depx2n8wea3mt" path="res://scripts/controllers/floor_controller.gd" id="1_8nu48"]
+[ext_resource type="Script" uid="uid://cnnns32du66xc" path="res://scripts/player/tool_manager.gd" id="3_fbrfn"]
+[ext_resource type="Script" uid="uid://d2eevr6h1pfbo" path="res://scripts/tools/flashlight_tool.gd" id="4_f5uve"]
+[ext_resource type="AudioStream" uid="uid://cgismexgs6pve" path="res://audio/sfx/Sunken Tower Flash Light On.wav" id="5_62pwa"]
+[ext_resource type="AudioStream" uid="uid://bbhokhr8ntf8v" path="res://audio/sfx/Sunken Tower Flashlight Off.wav" id="6_32xvg"]
+[ext_resource type="Script" uid="uid://bui5rstvv5pa1" path="res://scripts/tools/distraction_tool.gd" id="7_4js2j"]
+[ext_resource type="Script" uid="uid://0h04okl3wdaf" path="res://scripts/tools/naval_mine_tool.gd" id="8_odtnr"]
+[ext_resource type="Script" uid="uid://bur0ibmglvosm" path="res://scripts/tools/distraction_manager.gd" id="9_psmdj"]
+[ext_resource type="PackedScene" uid="uid://d1jgjcardmcp1" path="res://scenes/player.tscn" id="10_ka5f4"]
+[ext_resource type="Script" uid="uid://clc1phwuj8tqs" path="res://scripts/player/target_cursor.gd" id="14_mmpba"]
+[ext_resource type="Texture2D" uid="uid://qud7y6guapj7" path="res://visuals/ui/bubble_bar.png" id="15_kpit0"]
+[ext_resource type="PackedScene" path="res://scenes/bubble_bar.tscn" id="16_rxbem"]
+[ext_resource type="Shader" uid="uid://bogy8vvctkjss" path="res://visuals/crt_shader.gdshader" id="17_xtii2"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_fio2n"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tc85r"]
+texture = SubResource("CanvasTexture_fio2n")
+modulate_color = Color(1, 1, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_riqys"]
+shader = ExtResource("17_xtii2")
+
+[sub_resource type="QuadMesh" id="QuadMesh_bhunq"]
+size = Vector2(384, 216)
+center_offset = Vector3(192, 108, 0)
+
+[node name="BaseFloor" type="Node2D" unique_id=1776846106]
+y_sort_enabled = true
+script = ExtResource("1_8nu48")
+
+[node name="ToolManager" type="Node2D" parent="." unique_id=1764216630]
+script = ExtResource("3_fbrfn")
+
+[node name="Flashlight" type="Node2D" parent="ToolManager" unique_id=739247795]
+script = ExtResource("4_f5uve")
+on_sound = ExtResource("5_62pwa")
+off_sound = ExtResource("6_32xvg")
+sound_volume_db = -4.100000000000001
+pitch_variation = 0.12
+display_name = "Flashlight"
+target_color = Color(1, 0.886275, 0.478431, 1)
+
+[node name="Distraction" type="Node2D" parent="ToolManager" unique_id=1344790946]
+script = ExtResource("7_4js2j")
+display_name = "Distraction"
+target_color = Color(0.266667, 0.847059, 0.937255, 1)
+
+[node name="NavalMine" type="Node2D" parent="ToolManager" unique_id=1131885585]
+script = ExtResource("8_odtnr")
+display_name = "Naval Mine"
+target_color = Color(1, 0.07450981, 0, 1)
+
+[node name="DistractionEffects" type="Node2D" parent="." unique_id=1987103813]
+script = ExtResource("9_psmdj")
+
+[node name="Player" parent="." unique_id=2093951058 instance=ExtResource("10_ka5f4")]
+
+[node name="TargetCursor" type="Node2D" parent="." unique_id=1575986569]
+script = ExtResource("14_mmpba")
+circle_radius = 4.0
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1173174004]
+
+[node name="Bubble Box" type="Sprite2D" parent="HUD" unique_id=786385202]
+modulate = Color(0.11207495, 0.5847179, 1, 1)
+texture_filter = 1
+position = Vector2(44, 12)
+texture = ExtResource("15_kpit0")
+
+[node name="Panel" type="PanelContainer" parent="HUD" unique_id=162088003]
+visible = false
+offset_right = 364.0
+offset_bottom = 104.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+
+[node name="VBox" type="VBoxContainer" parent="HUD/Panel" unique_id=1232421606]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="Tool" type="Label" parent="HUD/Panel/VBox" unique_id=1581175472]
+visible = false
+layout_mode = 2
+text = "Selected: Flashlight"
+
+[node name="Light" type="Label" parent="HUD/Panel/VBox" unique_id=1354974325]
+layout_mode = 2
+text = "Flashlight: OFF"
+
+[node name="Target" type="Label" parent="HUD/Panel/VBox" unique_id=1309305219]
+layout_mode = 2
+text = "Target: (0, 0)"
+
+[node name="Help" type="Label" parent="HUD/Panel/VBox" unique_id=1433380757]
+layout_mode = 2
+text = "WASD Move  |  RMB Next  |  LMB Use  |  F Light"
+
+[node name="Panel2" type="PanelContainer" parent="HUD" unique_id=1380320365]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 24.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_tc85r")
+
+[node name="BubbleBar" parent="HUD/Panel2" unique_id=347332869 instance=ExtResource("16_rxbem")]
+layout_mode = 2
+bubble_health_path = NodePath("../../../Player/Bubble_Health")
+pop_duration = 1.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="HUD" unique_id=985874040]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="HUD/CanvasLayer" unique_id=2070907544]
+material = SubResource("ShaderMaterial_riqys")
+mesh = SubResource("QuadMesh_bhunq")
+metadata/_edit_lock_ = true
+
+[node name="NavalMines" type="Node2D" parent="." unique_id=1833654310]

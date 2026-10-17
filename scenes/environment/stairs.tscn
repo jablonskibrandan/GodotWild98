@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://45p1d6iama01"]
+
+[ext_resource type="Texture2D" uid="uid://btjedcl7hqx2f" path="res://visuals/environment/stairs.png" id="1_iw8q3"]
+[ext_resource type="Script" uid="uid://dpn5wiawkp1s8" path="res://scripts/environment/stairs.gd" id="2_h7cp2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxvjs"]
+size = Vector2(16, 16)
+
+[node name="Area2D" type="Area2D" unique_id=15992408]
+collision_layer = 64
+collision_mask = 2
+monitorable = false
+script = ExtResource("2_h7cp2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1883340264]
+texture = ExtResource("1_iw8q3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1863970802]
+shape = SubResource("RectangleShape2D_qxvjs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

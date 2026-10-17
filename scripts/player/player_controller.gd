@@ -37,7 +37,8 @@ func set_shader_value(value: float) -> void:
 	return
 
 
-func configure(bounds: Rect2, cursor: TargetCursor) -> void:
+func configure(starting_position: Vector2, bounds: Rect2, cursor: TargetCursor) -> void:
+	global_position = starting_position
 	_movement_bounds = bounds
 	_cursor = cursor
 

@@ -29,6 +29,7 @@ buses/default_bus_layout="uid://d3wu6h17y5cyl"
 [autoload]
 
 MusicManager="*res://scripts/audio/music_manager.tscn"
+FloorManager="*uid://dgjmu3nu0xh6o"
 
 [display]
 
@@ -87,6 +88,7 @@ tool_use={
 2d_physics/layer_4="enemies"
 2d_physics/layer_5="hidden room door"
 2d_physics/layer_6="seaweed"
+2d_physics/layer_7="stairs"
 
 [rendering]
 

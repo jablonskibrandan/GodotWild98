@@ -1,31 +1,32 @@
 [gd_scene format=4 uid="uid://co1af6n6xrm5h"]
 
-[ext_resource type="Script" uid="uid://depx2n8wea3mt" path="res://scripts/controllers/floor_controller.gd" id="1_floor"]
-[ext_resource type="Script" uid="uid://cnnns32du66xc" path="res://scripts/player/tool_manager.gd" id="2_tool_manager"]
-[ext_resource type="Script" uid="uid://d2eevr6h1pfbo" path="res://scripts/tools/flashlight_tool.gd" id="3_flashlight"]
-[ext_resource type="PackedScene" uid="uid://weoo7vtkfd4t" path="res://scenes/hidden_room_door.tscn" id="4_ap1ie"]
-[ext_resource type="Script" uid="uid://bui5rstvv5pa1" path="res://scripts/tools/distraction_tool.gd" id="4_distraction"]
-[ext_resource type="PackedScene" uid="uid://dpwd50owx3p4e" path="res://scenes/seaweed_patch.tscn" id="5_8uit6"]
-[ext_resource type="Script" uid="uid://bur0ibmglvosm" path="res://scripts/tools/distraction_manager.gd" id="5_xmt1j"]
-[ext_resource type="AudioStream" uid="uid://cgismexgs6pve" path="res://audio/sfx/Sunken Tower Flash Light On.wav" id="6_h4j6i"]
-[ext_resource type="Script" uid="uid://clc1phwuj8tqs" path="res://scripts/player/target_cursor.gd" id="6_target"]
-[ext_resource type="AudioStream" uid="uid://bbhokhr8ntf8v" path="res://audio/sfx/Sunken Tower Flashlight Off.wav" id="7_dptav"]
-[ext_resource type="Texture2D" uid="uid://bw6hly1gbcf34" path="res://visuals/tilesets/wall_tiles.png" id="9_panii"]
-[ext_resource type="Script" uid="uid://dsmqmerm578de" path="res://scripts/monsters/monster_manager.gd" id="10_0sur2"]
-[ext_resource type="Texture2D" uid="uid://dkqv01mpxtc8h" path="res://visuals/tilesets/floor_tiles.png" id="10_gnqv8"]
-[ext_resource type="Script" uid="uid://0h04okl3wdaf" path="res://scripts/tools/naval_mine_tool.gd" id="11_tc85r"]
-[ext_resource type="PackedScene" uid="uid://d1jgjcardmcp1" path="res://scenes/player.tscn" id="12_2q86r"]
-[ext_resource type="PackedScene" path="res://scenes/bubble_bar.tscn" id="12_bubble_bar"]
-[ext_resource type="PackedScene" uid="uid://bwpdxk16drrhm" path="res://scenes/monsters/red_monster.tscn" id="16_bkyrt"]
-[ext_resource type="Shader" uid="uid://bogy8vvctkjss" path="res://visuals/crt_shader.gdshader" id="17_ap1ie"]
-[ext_resource type="PackedScene" uid="uid://dm48ti74qwqcc" path="res://scenes/monsters/base_blue_monster.tscn" id="18_8uit6"]
-[ext_resource type="Texture2D" uid="uid://qud7y6guapj7" path="res://visuals/ui/bubble_bar.png" id="19_tc85r"]
+[ext_resource type="Script" uid="uid://depx2n8wea3mt" path="res://scripts/controllers/floor_controller.gd" id="1_0sfdq"]
+[ext_resource type="Texture2D" uid="uid://bw6hly1gbcf34" path="res://visuals/tilesets/wall_tiles.png" id="2_tvnen"]
+[ext_resource type="Texture2D" uid="uid://dkqv01mpxtc8h" path="res://visuals/tilesets/floor_tiles.png" id="3_ctlo8"]
+[ext_resource type="PackedScene" uid="uid://weoo7vtkfd4t" path="res://scenes/environment/hidden_room_door.tscn" id="4_b5olm"]
+[ext_resource type="PackedScene" uid="uid://dpwd50owx3p4e" path="res://scenes/environment/seaweed_patch.tscn" id="5_d6rjr"]
+[ext_resource type="PackedScene" uid="uid://45p1d6iama01" path="res://scenes/environment/stairs.tscn" id="6_tvnen"]
+[ext_resource type="Script" uid="uid://cnnns32du66xc" path="res://scripts/player/tool_manager.gd" id="6_ucxtw"]
+[ext_resource type="Script" uid="uid://d2eevr6h1pfbo" path="res://scripts/tools/flashlight_tool.gd" id="7_ofe0g"]
+[ext_resource type="AudioStream" uid="uid://cgismexgs6pve" path="res://audio/sfx/Sunken Tower Flash Light On.wav" id="8_otxla"]
+[ext_resource type="AudioStream" uid="uid://bbhokhr8ntf8v" path="res://audio/sfx/Sunken Tower Flashlight Off.wav" id="9_oj8as"]
+[ext_resource type="Script" uid="uid://bui5rstvv5pa1" path="res://scripts/tools/distraction_tool.gd" id="10_1w7sw"]
+[ext_resource type="Script" uid="uid://0h04okl3wdaf" path="res://scripts/tools/naval_mine_tool.gd" id="11_uq15w"]
+[ext_resource type="Script" uid="uid://bur0ibmglvosm" path="res://scripts/tools/distraction_manager.gd" id="12_vk5tq"]
+[ext_resource type="PackedScene" uid="uid://d1jgjcardmcp1" path="res://scenes/player.tscn" id="13_l42wl"]
+[ext_resource type="Script" uid="uid://dsmqmerm578de" path="res://scripts/monsters/monster_manager.gd" id="14_ejok1"]
+[ext_resource type="PackedScene" uid="uid://bwpdxk16drrhm" path="res://scenes/monsters/red_monster.tscn" id="15_ysg1g"]
+[ext_resource type="PackedScene" uid="uid://dm48ti74qwqcc" path="res://scenes/monsters/base_blue_monster.tscn" id="16_6qgcj"]
+[ext_resource type="Script" uid="uid://clc1phwuj8tqs" path="res://scripts/player/target_cursor.gd" id="17_6gtg0"]
+[ext_resource type="Texture2D" uid="uid://qud7y6guapj7" path="res://visuals/ui/bubble_bar.png" id="18_phcbb"]
+[ext_resource type="PackedScene" path="res://scenes/bubble_bar.tscn" id="19_q0yyj"]
+[ext_resource type="Shader" uid="uid://bogy8vvctkjss" path="res://visuals/crt_shader.gdshader" id="20_1pupn"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tc85r"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gnqv8"]
-texture = ExtResource("9_panii")
+texture = ExtResource("2_tvnen")
 0:0/0 = 0
 0:0/0/modulate = Color(0.78533334, 0.77, 1, 1)
 0:0/0/terrain_set = 0
@@ -498,7 +499,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fs03o"]
-texture = ExtResource("10_gnqv8")
+texture = ExtResource("3_ctlo8")
 0:0/0 = 0
 0:0/0/terrain_set = 1
 0:0/0/terrain = 0
@@ -550,7 +551,7 @@ texture = SubResource("CanvasTexture_fio2n")
 modulate_color = Color(1, 1, 1, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_riqys"]
-shader = ExtResource("17_ap1ie")
+shader = ExtResource("20_1pupn")
 
 [sub_resource type="QuadMesh" id="QuadMesh_bhunq"]
 size = Vector2(384, 216)
@@ -558,7 +559,7 @@ center_offset = Vector3(192, 108, 0)
 
 [node name="FloorOne" type="Node2D" unique_id=1776846106]
 y_sort_enabled = true
-script = ExtResource("1_floor")
+script = ExtResource("1_0sfdq")
 
 [node name="Background" type="Node2D" parent="." unique_id=1031679089]
 y_sort_enabled = true
@@ -585,65 +586,68 @@ tile_set = SubResource("TileSet_bhunq")
 collision_enabled = false
 navigation_enabled = false
 
-[node name="HiddenRoomDoor" parent="Background" unique_id=1096912862 instance=ExtResource("4_ap1ie")]
+[node name="HiddenRoomDoor" parent="Background" unique_id=1096912862 instance=ExtResource("4_b5olm")]
 position = Vector2(144, 152)
 scale = Vector2(2, 1)
 
-[node name="SeaweedPatch" parent="Background" unique_id=1327779863 instance=ExtResource("5_8uit6")]
+[node name="SeaweedPatch" parent="Background" unique_id=1327779863 instance=ExtResource("5_d6rjr")]
 position = Vector2(32, 272)
 
-[node name="SeaweedPatch2" parent="Background" unique_id=962194062 instance=ExtResource("5_8uit6")]
+[node name="SeaweedPatch2" parent="Background" unique_id=962194062 instance=ExtResource("5_d6rjr")]
 position = Vector2(163, 81)
 
-[node name="SeaweedPatch3" parent="Background" unique_id=1697066773 instance=ExtResource("5_8uit6")]
+[node name="SeaweedPatch3" parent="Background" unique_id=1697066773 instance=ExtResource("5_d6rjr")]
 position = Vector2(239, 158)
 
-[node name="SeaweedPatch4" parent="Background" unique_id=1093436318 instance=ExtResource("5_8uit6")]
+[node name="SeaweedPatch4" parent="Background" unique_id=1093436318 instance=ExtResource("5_d6rjr")]
 position = Vector2(197, 81)
 
-[node name="SeaweedPatch5" parent="Background" unique_id=1260615049 instance=ExtResource("5_8uit6")]
+[node name="SeaweedPatch5" parent="Background" unique_id=1260615049 instance=ExtResource("5_d6rjr")]
 position = Vector2(129, 81)
 
+[node name="Stairs" parent="Background" unique_id=1883340264 instance=ExtResource("6_tvnen")]
+position = Vector2(264, 200)
+
 [node name="ToolManager" type="Node2D" parent="." unique_id=1764216630]
-script = ExtResource("2_tool_manager")
+script = ExtResource("6_ucxtw")
 
 [node name="Flashlight" type="Node2D" parent="ToolManager" unique_id=739247795]
-script = ExtResource("3_flashlight")
-on_sound = ExtResource("6_h4j6i")
-off_sound = ExtResource("7_dptav")
+script = ExtResource("7_ofe0g")
+on_sound = ExtResource("8_otxla")
+off_sound = ExtResource("9_oj8as")
 sound_volume_db = -4.100000000000001
 pitch_variation = 0.12
 display_name = "Flashlight"
 target_color = Color(1, 0.886275, 0.478431, 1)
 
 [node name="Distraction" type="Node2D" parent="ToolManager" unique_id=1344790946]
-script = ExtResource("4_distraction")
+script = ExtResource("10_1w7sw")
 display_name = "Distraction"
 target_color = Color(0.266667, 0.847059, 0.937255, 1)
 
 [node name="NavalMine" type="Node2D" parent="ToolManager" unique_id=1131885585]
-script = ExtResource("11_tc85r")
+script = ExtResource("11_uq15w")
 display_name = "Naval Mine"
 target_color = Color(1, 0.07450981, 0, 1)
 
 [node name="DistractionEffects" type="Node2D" parent="." unique_id=1987103813]
-script = ExtResource("5_xmt1j")
+script = ExtResource("12_vk5tq")
 
-[node name="Player" parent="." unique_id=2093951058 instance=ExtResource("12_2q86r")]
+[node name="Player" parent="." unique_id=2093951058 instance=ExtResource("13_l42wl")]
 position = Vector2(50, 135)
 
 [node name="MonsterManager" type="Node2D" parent="." unique_id=1820516849]
 y_sort_enabled = true
-script = ExtResource("10_0sur2")
+script = ExtResource("14_ejok1")
 
-[node name="Red_Monster" parent="MonsterManager" unique_id=447894495 instance=ExtResource("16_bkyrt")]
+[node name="Red_Monster" parent="MonsterManager" unique_id=447894495 instance=ExtResource("15_ysg1g")]
 position = Vector2(169, 118)
 
-[node name="Blue_Monster" parent="MonsterManager" unique_id=1644888995 instance=ExtResource("18_8uit6")]
+[node name="Blue_Monster" parent="MonsterManager" unique_id=1644888995 instance=ExtResource("16_6qgcj")]
 position = Vector2(187, 270)
 
 [node name="TargetCursor" type="Node2D" parent="." unique_id=1575986569]
-script = ExtResource("6_target")
+script = ExtResource("17_6gtg0")
 circle_radius = 4.0
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1173174004]
@@ -652,7 +656,7 @@ circle_radius = 4.0
 modulate = Color(0.11207495, 0.5847179, 1, 1)
 texture_filter = 1
 position = Vector2(44, 12)
-texture = ExtResource("19_tc85r")
+texture = ExtResource("18_phcbb")
 
 [node name="Panel" type="PanelContainer" parent="HUD" unique_id=162088003]
 visible = false
@@ -693,7 +697,7 @@ scale = Vector2(0.5, 0.5)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_tc85r")
 
-[node name="BubbleBar" parent="HUD/Panel2" unique_id=347332869 instance=ExtResource("12_bubble_bar")]
+[node name="BubbleBar" parent="HUD/Panel2" unique_id=347332869 instance=ExtResource("19_q0yyj")]
 layout_mode = 2
 bubble_health_path = NodePath("../../../Player/Bubble_Health")
 pop_duration = 1.0

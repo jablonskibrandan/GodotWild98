@@ -6,7 +6,7 @@
 [ext_resource type="Shader" uid="uid://qwihv7hrpld1" path="res://visuals/player_shader.tres" id="3_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://dp4illl5bapcx" path="res://visuals/ui/air_release.png" id="4_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://deo156ulol0mh" path="res://visuals/player/flashlight_small.png" id="5_fjrip"]
-[ext_resource type="Script" uid="uid://cqng1rrye2of0" path="res://scenes/flashlight_sprite.gd" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://cqng1rrye2of0" path="res://scripts/tools/flashlight_sprite.gd" id="6_tuyoq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tuyoq"]
 shader = ExtResource("3_tuyoq")

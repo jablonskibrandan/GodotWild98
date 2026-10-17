@@ -1,7 +1,7 @@
 class_name DistractionTool
 extends BaseTool
 
-const PULSE_SCENE: PackedScene = preload("res://scenes/distraction_pulse.tscn")
+const PULSE_SCENE: PackedScene = preload("res://scenes/tools/distraction_pulse.tscn")
 
 var _valid_area: Rect2
 var _effects_parent: DistractionManager

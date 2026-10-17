@@ -10,7 +10,6 @@ extends Node2D
 @onready var flashlight: FlashlightTool = $ToolManager/Flashlight
 @onready var distraction: DistractionTool = $ToolManager/Distraction
 @onready var effects: DistractionManager = $DistractionEffects
-@onready var monster_manager: MonsterManager = $MonsterManager
 @onready var bubble_health: BubbleHealth = $Player/Bubble_Health
 
 @onready var tool_label: Label = $HUD/Panel/VBox/Tool
@@ -20,8 +19,14 @@ extends Node2D
 @onready var naval_mine: NavalMineTool = $ToolManager/NavalMine
 @onready var naval_mines: Node2D = $NavalMines
 
+#set after floor loads
+var monster_manager: MonsterManager
+var starting_point: Node2D
+
 func _ready() -> void:
-	player.configure(play_area, cursor)
+	add_floor()
+	
+	player.configure(starting_point.global_position, play_area, cursor)
 	flashlight.configure(player, cursor)
 	distraction.configure(play_area, effects, player)
 	monster_manager.configure(player)
@@ -40,10 +45,17 @@ func _ready() -> void:
 	_on_flashlight_state_changed(flashlight.enabled)
 	_on_target_moved(cursor.global_position)
 
+func add_floor():
+	var floor_scene: PackedScene = load(FloorManager.get_next_floor())
+	var floor_instance = floor_scene.instantiate()
+	add_child(floor_instance)
+	move_child(floor_instance, 0)
+	monster_manager = $Floor/MonsterManager
+	starting_point = $Floor/StartingPoint
 
 func _on_out_of_breath():
 	## get_tree().reload_current_scene()
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file.call_deferred("res://scenes/main_menu.tscn")
 	return
 
 func _on_tool_changed(tool: BaseTool) -> void:

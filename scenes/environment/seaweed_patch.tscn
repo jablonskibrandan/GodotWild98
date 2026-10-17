@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dpwd50owx3p4e"]
 
-[ext_resource type="PackedScene" uid="uid://oaikltoogqms" path="res://scenes/seaweed.tscn" id="1_1krh4"]
+[ext_resource type="PackedScene" uid="uid://oaikltoogqms" path="res://scenes/environment/seaweed.tscn" id="1_1krh4"]
 
 [node name="SeaweedPatch" type="Node2D" unique_id=1327779863]
 y_sort_enabled = true
