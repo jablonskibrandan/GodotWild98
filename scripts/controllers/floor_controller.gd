@@ -59,5 +59,5 @@ func _on_sound_made(source: Node2D, volume: float):
 func _on_player_bitten() -> void:
 	print("Player bitten!")
 	bubble_health.take_bubble_hit(1)
+	player.take_hit()
 	print("Bubbles remaining: ", bubble_health.bubble_amount)
-	print("stealth: ", player.stealth)

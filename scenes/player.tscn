@@ -3,8 +3,14 @@
 [ext_resource type="Script" uid="uid://cnjnjyw5bsp31" path="res://scripts/player/player_controller.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://d0jy1aj7v7fn5" path="res://visuals/player/cap_frog.png" id="2_qhqgy"]
 [ext_resource type="Script" uid="uid://dady07nhex7xv" path="res://scripts/player/bubble_health.gd" id="2_qlg0r"]
+[ext_resource type="Shader" uid="uid://qwihv7hrpld1" path="res://visuals/player_shader.tres" id="3_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://dp4illl5bapcx" path="res://visuals/ui/air_release.png" id="4_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://deo156ulol0mh" path="res://visuals/player/flashlight_small.png" id="5_fjrip"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tuyoq"]
+shader = ExtResource("3_tuyoq")
+shader_parameter/shader_color = Color(0.82, 0, 0, 1)
+shader_parameter/progress = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iff7v"]
 atlas = ExtResource("2_qhqgy")
@@ -312,6 +318,7 @@ script = ExtResource("2_qlg0r")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=647576807]
 modulate = Color(0.974014, 0.810853, 1, 1)
 texture_filter = 1
+material = SubResource("ShaderMaterial_tuyoq")
 sprite_frames = SubResource("SpriteFrames_wd5ij")
 animation = &"idle_down"
 metadata/_edit_lock_ = true
