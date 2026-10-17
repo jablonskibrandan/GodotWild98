@@ -67,12 +67,12 @@ func _process(delta: float) -> void:
 func face_left():
 	animated_sprite.flip_h = false
 	target_finder.facing = Vector2.LEFT
-	target_finder.bite_area.position = Vector2(-8, 0)
+	target_finder.bite_area.position = Vector2(-radius*0.8, 0)
 
 func face_right():
 	animated_sprite.flip_h = true
 	target_finder.facing = Vector2.RIGHT
-	target_finder.bite_area.position = Vector2(8, 0)
+	target_finder.bite_area.position = Vector2(radius*0.8, 0)
 
 func on_animation_finished():
 	if animation_locked:

@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://0h04okl3wdaf" path="res://scripts/tools/naval_mine_tool.gd" id="11_tc85r"]
 [ext_resource type="PackedScene" uid="uid://d1jgjcardmcp1" path="res://scenes/player.tscn" id="12_2q86r"]
 [ext_resource type="PackedScene" path="res://scenes/bubble_bar.tscn" id="12_bubble_bar"]
-[ext_resource type="PackedScene" uid="uid://cqjl0cwe3lhux" path="res://scenes/monsters/yellow_monster.tscn" id="16_fio2n"]
+[ext_resource type="PackedScene" uid="uid://bwpdxk16drrhm" path="res://scenes/monsters/red_monster.tscn" id="16_bkyrt"]
 [ext_resource type="Shader" uid="uid://bogy8vvctkjss" path="res://visuals/crt_shader.gdshader" id="17_ap1ie"]
 [ext_resource type="PackedScene" uid="uid://dm48ti74qwqcc" path="res://scenes/monsters/base_blue_monster.tscn" id="18_8uit6"]
 [ext_resource type="Texture2D" uid="uid://qud7y6guapj7" path="res://visuals/ui/bubble_bar.png" id="19_tc85r"]
@@ -636,11 +636,11 @@ position = Vector2(50, 135)
 y_sort_enabled = true
 script = ExtResource("10_0sur2")
 
-[node name="Blue_Monster" parent="MonsterManager" unique_id=447894495 instance=ExtResource("18_8uit6")]
-position = Vector2(182, 269)
+[node name="Red_Monster" parent="MonsterManager" unique_id=447894495 instance=ExtResource("16_bkyrt")]
+position = Vector2(169, 118)
 
-[node name="Yellow_Monster" parent="MonsterManager" unique_id=1600488408 instance=ExtResource("16_fio2n")]
-position = Vector2(80, 288)
+[node name="Blue_Monster" parent="MonsterManager" unique_id=1644888995 instance=ExtResource("18_8uit6")]
+position = Vector2(187, 270)
 
 [node name="TargetCursor" type="Node2D" parent="." unique_id=1575986569]
 script = ExtResource("6_target")

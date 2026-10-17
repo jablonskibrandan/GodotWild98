@@ -68,18 +68,18 @@ func look_around():
 			focus_vision *= (1 + focus)
 			sneaking = false
 		
-		var spotted := see(player.global_position, focus_vision, sneaking)
+		var spotted := see(player, player.global_position, focus_vision, sneaking)
 		if !spotted:
 			for beam_position in flashlight_beam_positions:
-				spotted = see(beam_position, focus_vision, false)
+				spotted = see(player.flashlight_sprite, beam_position, focus_vision, false, 0.1)
 				if spotted:
 					break
 
-func see(target_position: Vector2, effective_vision: float, sneaking: bool) -> bool:
+func see(target_node: Node2D, target_position: Vector2, effective_vision: float, sneaking: bool, priority_mult: float = 1.0) -> bool:
 	var distance := global_position.distance_to(target_position)
 	if distance <= effective_vision && has_line_of_sight(target_position, sneaking):
-		var priority := int((effective_vision-distance))
-		notice(player, priority, target_position)
+		var priority := int((effective_vision-distance) * priority_mult) 
+		notice(target_node, priority, target_position)
 		return true
 	return false
 
