@@ -6,19 +6,15 @@
 chase_speed = 85.0
 wander_speed = 20.0
 
-[node name="TargetFinder" parent="." index="0" unique_id=1955017602]
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=174872278]
+modulate = Color(0.15935335, 0.14924654, 0.14250839, 1)
+
+[node name="TargetFinder" parent="." index="1" unique_id=1955017602]
 vision = 33.0
 field_of_vision = 225.0
 hearing = 100.0
 focus = 0.1
 
-[node name="AnimatedSprite2D" parent="." index="2" unique_id=174872278]
-modulate = Color(0.15935335, 0.14924654, 0.14250839, 1)
-
 [node name="PointLight2D" parent="." index="3" unique_id=2009398952]
-visible = false
-enabled = false
-
-[node name="PointLight2D" parent="PointLight2D" index="0" unique_id=1787844453]
 visible = false
 enabled = false
