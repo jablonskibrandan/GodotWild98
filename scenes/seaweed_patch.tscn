@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dpwd50owx3p4e"]
+
+[ext_resource type="PackedScene" uid="uid://oaikltoogqms" path="res://scenes/seaweed.tscn" id="1_1krh4"]
+
+[node name="SeaweedPatch" type="Node2D" unique_id=1327779863]
+y_sort_enabled = true
+
+[node name="Seaweed" parent="." unique_id=1806494905 instance=ExtResource("1_1krh4")]
+position = Vector2(-6, -6)
+
+[node name="Seaweed2" parent="." unique_id=2117609085 instance=ExtResource("1_1krh4")]
+position = Vector2(6, 6)
+
+[node name="Seaweed3" parent="." unique_id=1010705975 instance=ExtResource("1_1krh4")]
+position = Vector2(6, -6)
+
+[node name="Seaweed4" parent="." unique_id=908080008 instance=ExtResource("1_1krh4")]
+position = Vector2(-6, 6)
