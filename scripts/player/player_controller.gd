@@ -13,6 +13,9 @@ var facing_animation : String = "down"
 @onready var sprite = $AnimatedSprite2D
 @onready var flashlight_sprite : FlashlightSprite = $FlashlightSprite
 
+const DistractionSignalClass = preload("res://scripts/tools/distraction_tool.gd")
+const NavalMineSignalClass = preload("res://scripts/tools/naval_mine_tool.gd")
+
 func _process(_delta: float) -> void:
 	animate()
 
@@ -38,19 +41,21 @@ func configure(bounds: Rect2, cursor: TargetCursor) -> void:
 	_movement_bounds = bounds
 	_cursor = cursor
 
-func toolUsed(tool = BaseTool) -> void:
-	if (tool is DistractionTool):
+func toolUsed(tool: BaseTool) -> void:
+	if (tool is DistractionSignalClass):
 		$Timers/DistractionSignal_Timer.start()
-	if (tool is NavalMineTool):
-		$Timers/DistractionSignal_Timer.start()
+		print("set distraction signal")
+	elif (tool is NavalMineSignalClass):
+		$Timers/MineSignal_Timer.start()
+		print("set naval mine signal")
 	return
 
-func get_time_left(tool = BaseTool) -> float:
+func get_time_left(tool: BaseTool) -> float:
 	var timeLeft
-	if (tool is DistractionTool):
+	if (tool is DistractionSignalClass):
 		timeLeft = $Timers/DistractionSignal_Timer.time_left
-	if (tool is NavalMineTool):
-		timeLeft = $Timers/DistractionSignal_Timer.time_left
+	elif (tool is NavalMineSignalClass):
+		timeLeft = $Timers/MineSignal_Timer.time_left
 	return timeLeft
 
 
