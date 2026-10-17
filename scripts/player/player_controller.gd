@@ -24,7 +24,7 @@ func animate() -> void:
 		sprite.play(facing_animation)
 
 func take_hit() -> void:
-	var hit_tween = get_tree().create_tween()
+	var hit_tween = self.create_tween()
 	hit_tween.tween_method(set_shader_value, 1, 2, .2)
 	hit_tween.tween_method(set_shader_value, 2, 1, .2)
 	return

@@ -2,8 +2,7 @@ class_name MainMenu
 extends Control
 
 
-@export_file("*.tscn")
-var game_scene_path: String
+@export_file("*.tscn") var game_scene_path: String
 
 
 @export_category("Buttons")
