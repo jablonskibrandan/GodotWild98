@@ -17,6 +17,10 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="GodotWild98"
 run/main_scene="uid://ckoynux4h2wsw"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+run/max_fps=60
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
+boot_splash/use_filter=false
 
 [audio]
 
@@ -87,4 +91,5 @@ tool_use={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(3.008172e-08, 0.08146181, 0.13526234, 1)
 2d/snap/snap_2d_transforms_to_pixel=true

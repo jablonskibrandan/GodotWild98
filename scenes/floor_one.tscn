@@ -11,16 +11,17 @@
 [ext_resource type="Script" uid="uid://clc1phwuj8tqs" path="res://scripts/player/target_cursor.gd" id="6_target"]
 [ext_resource type="PackedScene" uid="uid://dm48ti74qwqcc" path="res://scenes/monster.tscn" id="7_6d0m4"]
 [ext_resource type="AudioStream" uid="uid://bbhokhr8ntf8v" path="res://audio/sfx/Sunken Tower Flashlight Off.wav" id="7_dptav"]
-[ext_resource type="Texture2D" uid="uid://bw6hly1gbcf34" path="res://visuals/tilesets/wall_tiles.png" id="9_panii"]
+[ext_resource type="Texture2D" uid="uid://bw6hly1gbcf34" path="res://visuals/environment/tilesets/wall_tiles.png" id="9_panii"]
 [ext_resource type="Texture2D" uid="uid://d0jy1aj7v7fn5" path="res://visuals/player/cap_frog.png" id="9_y0f35"]
 [ext_resource type="Script" uid="uid://dsmqmerm578de" path="res://scripts/monsters/monster_manager.gd" id="10_0sur2"]
-[ext_resource type="Texture2D" uid="uid://dkqv01mpxtc8h" path="res://visuals/tilesets/floor_tiles.png" id="10_gnqv8"]
+[ext_resource type="Texture2D" uid="uid://dkqv01mpxtc8h" path="res://visuals/environment/tilesets/floor_tiles.png" id="10_gnqv8"]
 [ext_resource type="Script" uid="uid://dady07nhex7xv" path="res://scripts/player/bubble_health.gd" id="11_bubble_health"]
 [ext_resource type="PackedScene" path="res://scenes/bubble_bar.tscn" id="12_bubble_bar"]
-[ext_resource type="Texture2D" uid="uid://dp4illl5bapcx" path="res://visuals/ui/air_release.png" id="14_fio2n"]
+[ext_resource type="Texture2D" uid="uid://dp4illl5bapcx" path="res://visuals/player/air_release.png" id="14_fio2n"]
 [ext_resource type="Texture2D" uid="uid://deo156ulol0mh" path="res://visuals/player/flashlight_small.png" id="15_bkyrt"]
 [ext_resource type="Shader" uid="uid://bogy8vvctkjss" path="res://visuals/crt_shader.gdshader" id="17_ap1ie"]
 [ext_resource type="Texture2D" uid="uid://qud7y6guapj7" path="res://visuals/ui/bubble_bar.png" id="19_tc85r"]
+[ext_resource type="Texture2D" uid="uid://btx1tgiipuopv" path="res://visuals/enemies/ui_box.png" id="20_msa8h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gnqv8"]
 texture = ExtResource("9_panii")
@@ -927,7 +928,12 @@ circle_radius = 4.0
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1173174004]
 
-[node name="Sprite2D" type="Sprite2D" parent="HUD" unique_id=786385202]
+[node name="Sprite2D" type="Sprite2D" parent="HUD" unique_id=44044669]
+texture_filter = 1
+position = Vector2(24, 39)
+texture = ExtResource("20_msa8h")
+
+[node name="Bubble Box" type="Sprite2D" parent="HUD" unique_id=786385202]
 modulate = Color(0.11207495, 0.5847179, 1, 1)
 texture_filter = 1
 position = Vector2(44, 12)
