@@ -36,7 +36,6 @@ animations = [{
 size = Vector2(16, 16)
 
 [node name="Seaweed" type="StaticBody2D" unique_id=1806494905]
-y_sort_enabled = true
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("1_wxdpm")

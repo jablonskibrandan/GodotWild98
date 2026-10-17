@@ -862,7 +862,6 @@ target_color = Color(0.266667, 0.847059, 0.937255, 1)
 script = ExtResource("5_xmt1j")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1781135234]
-y_sort_enabled = true
 texture_filter = 1
 position = Vector2(50, 135)
 collision_layer = 4
@@ -936,6 +935,7 @@ y_sort_enabled = true
 script = ExtResource("10_0sur2")
 
 [node name="Monster" parent="MonsterManager" unique_id=1813013398 instance=ExtResource("7_6d0m4")]
+y_sort_enabled = false
 position = Vector2(206, 281)
 
 [node name="TargetCursor" type="Node2D" parent="." unique_id=1575986569]
