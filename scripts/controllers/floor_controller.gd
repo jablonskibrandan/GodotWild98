@@ -32,6 +32,7 @@ func _ready() -> void:
 	cursor.target_moved.connect(_on_target_moved)
 	effects.sound_made.connect(_on_sound_made)
 	monster_manager.player_bitten.connect(_on_player_bitten)
+	bubble_health.time_ran_out.connect(_on_out_of_breath)
 
 	# Signals emitted by child _ready methods occur before the parent's _ready.
 	# Explicitly seed the initial HUD state here.
@@ -39,6 +40,11 @@ func _ready() -> void:
 	_on_flashlight_state_changed(flashlight.enabled)
 	_on_target_moved(cursor.global_position)
 
+
+func _on_out_of_breath():
+	## get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	return
 
 func _on_tool_changed(tool: BaseTool) -> void:
 	if tool == null:
@@ -61,4 +67,5 @@ func _on_sound_made(source: Node2D, volume: float):
 func _on_player_bitten() -> void:
 	print("Player bitten!")
 	bubble_health.take_bubble_hit(1)
+	player.take_hit()
 	print("Bubbles remaining: ", bubble_health.bubble_amount)

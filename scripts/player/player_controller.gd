@@ -1,6 +1,7 @@
 class_name PlayerController
 extends CharacterBody2D
 
+
 @export_range(1.0, 1000.0, 1.0) var move_speed: float = 100.0
 #@export_range(1.0, 100.0, 1.0) var radius: float = 15.0
 
@@ -15,11 +16,23 @@ var facing_animation : String = "down"
 func _process(_delta: float) -> void:
 	animate()
 
-func animate():
+func animate() -> void:
 	if input_direction == Vector2.ZERO:
 		sprite.play("idle_"+facing_animation)
 	else:
 		sprite.play(facing_animation)
+
+func take_hit() -> void:
+	var hit_tween = self.create_tween()
+	hit_tween.tween_method(set_shader_value, 1, 2, .2)
+	hit_tween.tween_method(set_shader_value, 2, 1, .2)
+	return
+	
+
+func set_shader_value(value: float) -> void:
+	$AnimatedSprite2D.material.set_shader_parameter("progress", value)
+	return
+
 
 func configure(bounds: Rect2, cursor: TargetCursor) -> void:
 	_movement_bounds = bounds
