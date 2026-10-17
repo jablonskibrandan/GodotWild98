@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bac8vldusi5uv" path="res://scripts/Menu/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="Texture2D" uid="uid://cssfr01q2i2jq" path="res://visuals/ui/background.png" id="2_8ln24"]
-[ext_resource type="Texture2D" uid="uid://cstm81v5jobnw" path="res://visuals/ui/play_button.png" id="2_bqqt6"]
-[ext_resource type="Texture2D" uid="uid://dp4fhm1c7h350" path="res://visuals/ui/quit_button.png" id="3_wu84c"]
-[ext_resource type="Texture2D" uid="uid://dp4illl5bapcx" path="res://visuals/player/air_release.png" id="4_wu84c"]
+[ext_resource type="Texture2D" uid="uid://d3yg16vwfhppk" path="res://visuals/ui/play_button.png" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://iflica40sxl6" path="res://visuals/ui/quit_button.png" id="3_wu84c"]
+[ext_resource type="Texture2D" uid="uid://dp4illl5bapcx" path="res://visuals/ui/air_release.png" id="4_wu84c"]
 [ext_resource type="Shader" uid="uid://bogy8vvctkjss" path="res://visuals/crt_shader.gdshader" id="6_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://dndcvpwka1f57" path="res://visuals/ui/title.png" id="7_oa1go"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rgto8"]
 
@@ -77,6 +78,7 @@ layout_mode = 2
 theme_override_constants/separation = 18
 
 [node name="StartButton" type="Button" parent="ButtonContainer/VBoxContainer" unique_id=1284817554]
+modulate = Color(0.8748756, 0.87492436, 0.85745615, 1)
 z_index = 10
 texture_filter = 1
 custom_minimum_size = Vector2(160, 32)
@@ -94,6 +96,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="QuitButton" type="Button" parent="ButtonContainer/VBoxContainer" unique_id=64806923]
+modulate = Color(0.8745098, 0.8745098, 0.85882354, 1)
 z_index = 10
 texture_filter = 1
 custom_minimum_size = Vector2(160, 32)
@@ -151,3 +154,9 @@ scale_amount_curve = SubResource("Curve_rtw2f")
 material = SubResource("ShaderMaterial_oa1go")
 mesh = SubResource("QuadMesh_tbmy8")
 metadata/_edit_lock_ = true
+
+[node name="Title" type="Sprite2D" parent="." unique_id=940965483]
+texture_filter = 1
+position = Vector2(-7.999996, 16.000004)
+scale = Vector2(1.5000002, 1.5714285)
+texture = ExtResource("7_oa1go")
