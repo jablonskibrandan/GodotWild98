@@ -59,7 +59,6 @@ func _physics_process(_delta: float) -> void:
 		flashlight_sprite.show_behind_parent = false
 		flashlight_sprite.position.x = 0
 		flashlight_sprite.position.y = 3
-	flashlight_sprite.frame
 	flashlight_sprite.rotation = cursor_direction.angle()
 
 func update_facing(direction: Vector2):

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bwpdxk16drrhm"]
+
+[ext_resource type="PackedScene" uid="uid://dm48ti74qwqcc" path="res://scenes/monsters/base_blue_monster.tscn" id="1_tx0i8"]
+
+[node name="Red_Monster" unique_id=447894495 instance=ExtResource("1_tx0i8")]
+radius = 20.0
+chase_speed = 35.0
+wander_speed = 6.0
+
+[node name="TargetFinder" parent="." index="0" unique_id=1955017602]
+vision = null
+field_of_vision = null
+hearing = null
+memory = null
+focus = null
+chosen_priority = null
+
+[node name="AnimatedSprite2D" parent="." index="2" unique_id=174872278]
+modulate = Color(0.42745098, 0.18431373, 0.1254902, 1)
+scale = Vector2(1.5, 1.5)

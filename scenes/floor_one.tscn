@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://bur0ibmglvosm" path="res://scripts/tools/distraction_manager.gd" id="5_xmt1j"]
 [ext_resource type="AudioStream" uid="uid://cgismexgs6pve" path="res://audio/sfx/Sunken Tower Flash Light On.wav" id="6_h4j6i"]
 [ext_resource type="Script" uid="uid://clc1phwuj8tqs" path="res://scripts/player/target_cursor.gd" id="6_target"]
-[ext_resource type="PackedScene" uid="uid://dm48ti74qwqcc" path="res://scenes/monster.tscn" id="7_6d0m4"]
 [ext_resource type="AudioStream" uid="uid://bbhokhr8ntf8v" path="res://audio/sfx/Sunken Tower Flashlight Off.wav" id="7_dptav"]
 [ext_resource type="Texture2D" uid="uid://bw6hly1gbcf34" path="res://visuals/tilesets/wall_tiles.png" id="9_panii"]
 [ext_resource type="Texture2D" uid="uid://d0jy1aj7v7fn5" path="res://visuals/player/cap_frog.png" id="9_y0f35"]
@@ -21,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dp4illl5bapcx" path="res://visuals/ui/air_release.png" id="14_fio2n"]
 [ext_resource type="Texture2D" uid="uid://deo156ulol0mh" path="res://visuals/player/flashlight_small.png" id="15_bkyrt"]
 [ext_resource type="Shader" uid="uid://bogy8vvctkjss" path="res://visuals/crt_shader.gdshader" id="17_ap1ie"]
+[ext_resource type="PackedScene" uid="uid://dm48ti74qwqcc" path="res://scenes/monsters/base_blue_monster.tscn" id="18_8uit6"]
 [ext_resource type="Texture2D" uid="uid://qud7y6guapj7" path="res://visuals/ui/bubble_bar.png" id="19_tc85r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gnqv8"]
@@ -760,7 +760,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3p8w"]
-size = Vector2(9, 15.999996)
+size = Vector2(12, 18)
 
 [sub_resource type="Gradient" id="Gradient_y0f35"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -782,6 +782,8 @@ region = Rect2(9.351307, 0.0532341, 5.241253, 7.946766)
 [sub_resource type="Curve" id="Curve_fio2n"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.09473693), -0.22365329, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_msa8h"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_fio2n"]
 
@@ -841,6 +843,9 @@ position = Vector2(239, 158)
 [node name="SeaweedPatch4" parent="Background" unique_id=1093436318 instance=ExtResource("5_8uit6")]
 position = Vector2(192, 80)
 
+[node name="SeaweedPatch5" parent="Background" unique_id=1260615049 instance=ExtResource("5_8uit6")]
+position = Vector2(130, 80)
+
 [node name="ToolManager" type="Node2D" parent="." unique_id=1764216630]
 script = ExtResource("2_tool_manager")
 
@@ -864,7 +869,7 @@ script = ExtResource("5_xmt1j")
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1781135234]
 texture_filter = 1
 position = Vector2(50, 135)
-collision_layer = 4
+collision_layer = 2
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("5_player")
@@ -885,8 +890,7 @@ process_callback = 0
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1492954828]
-position = Vector2(0, 11.5)
-rotation = 1.5707964
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_w3p8w")
 metadata/_edit_lock_ = true
 
@@ -930,12 +934,19 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("15_bkyrt")
 hframes = 2
 
+[node name="BitableArea" type="Area2D" parent="Player" unique_id=595591925]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/BitableArea" unique_id=705079163]
+shape = SubResource("CapsuleShape2D_msa8h")
+
 [node name="MonsterManager" type="Node2D" parent="." unique_id=1820516849]
 y_sort_enabled = true
 script = ExtResource("10_0sur2")
 
-[node name="Monster" parent="MonsterManager" unique_id=1813013398 instance=ExtResource("7_6d0m4")]
-position = Vector2(206, 281)
+[node name="Blue_Monster" parent="MonsterManager" unique_id=447894495 instance=ExtResource("18_8uit6")]
+position = Vector2(182, 269)
 
 [node name="TargetCursor" type="Node2D" parent="." unique_id=1575986569]
 script = ExtResource("6_target")
@@ -999,5 +1010,3 @@ pop_duration = 1.0
 material = SubResource("ShaderMaterial_riqys")
 mesh = SubResource("QuadMesh_bhunq")
 metadata/_edit_lock_ = true
-
-[editable path="MonsterManager/Monster"]

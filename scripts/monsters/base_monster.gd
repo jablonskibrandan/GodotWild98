@@ -1,9 +1,16 @@
 class_name BaseMonster
 extends CharacterBody2D
 
+## VARIATIONS
+## blue - default
+## red - larger and slower
+## yellow - a bit faster, high vision, low hearing
+## gray - fast, very low vision, high hearing, low memory + focus
+
+
 signal monster_bit_player()
 
-@export_range(1.0, 100.0, 1.0) var radius: float = 9.0
+@export_range(1.0, 100.0, 1.0) var radius: float = 10.0
 @export_range(1.0, 1000.0, 1.0) var chase_speed: float = 50.0
 @export_range(1.0, 1000.0, 1.0) var wander_speed: float = 10.0
 @export_range(1.0, 100.0, 1.0) var wander_distance: float = 60.0
@@ -60,10 +67,12 @@ func _process(delta: float) -> void:
 func face_left():
 	animated_sprite.flip_h = false
 	target_finder.facing = Vector2.LEFT
+	target_finder.bite_area.position = Vector2(-8, 0)
 
 func face_right():
 	animated_sprite.flip_h = true
 	target_finder.facing = Vector2.RIGHT
+	target_finder.bite_area.position = Vector2(8, 0)
 
 func on_animation_finished():
 	if animation_locked:
@@ -107,9 +116,14 @@ func wander_velocity(target_position: Vector2) -> Vector2:
 	return navigation_direction(wander_position) * wander_speed
 
 func new_wander_position(target_position: Vector2) -> Vector2:
-	var angle = randf_range(0.0, TAU)
-	var distance = randf_range(0.1, 1.0) * wander_distance
-	return target_position + (Vector2.from_angle(angle) * distance)
+	var angle := randf_range(0.0, TAU)
+	var distance := randf_range(0.1, 1.0) * wander_distance
+	var new_position := target_position + (Vector2.from_angle(angle) * distance)
+	navigation_agent.target_position = new_position
+	if navigation_agent.is_target_reachable() && navigation_agent.distance_to_target() <= wander_distance:
+		return new_position
+	else:
+		return target_position
 
 func navigation_direction(target_position: Vector2):
 	navigation_agent.target_position = target_position

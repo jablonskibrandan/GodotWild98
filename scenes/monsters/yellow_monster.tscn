@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cqjl0cwe3lhux"]
+
+[ext_resource type="PackedScene" uid="uid://dm48ti74qwqcc" path="res://scenes/monsters/base_blue_monster.tscn" id="1_pi713"]
+
+[node name="Yellow_Monster" unique_id=447894495 instance=ExtResource("1_pi713")]
+radius = 12.0
+chase_speed = 65.0
+wander_speed = 12.0
+wander_distance = 80.0
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=174872278]
+modulate = Color(0.65076745, 0.6334936, 0.32694778, 1)
+scale = Vector2(1.2, 1)
+
+[node name="TargetFinder" parent="." index="1" unique_id=1955017602]
+vision = 150.0
+field_of_vision = 315.0
+hearing = 40.0
+
+[node name="BiteArea" parent="TargetFinder" index="0" unique_id=1093071369]
+scale = Vector2(1.2, 1.2)
+
+[node name="PointLight2D" parent="." index="3" unique_id=2009398952]
+texture_scale = 1.5
+
+[node name="PointLight2D" parent="PointLight2D" index="0" unique_id=1787844453]
+texture_scale = 0.3

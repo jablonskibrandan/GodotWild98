@@ -100,6 +100,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qxvjs"]
+radius = 6.0
+height = 22.0
+
 [sub_resource type="Gradient" id="Gradient_y0f35"]
 offsets = PackedFloat32Array(0.7, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -116,23 +120,14 @@ fill_to = Vector2(0.2, 0.2)
 metadata/_snap_enabled = true
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wd5ij"]
-radius = 7.0
-height = 19.0
+radius = 4.0
+height = 15.0
 
-[node name="Monster" type="CharacterBody2D" unique_id=447894495]
+[node name="Blue_Monster" type="CharacterBody2D" unique_id=447894495]
 collision_layer = 8
 collision_mask = 9
+motion_mode = 1
 script = ExtResource("1_1cbnp")
-
-[node name="TargetFinder" type="Node2D" parent="." unique_id=1955017602]
-script = ExtResource("2_c47ug")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1754214499]
-path_desired_distance = 5.0
-target_desired_distance = 5.0
-path_postprocessing = 1
-debug_use_custom = true
-debug_path_custom_color = Color(0.59468883, 0.18581569, 0.029100718, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=174872278]
 modulate = Color(0.50878495, 0.490175, 0.47421646, 1)
@@ -142,6 +137,26 @@ animation = &"bite"
 autoplay = "swim"
 frame = 6
 frame_progress = 1.0
+
+[node name="TargetFinder" type="Node2D" parent="." unique_id=1955017602]
+script = ExtResource("2_c47ug")
+
+[node name="BiteArea" type="Area2D" parent="TargetFinder" unique_id=1093071369]
+position = Vector2(-8, 0)
+collision_layer = 8
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetFinder/BiteArea" unique_id=858733797]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_qxvjs")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1754214499]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+path_postprocessing = 1
+debug_use_custom = true
+debug_path_custom_color = Color(0.59468883, 0.18581569, 0.029100718, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=2009398952]
 position = Vector2(-1, 5)

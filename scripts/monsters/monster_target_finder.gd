@@ -26,6 +26,8 @@ var chosen_target: int = 0
 # correlated to distance for vision, and excess volume for hearing
 @export var chosen_priority:int = 0
 
+@onready var bite_area : Area2D = $BiteArea
+
 ########################################################################### 
 # main functions for processing and handling input
 
@@ -54,8 +56,8 @@ func get_face_target_player_direction():
 		return null
 
 func should_bite():
-	return (player != null && player.get_instance_id() == chosen_target
-			&& global_position.distance_to(player.global_position) < radius*2.0)
+	if player != null && player.get_instance_id() == chosen_target && target_infos[chosen_target].last_noticed <= .1:
+		return bite_area.has_overlapping_areas()
 
 func look_around():
 	if player != null:
@@ -77,9 +79,25 @@ func has_line_of_sight(target_node: Node2D, chasing: bool) -> bool:
 	var collision_mask := (1 << (environment_layer-1)) + (1 << (hidden_room_door_layer-1))
 	if !chasing:
 		collision_mask += (1 << (seaweed_layer-1))
-	var query = PhysicsRayQueryParameters2D.create(global_position + (facing * radius), target_node.global_position, collision_mask)
-	var result = space_state.intersect_ray(query)
-	var view_obstructed = result.size() > 0
+	
+	#first ray moved towards eye to get around corners
+	var query_ray = PhysicsRayQueryParameters2D.create(global_position + (facing * radius), target_node.global_position, collision_mask)
+	var result_ray = space_state.intersect_ray(query_ray)
+	var view_obstructed = result_ray.size() > 0
+	
+	if !view_obstructed:
+		#make sure starting point of ray was not in a wall
+		var query_point = PhysicsPointQueryParameters2D.new()
+		query_point.position = query_ray.from
+		query_point.collision_mask = query_ray.collision_mask
+		var result_point = space_state.intersect_point(query_point)
+		view_obstructed = result_point.size() > 0
+
+	if view_obstructed:
+		#second ray towards center to avoid getting stuck on walls
+		var query2 = PhysicsRayQueryParameters2D.create(global_position + (facing * 2), target_node.global_position, collision_mask)
+		var result2 = space_state.intersect_ray(query2)
+		view_obstructed = result2.size() > 0
 	
 	var distance_to_target := global_position.distance_to(target_node.global_position)
 	var direction_to_target := global_position.direction_to(target_node.global_position)

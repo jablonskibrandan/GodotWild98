@@ -12,4 +12,4 @@ func _ready():
 	#offset positions slightly so looks more natural in a patch
 	#keep position offset limited to <= 2 so collision is continuous
 	const max_offset : float = 1.0
-	position += Vector2(randf_range(-max_offset, max_offset), randf_range(max_offset,max_offset))
+	animated_sprite_2d.position += Vector2(randf_range(-max_offset, max_offset), randf_range(-max_offset,max_offset))
