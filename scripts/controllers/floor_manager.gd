@@ -2,7 +2,7 @@ extends Node
 
 var current_floor: int = -1
 var floors: Array[String] = [
-	
+		"res://scenes/floors/floor_zero.tscn",
 		"res://scenes/floors/floor_one.tscn",
 		"res://scenes/floors/floor_two.tscn",
 		"res://scenes/floors/floor_three.tscn",
