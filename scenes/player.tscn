@@ -450,11 +450,11 @@ shape = SubResource("CapsuleShape2D_msa8h")
 [node name="Timers" type="Node" parent="." unique_id=146009398]
 
 [node name="DistractionSignal_Timer" type="Timer" parent="Timers" unique_id=379769053]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 
 [node name="MineSignal_Timer" type="Timer" parent="Timers" unique_id=629823347]
-wait_time = 45.0
+wait_time = 30.0
 one_shot = true
 
 [node name="BubblePopSound" type="AudioStreamPlayer" parent="." unique_id=1873402516]
