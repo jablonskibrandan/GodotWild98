@@ -88,7 +88,8 @@ func has_line_of_sight(target_position: Vector2, sneaking: bool) -> bool:
 	const environment_layer := 1
 	const hidden_room_door_layer := 5
 	const seaweed_layer := 6
-	var collision_mask := (1 << (environment_layer-1)) + (1 << (hidden_room_door_layer-1))
+	const door_layer := 8
+	var collision_mask := (1 << (environment_layer-1)) + (1 << (hidden_room_door_layer-1)) + (1 << (door_layer-1))
 	if sneaking:
 		collision_mask += (1 << (seaweed_layer-1))
 	

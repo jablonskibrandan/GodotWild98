@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://45p1d6iama01" path="res://scenes/environment/stairs.tscn" id="5_jgglp"]
 [ext_resource type="PackedScene" uid="uid://cqjl0cwe3lhux" path="res://scenes/monsters/yellow_monster.tscn" id="7_tbcs5"]
 [ext_resource type="PackedScene" uid="uid://6px8vy48up1p" path="res://scenes/monsters/gray_monster.tscn" id="8_61te0"]
+[ext_resource type="PackedScene" uid="uid://be76k6irjrbbd" path="res://scenes/environment/double_door.tscn" id="9_61te0"]
 [ext_resource type="Script" uid="uid://dsmqmerm578de" path="res://scripts/monsters/monster_manager.gd" id="15_acut0"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tc85r"]
@@ -583,3 +584,6 @@ position = Vector2(236, 304)
 
 [node name="Gray_Monster" parent="MonsterManager" unique_id=2082595206 instance=ExtResource("8_61te0")]
 position = Vector2(182, 101)
+
+[node name="Door" parent="MonsterManager" unique_id=2059325993 instance=ExtResource("9_61te0")]
+position = Vector2(33, 139)

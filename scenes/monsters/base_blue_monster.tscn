@@ -125,7 +125,7 @@ height = 15.0
 
 [node name="Blue_Monster" type="CharacterBody2D" unique_id=447894495]
 collision_layer = 8
-collision_mask = 9
+collision_mask = 137
 motion_mode = 1
 script = ExtResource("1_1cbnp")
 

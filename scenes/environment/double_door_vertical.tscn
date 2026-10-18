@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dklvm2kf2puv4"]
+
+[ext_resource type="Script" uid="uid://cnte4dhigh104" path="res://scripts/environment/door.gd" id="1_bnrjc"]
+[ext_resource type="Texture2D" uid="uid://dcpf5p4e3dma3" path="res://visuals/environment/locked_doors.png" id="2_26d5o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wd5ij"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxvjs"]
+size = Vector2(32, 8)
+
+[node name="Door" type="Area2D" unique_id=15992408]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("1_bnrjc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=435248991]
+collision_layer = 128
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=60672163]
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_wd5ij")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1883340264]
+texture = ExtResource("2_26d5o")
+hframes = 4
+frame = 1
+
+[node name="Unlock_Area" type="CollisionShape2D" parent="." unique_id=1863970802]
+position = Vector2(-12, 0)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_qxvjs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
