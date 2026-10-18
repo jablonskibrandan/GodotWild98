@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://cqng1rrye2of0" path="res://scripts/tools/flashlight_sprite.gd" id="6_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://dqei1wk0cwrvs" path="res://audio/sfx/bubble_pop.tres" id="7_bubpop"]
 [ext_resource type="Script" uid="uid://bx703t4x5j0k7" path="res://scripts/audio/bubble_pop_sound.gd" id="8_bubpop"]
-[ext_resource type="PackedScene" path="res://scenes/player_bubble_timer.tscn" id="9_bubble_timer"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tuyoq"]
 shader = ExtResource("3_tuyoq")
@@ -333,8 +332,6 @@ script = ExtResource("1_g2els")
 [node name="Bubble_Health" type="Node" parent="." unique_id=1456588604]
 script = ExtResource("2_qlg0r")
 
-[node name="PlayerBubbleTimer" parent="." unique_id=511762898 instance=ExtResource("9_bubble_timer")]
-
 [node name="Keys" type="Node" parent="." unique_id=1809212861]
 script = ExtResource("3_smehm")
 
@@ -453,11 +450,11 @@ shape = SubResource("CapsuleShape2D_msa8h")
 [node name="Timers" type="Node" parent="." unique_id=146009398]
 
 [node name="DistractionSignal_Timer" type="Timer" parent="Timers" unique_id=379769053]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 
 [node name="MineSignal_Timer" type="Timer" parent="Timers" unique_id=629823347]
-wait_time = 45.0
+wait_time = 30.0
 one_shot = true
 
 [node name="BubblePopSound" type="AudioStreamPlayer" parent="." unique_id=1873402516]

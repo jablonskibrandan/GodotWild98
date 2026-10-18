@@ -91,7 +91,8 @@ func start_biting() -> void:
 	print("Monster bite signal emitted!")
 
 func hear_sound_made(source: Node2D, volume: float):
-	target_finder.hear(source, volume)
+	if global_position.distance_to(source.global_position) < 500.0:
+		target_finder.hear(source, volume)
 
 func velocity_to_target() -> Vector2:
 	var target_position = target_finder.get_chosen_target_position()
