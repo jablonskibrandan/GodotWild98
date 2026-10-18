@@ -167,7 +167,6 @@ offset_bottom = 100.0
 
 [node name="KeyCount" type="TextureRect" parent="HUD/HBoxContainer" unique_id=870965647]
 texture_filter = 1
-material = SubResource("ShaderMaterial_mine_cd")
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("20_f5uve")
