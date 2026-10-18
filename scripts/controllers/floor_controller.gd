@@ -55,7 +55,7 @@ func add_floor():
 
 func _on_out_of_breath():
 	## get_tree().reload_current_scene()
-	get_tree().change_scene_to_file.call_deferred("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file.call_deferred("res://scenes/death_screen.tscn")
 	return
 
 func _on_tool_changed(tool: BaseTool) -> void:
