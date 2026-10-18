@@ -6,6 +6,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxvjs"]
 size = Vector2(16, 16)
 
+[sub_resource type="Gradient" id="Gradient_y0f35"]
+offsets = PackedFloat32Array(0, 0.94)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 100
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h7cp2"]
+gradient = SubResource("Gradient_y0f35")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.4, 0.5)
+metadata/_snap_enabled = true
+
 [node name="Stairs" type="Area2D" unique_id=15992408]
 collision_layer = 64
 collision_mask = 2
@@ -17,5 +32,9 @@ texture = ExtResource("1_iw8q3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1863970802]
 shape = SubResource("RectangleShape2D_qxvjs")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=939212777]
+energy = 2.0
+texture = SubResource("GradientTexture2D_h7cp2")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
