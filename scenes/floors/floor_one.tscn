@@ -609,4 +609,4 @@ position = Vector2(169, 118)
 position = Vector2(187, 270)
 
 [node name="AirBubbles" parent="." unique_id=650470531 instance=ExtResource("9_l4cqm")]
-position = Vector2(35, 94)
+position = Vector2(196, 192)

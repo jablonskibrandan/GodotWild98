@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ctxoghdxeorky"]
 
-[ext_resource type="Script" uid="uid://ip6ofr81g4n6" path="res://scenes/environment/air_bubbles.gd" id="1_d46ch"]
+[ext_resource type="Script" uid="uid://ip6ofr81g4n6" path="res://scripts/environment/air_bubbles.gd" id="1_d46ch"]
 [ext_resource type="Texture2D" uid="uid://blpsq5kbbiwrs" path="res://visuals/ui/bubble.png" id="2_g67wv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hbs1o"]
