@@ -1,10 +1,6 @@
 extends AudioStreamPlayer
 ## Plays a bubble pop every time the player loses a bubble (oxygen running
-## down, a monster bite or a mine hit). Put this node under the Player, next to
-## Bubble_Health.
-##
-## The Stream is audio/sfx/bubble_pop.tres, an AudioStreamRandomizer holding
-## the bubble takes. Open it to add/remove takes or change the pitch range.
+## down, a monster bite or a mine hit). 
 
 @export var bubble_health_path: NodePath = ^"../Bubble_Health"
 ## When several bubbles pop at once (e.g. a mine hit), seconds between pops.

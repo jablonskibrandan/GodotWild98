@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dt3rhj7xyeknx"]
+
+[ext_resource type="Script" uid="uid://bf5rf2io0fsgu" path="res://scripts/ui/player_bubble_timer.gd" id="1_timer"]
+[ext_resource type="Texture2D" uid="uid://blpsq5kbbiwrs" path="res://visuals/ui/bubble.png" id="2_bubbles"]
+[ext_resource type="Shader" uid="uid://d066a7seuo605" path="res://visuals/ui/bubble_countdown.gdshader" id="3_shader"]
+[ext_resource type="FontFile" uid="uid://c2qpowkihwacx" path="res://visuals/ui/Minecraft.ttf" id="4_font"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oxygen"]
+shader = ExtResource("3_shader")
+shader_parameter/oxygen_remaining = 1.0
+shader_parameter/depleted_tint = Color(0.06, 0.16, 0.23, 0.88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_full_bubble"]
+atlas = ExtResource("2_bubbles")
+region = Rect2(208, 0, 16, 16)
+
+[node name="PlayerBubbleTimer" type="Node2D" unique_id=15284236]
+z_index = 10
+texture_filter = 1
+position = Vector2(0, -27)
+script = ExtResource("1_timer")
+
+[node name="BubbleSprite" type="Sprite2D" parent="." unique_id=393000533]
+material = SubResource("ShaderMaterial_oxygen")
+texture = SubResource("AtlasTexture_full_bubble")
+
+[node name="SecondsLabel" type="Label" parent="." unique_id=1183968120]
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 9.0
+offset_bottom = 9.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.02, 0.05, 0.09, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1

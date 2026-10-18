@@ -12,12 +12,22 @@ var facing_animation : String = "down"
 @onready var sprite = $AnimatedSprite2D
 @onready var flashlight_sprite : FlashlightSprite = $FlashlightSprite
 @onready var particles : CPUParticles2D = $DamageParticles
+@onready var oxygen_loss_particles: CPUParticles2D = $OxygenLossParticles
 var _effects_parent: DistractionManager
 # volume is backwards and 100 is very quiet, 5 is super loud
 const flashlight_volume: float = 120.0
 
 const DistractionSignalClass = preload("res://scripts/tools/distraction_tool.gd")
 const NavalMineSignalClass = preload("res://scripts/tools/naval_mine_tool.gd")
+
+func _ready() -> void:
+	$Bubble_Health.bubble_lost_naturally.connect(_on_bubble_lost_naturally)
+
+
+func _on_bubble_lost_naturally(_count: int) -> void:
+	oxygen_loss_particles.restart()
+	oxygen_loss_particles.emitting = true
+
 
 func _process(_delta: float) -> void:
 	animate()
