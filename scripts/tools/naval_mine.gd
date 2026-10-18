@@ -71,7 +71,7 @@ func _on_area_entered(area: Area2D) -> void:
 		return
 
 	# Other trigger areas can detonate the mine if desired.
-	explode(area)
+	#explode(area)
 
 
 func explode(target: Node2D) -> void:
