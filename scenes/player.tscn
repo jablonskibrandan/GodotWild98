@@ -307,6 +307,17 @@ point_count = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_msa8h"]
 
+[sub_resource type="Gradient" id="Gradient_smehm"]
+offsets = PackedFloat32Array(0, 0.970339, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.15254235, 0.15254235, 0.15254235, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_smehm"]
+gradient = SubResource("Gradient_smehm")
+width = 100
+height = 100
+fill = 1
+fill_to = Vector2(0.55, 0.55)
+
 [node name="Player" type="CharacterBody2D" unique_id=2093951058]
 texture_filter = 1
 collision_layer = 2
@@ -344,16 +355,6 @@ shadow_color = Color(0, 0, 0, 1)
 texture = SubResource("GradientTexture2D_qr0ht")
 metadata/_edit_lock_ = true
 
-[node name="PointLight2D" type="PointLight2D" parent="PointLight2D" unique_id=1219069933]
-position = Vector2(-1, 5)
-energy = 0.5
-range_item_cull_mask = 2
-shadow_color = Color(0, 0, 0, 1)
-texture = SubResource("GradientTexture2D_qr0ht")
-offset = Vector2(0, -6)
-texture_scale = 0.2
-metadata/_edit_lock_ = true
-
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1705809615]
 modulate = Color(1, 1, 1, 0.37300003)
 position = Vector2(0, -8)
@@ -376,6 +377,7 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("5_fjrip")
 hframes = 2
 script = ExtResource("6_tuyoq")
+half_angle_degrees = 45.0
 
 [node name="Flashlight_Point_Left" type="Node2D" parent="FlashlightSprite" unique_id=1116433502]
 position = Vector2(80, 20)
@@ -399,3 +401,7 @@ one_shot = true
 [node name="MineSignal_Timer" type="Timer" parent="Timers" unique_id=629823347]
 wait_time = 45.0
 one_shot = true
+
+[node name="FlashlightLight" type="PointLight2D" parent="." unique_id=418308655]
+texture = SubResource("GradientTexture2D_smehm")
+offset = Vector2(50, 50)

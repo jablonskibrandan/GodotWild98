@@ -9,6 +9,9 @@ size = Vector2(32, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxvjs"]
 size = Vector2(32, 8)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bnrjc"]
+polygon = PackedVector2Array(8, -16, -8, -16, -8, 16, 8, 16)
+
 [node name="Door" type="Area2D" unique_id=15992408]
 collision_layer = 128
 collision_mask = 2
@@ -31,5 +34,8 @@ frame = 1
 position = Vector2(-12, 0)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_qxvjs")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1297359084]
+occluder = SubResource("OccluderPolygon2D_bnrjc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
