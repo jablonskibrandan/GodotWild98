@@ -11,7 +11,7 @@ var facing_animation : String = "down"
 
 @onready var sprite = $AnimatedSprite2D
 @onready var flashlight_sprite : FlashlightSprite = $FlashlightSprite
-
+@onready var particles : CPUParticles2D = $DamageParticles
 var _effects_parent: DistractionManager
 # volume is backwards and 100 is very quiet, 5 is super loud
 const flashlight_volume: float = 120.0
@@ -30,8 +30,10 @@ func animate() -> void:
 
 func take_hit() -> void:
 	var hit_tween = self.create_tween()
-	hit_tween.tween_method(set_shader_value, 1, 2, .2)
-	hit_tween.tween_method(set_shader_value, 2, 1, .2)
+	hit_tween.tween_method(set_shader_value, 6, 3, .1)
+	hit_tween.tween_method(set_shader_value, 10, 1, .2) 
+	
+	particles.emitting = true
 	return
 
 func set_shader_value(value: float) -> void:

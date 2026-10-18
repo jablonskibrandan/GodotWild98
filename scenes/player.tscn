@@ -304,8 +304,8 @@ atlas = ExtResource("4_tuyoq")
 region = Rect2(9.351307, 0.0532341, 5.241253, 7.946766)
 
 [sub_resource type="Curve" id="Curve_fio2n"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.09473693), -0.22365329, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.84108526, 0.7789475), -0.32918704, -0.32918704, 0, 0, Vector2(1, 0.09473693), -0.22365329, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_smehm"]
 offsets = PackedFloat32Array(0.85714287, 0.9714286, 1)
@@ -379,6 +379,24 @@ direction = Vector2(0, -1)
 gravity = Vector2(0, 0)
 initial_velocity_min = 2.0
 initial_velocity_max = 8.0
+scale_amount_curve = SubResource("Curve_fio2n")
+
+[node name="DamageParticles" type="CPUParticles2D" parent="." unique_id=1776098445]
+modulate = Color(1, 1, 1, 0.37300003)
+position = Vector2(0, -8)
+emitting = false
+amount = 50
+texture = SubResource("AtlasTexture_bhunq")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, -10)
+initial_velocity_min = 16.0
+initial_velocity_max = 64.0
 scale_amount_curve = SubResource("Curve_fio2n")
 
 [node name="FlashlightSprite" type="Sprite2D" parent="." unique_id=1501385833]

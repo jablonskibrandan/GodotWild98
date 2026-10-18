@@ -3,12 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://cssfr01q2i2jq" path="res://visuals/ui/background.png" id="1_if853"]
 [ext_resource type="Script" uid="uid://bac8vldusi5uv" path="res://scripts/Menu/main_menu.gd" id="1_s44ck"]
 [ext_resource type="Texture2D" uid="uid://dp4illl5bapcx" path="res://visuals/ui/air_release.png" id="2_ex68u"]
-[ext_resource type="Texture2D" uid="uid://dg5yuq5mndq30" path="res://visuals/ui/retry_button.png" id="3_s44ck"]
+[ext_resource type="Texture2D" uid="uid://bnf6r268ckd45" path="res://visuals/ui/retry_button.png" id="3_s44ck"]
 [ext_resource type="Texture2D" uid="uid://iflica40sxl6" path="res://visuals/ui/quit_button.png" id="4_b1ui3"]
 [ext_resource type="Shader" uid="uid://bogy8vvctkjss" path="res://visuals/crt_shader.gdshader" id="6_7ahhq"]
-[ext_resource type="Texture2D" uid="uid://gbndkmn12y3a" path="res://visuals/ui/game_over.png" id="7_s44ck"]
+[ext_resource type="Texture2D" uid="uid://daec5nakhjqwn" path="res://scenes/you_croaked.png" id="7_vyrcq"]
 [ext_resource type="AudioStream" uid="uid://bwbwc2wa5xmah" path="res://audio/sfx/Play Button.wav" id="9_playbtn"]
-[ext_resource type="Script" path="res://scripts/audio/button_sound.gd" id="9_playbtnsnd"]
+[ext_resource type="Script" uid="uid://b0543d56khaqw" path="res://scripts/audio/button_sound.gd" id="9_playbtnsnd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rgto8"]
 
@@ -35,47 +35,61 @@ shader = ExtResource("6_7ahhq")
 size = Vector2(384, 216)
 center_offset = Vector3(192, 108, 0)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nus4h"]
-atlas = ExtResource("7_s44ck")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcvlw"]
+atlas = ExtResource("7_vyrcq")
 region = Rect2(0, 0, 288, 112)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b1ui3"]
-atlas = ExtResource("7_s44ck")
-region = Rect2(0, 112, 288, 112)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqceo"]
+atlas = ExtResource("7_vyrcq")
+region = Rect2(288, 0, 288, 112)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ahhq"]
-atlas = ExtResource("7_s44ck")
-region = Rect2(0, 224, 288, 112)
+[sub_resource type="AtlasTexture" id="AtlasTexture_enw0n"]
+atlas = ExtResource("7_vyrcq")
+region = Rect2(576, 0, 288, 112)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u708n"]
-atlas = ExtResource("7_s44ck")
-region = Rect2(0, 336, 288, 112)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6koal"]
+atlas = ExtResource("7_vyrcq")
+region = Rect2(864, 0, 288, 112)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iigho"]
-atlas = ExtResource("7_s44ck")
-region = Rect2(0, 448, 288, 112)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lomy"]
+atlas = ExtResource("7_vyrcq")
+region = Rect2(1152, 0, 288, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogo5k"]
+atlas = ExtResource("7_vyrcq")
+region = Rect2(1440, 0, 288, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn5uh"]
+atlas = ExtResource("7_vyrcq")
+region = Rect2(1728, 0, 288, 112)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bhunq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nus4h")
-}, {
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_b1ui3")
+"texture": SubResource("AtlasTexture_vcvlw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7ahhq")
-}, {
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_u708n")
+"texture": SubResource("AtlasTexture_hqceo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iigho")
+"texture": SubResource("AtlasTexture_enw0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6koal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lomy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogo5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn5uh")
 }],
 "loop": 0,
 "name": &"default",
-"speed": 1.0
+"speed": 5.0
 }]
 
 [node name="MainMenu" type="Control" unique_id=1007356474 node_paths=PackedStringArray("start_button", "quit_button")]
@@ -204,7 +218,7 @@ metadata/_edit_lock_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1858102199]
 sprite_frames = SubResource("SpriteFrames_bhunq")
 autoplay = "default"
-frame = 4
+frame = 6
 frame_progress = 1.0
 
 [node name="PlayButtonSound" type="AudioStreamPlayer" parent="." unique_id=1093857462]
