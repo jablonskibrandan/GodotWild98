@@ -27,6 +27,7 @@ var chosen_target: int = 0
 @export var chosen_priority:int = 0
 
 @onready var bite_area : Area2D = $BiteArea
+@onready var alert : Sprite2D = $Alert
 
 ########################################################################### 
 # main functions for processing and handling input
@@ -42,9 +43,15 @@ func configure(_player: Node2D, _radius: float, _facing: Vector2):
 
 func get_chosen_target_position(): # -> Vector 2 or null
 	if chosen_target != 0 && target_infos.has(chosen_target):
+		
+		alert.visible = true
+		alert.modulate.a = 1 - (target_infos[chosen_target].last_noticed / memory)
+		
 		return target_infos[chosen_target].position
 	else:
+		alert.visible = false
 		return null
+
 
 func get_face_target_player_direction(): 
 	#if has seen player in the last second, face towards player
