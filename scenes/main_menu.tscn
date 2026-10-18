@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dp4illl5bapcx" path="res://visuals/ui/air_release.png" id="4_wu84c"]
 [ext_resource type="Shader" uid="uid://bogy8vvctkjss" path="res://visuals/crt_shader.gdshader" id="6_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://dndcvpwka1f57" path="res://visuals/ui/title.png" id="7_oa1go"]
+[ext_resource type="AudioStream" uid="uid://bwbwc2wa5xmah" path="res://audio/sfx/Play Button.wav" id="9_playbtn"]
+[ext_resource type="Script" path="res://scripts/audio/button_sound.gd" id="9_playbtnsnd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rgto8"]
 
@@ -160,3 +162,9 @@ texture_filter = 1
 position = Vector2(-7.999996, 16.000004)
 scale = Vector2(1.5000002, 1.5714285)
 texture = ExtResource("7_oa1go")
+
+[node name="PlayButtonSound" type="AudioStreamPlayer" parent="." unique_id=1093857462]
+stream = ExtResource("9_playbtn")
+bus = &"UI"
+script = ExtResource("9_playbtnsnd")
+button_path = NodePath("../ButtonContainer/VBoxContainer/StartButton")
