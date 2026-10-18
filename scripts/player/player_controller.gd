@@ -5,7 +5,6 @@ extends CharacterBody2D
 @export_range(1.0, 1000.0, 1.0) var move_speed: float = 100.0
 #@export_range(1.0, 100.0, 1.0) var radius: float = 15.0
 
-var _movement_bounds: Rect2
 var _cursor: TargetCursor
 var input_direction : Vector2 = Vector2.ZERO
 var facing_animation : String = "down"
@@ -36,9 +35,8 @@ func set_shader_value(value: float) -> void:
 	return
 
 
-func configure(starting_position: Vector2, bounds: Rect2, cursor: TargetCursor) -> void:
+func configure(starting_position: Vector2, cursor: TargetCursor) -> void:
 	global_position = starting_position
-	_movement_bounds = bounds
 	_cursor = cursor
 
 func toolUsed(tool: BaseTool) -> void:

@@ -1,8 +1,6 @@
 extends Node2D
 
 # Floor-specific wiring and level visuals.
-@export var play_area: Rect2 = Rect2(48.0, 80.0, 864.0, 472.0)
-@export_range(8, 128, 8) var grid_size: int = 48
 
 @onready var player: PlayerController = $Player
 @onready var cursor: TargetCursor = $TargetCursor
@@ -32,11 +30,11 @@ var starting_point: Node2D
 func _ready() -> void:
 	add_floor()
 	
-	player.configure(starting_point.global_position, play_area, cursor)
+	player.configure(starting_point.global_position, cursor)
 	flashlight.configure(player, cursor)
-	distraction.configure(play_area, effects, player)
+	distraction.configure(effects, player)
 	monster_manager.configure(player)
-	naval_mine.configure(play_area, naval_mines, player)
+	naval_mine.configure(naval_mines, player)
 	player_keys.key_count_changed.connect(update_key_count)
 	update_key_count(player_keys.key_count)
 	

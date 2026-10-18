@@ -127,8 +127,11 @@ func new_wander_position(target_position: Vector2) -> Vector2:
 
 func navigation_direction(target_position: Vector2):
 	navigation_agent.target_position = target_position
-	var path_position := navigation_agent.get_next_path_position()
-	return global_position.direction_to(path_position)
+	if navigation_agent.is_target_reachable():
+		var path_position := navigation_agent.get_next_path_position()
+		return global_position.direction_to(path_position)
+	else:
+		return Vector2.ZERO
 
 func _draw() -> void:
 	pass

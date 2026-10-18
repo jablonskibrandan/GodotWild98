@@ -8,23 +8,17 @@ const MINE_SCENE: PackedScene = preload(
 
 @export var placement_radius: float = 12.0
 
-var _valid_area: Rect2
 var _mines_parent: Node2D
 var _player: PlayerController
 
 
-func configure(valid_area: Rect2, mines_parent: Node2D, player: PlayerController) -> void:
-	_valid_area = valid_area
+func configure(mines_parent: Node2D, player: PlayerController) -> void:
 	_mines_parent = mines_parent
 	_player = player
 
 func activate(target: Vector2) -> void:
 	if (_player.get_time_left(self) == 0):
 		if _mines_parent == null:
-			return
-		# Must be within the playable area.
-		var allowed_area := _valid_area.grow(-placement_radius)
-		if not allowed_area.has_point(target):
 			return
 		# Reject placement on walls, players or monsters.
 		var circle := CircleShape2D.new()

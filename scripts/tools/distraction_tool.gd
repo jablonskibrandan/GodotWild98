@@ -3,22 +3,32 @@ extends BaseTool
 
 const PULSE_SCENE: PackedScene = preload("res://scenes/tools/distraction_pulse.tscn")
 
-var _valid_area: Rect2
 var _effects_parent: DistractionManager
 
 var _player: PlayerController
 
 
-func configure(valid_area: Rect2, effects_parent: DistractionManager, player: PlayerController) -> void:
-	_valid_area = valid_area
+func configure(effects_parent: DistractionManager, player: PlayerController) -> void:
 	_effects_parent = effects_parent
 	_player = player
 
 
 func activate(target: Vector2) -> void:
-	#if not _valid_area.has_point(target) or _effects_parent == null:
-	#	return
+	if _effects_parent == null:
+		return
 	if (_player.get_time_left(self) == 0):
+		var circle := CircleShape2D.new()
+		circle.radius = 5.0
+		var query := PhysicsShapeQueryParameters2D.new()
+		query.shape = circle
+		query.transform = Transform2D(0.0, target)
+		# Layer 1 = walls, 2 = player, 4 = monsters.
+		query.collision_mask = 11
+		query.collide_with_bodies = true
+		query.collide_with_areas = false
+		var space := get_world_2d().direct_space_state
+		if not space.intersect_shape(query, 1).is_empty():
+			return
 		var pulse: DistractionPulse = PULSE_SCENE.instantiate() as DistractionPulse
 		_effects_parent.add_child(pulse)
 		pulse.global_position = target

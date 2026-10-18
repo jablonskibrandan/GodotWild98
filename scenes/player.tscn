@@ -419,10 +419,6 @@ one_shot = true
 wait_time = 45.0
 one_shot = true
 
-[node name="FlashlightLight" type="PointLight2D" parent="." unique_id=1820859063]
-texture = SubResource("GradientTexture2D_smehm")
-offset = Vector2(50, 50)
-
 [node name="BubblePopSound" type="AudioStreamPlayer" parent="." unique_id=1873402516]
 stream = ExtResource("7_bubpop")
 volume_db = -4.019
