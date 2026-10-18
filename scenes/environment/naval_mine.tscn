@@ -95,8 +95,8 @@ script = ExtResource("4_beep")
 
 [node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=1302958467]
 stream = ExtResource("5_boom")
-volume_db = 24.0
+volume_db = 8.4
 max_distance = 2500.0
-bus = &"SFX"
+bus = &"Impacts"
 script = ExtResource("6_boom")
 play_on_player_hit = true
