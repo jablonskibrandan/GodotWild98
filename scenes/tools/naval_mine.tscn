@@ -2,6 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://brv0weju3yugd" path="res://visuals/environment/mine.png" id="1_ktgtt"]
 [ext_resource type="Script" uid="uid://cdv3udqskucdg" path="res://scripts/tools/naval_mine.gd" id="1_y6weo"]
+[ext_resource type="AudioStream" uid="uid://b8un1dgne3skm" path="res://audio/sfx/Mine Place.wav" id="2_place"]
+[ext_resource type="AudioStream" uid="uid://2538fcx3msbw" path="res://audio/sfx/Mine Beep.wav" id="3_beep"]
+[ext_resource type="Script" path="res://scripts/audio/mine_beep_sound.gd" id="4_beep"]
+[ext_resource type="AudioStream" uid="uid://cycpmlk157iqr" path="res://audio/sfx/Mine Explosion.wav" id="5_boom"]
+[ext_resource type="Script" path="res://scripts/audio/mine_explosion_sound.gd" id="6_boom"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y6weo"]
 atlas = ExtResource("1_ktgtt")
@@ -73,3 +78,24 @@ shape = SubResource("CircleShape2D_dmehe")
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=978858569]
 energy = 2.0
 texture = SubResource("GradientTexture2D_y6weo")
+
+[node name="PlaceSound" type="AudioStreamPlayer2D" parent="." unique_id=1428516093]
+stream = ExtResource("2_place")
+autoplay = true
+max_distance = 2500.0
+bus = &"SFX"
+
+[node name="BeepSound" type="AudioStreamPlayer2D" parent="." unique_id=1759302841]
+stream = ExtResource("3_beep")
+volume_db = 24.0
+max_distance = 2500.0
+bus = &"SFX"
+script = ExtResource("4_beep")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=1302958467]
+stream = ExtResource("5_boom")
+volume_db = 8.0
+max_distance = 2500.0
+bus = &"SFX"
+script = ExtResource("6_boom")
+play_on_player_hit = true

@@ -76,6 +76,17 @@ const RESYNC_THRESHOLD := 0.05  # seconds of drift before a layer is re-aligned
 ## Seconds for the filter to move to a new setting.
 @export_range(0.0, 2.0, 0.01, "suffix:s") var filter_smoothing: float = 0.3
 
+@export_group("Game Over")
+## While this scene is showing, the base loop fades out and only the tension
+## layer plays. Leaving it (e.g. Retry) fades the base loop back in.
+@export_file("*.tscn") var game_over_scene: String = "res://scenes/death_screen.tscn"
+## Tension level on the game over screen (0..1, before Max dB and trims).
+@export_range(0.0, 1.0, 0.01) var game_over_tension_level: float = 1.0
+## Seconds for the base loop to fade out (and tension to swell) at game over.
+@export_range(0.0, 10.0, 0.05, "suffix:s") var game_over_fade: float = 1.5
+## Seconds for the base loop to fade back in after Retry.
+@export_range(0.0, 10.0, 0.05, "suffix:s") var retry_fade_in: float = 2.0
+
 ## Current tension, 0..1 (read-only; handy for debugging or other systems).
 var tension: float = 0.0
 ## Current pan of the pan stem, -1 (left) .. 1 (right). Read-only.
@@ -95,6 +106,7 @@ var _tension_bus_idx := -1
 var _pan_target := 0.0
 var _vertical_target := 0.0
 var _tension_stopped := false
+var _in_game_over := false
 
 var _player_node: Node2D
 var _monsters: Array[Node] = []
@@ -177,12 +189,23 @@ func is_playing() -> bool:
 
 
 func _process(delta: float) -> void:
+	_check_game_over()
+
 	if _tension_stopped or (_center_player == null and _pan_player == null):
 		return
 
-	# Level: rises with attack, falls with release.
-	var target := _update_targets(delta)
-	var time := tension_attack if target > tension else tension_release
+	# Level: rises with attack, falls with release. On the game over screen
+	# the tension holds at its game-over level, centered and unfiltered.
+	var target: float
+	var time: float
+	if _in_game_over:
+		target = game_over_tension_level
+		_pan_target = 0.0
+		_vertical_target = 0.0
+		time = game_over_fade
+	else:
+		target = _update_targets(delta)
+		time = tension_attack if target > tension else tension_release
 	if time <= 0.0:
 		tension = target
 	else:
@@ -206,6 +229,37 @@ func _process(delta: float) -> void:
 		AudioServer.set_bus_effect_enabled(_tension_bus_idx, 0, cutoff_hz < OPEN_CUTOFF_HZ - 500.0)
 
 	_keep_in_sync()
+
+
+# --- Game over ---------------------------------------------------------------
+
+## Fades the base loop out when the game over scene appears, and back in when
+## it goes away. The base keeps playing silently so it stays in sync with the
+## tension layer and comes back in time rather than restarting.
+func _check_game_over() -> void:
+	var scene := get_tree().current_scene
+	var now := scene != null and game_over_scene != "" \
+		and scene.scene_file_path == _resolve_path(game_over_scene)
+	if now == _in_game_over:
+		return
+	_in_game_over = now
+
+	var base := _players[_active]
+	if not base.playing:
+		return
+	if now:
+		_fade(base, SILENT, game_over_fade)
+	else:
+		_fade(base, volume, retry_fade_in)
+
+
+## Exported file paths may be stored as uid:// strings; scene_file_path is res://.
+func _resolve_path(path: String) -> String:
+	if path.begins_with("uid://"):
+		var id := ResourceUID.text_to_id(path)
+		if ResourceUID.has_id(id):
+			return ResourceUID.get_id_path(id)
+	return path
 
 
 # --- Tension -----------------------------------------------------------------

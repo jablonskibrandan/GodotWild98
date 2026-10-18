@@ -1,0 +1,13 @@
+[gd_resource type="AudioStreamRandomizer" format=3 uid="uid://tyjkc6egu6ok"]
+
+[ext_resource type="AudioStream" uid="uid://dtodc708i8awa" path="res://audio/sfx/Bite 1 Bubbles.wav" id="1_bite1"]
+[ext_resource type="AudioStream" uid="uid://c11y35uqnnamb" path="res://audio/sfx/Bite 2 Bubbles.wav" id="2_bite2"]
+
+[resource]
+random_pitch = 1.0606265
+random_volume_offset_db = 1.35
+streams_count = 2
+stream_0/stream = ExtResource("1_bite1")
+stream_0/weight = 42.509
+stream_1/stream = ExtResource("2_bite2")
+stream_1/weight = 54.773

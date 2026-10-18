@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dm48ti74qwqcc" path="res://scenes/monsters/base_blue_monster.tscn" id="8_15m5t"]
 [ext_resource type="Material" uid="uid://noayy00pn5l" path="res://visuals/hidden_object.tres" id="8_p6cfc"]
 [ext_resource type="PackedScene" uid="uid://dklvm2kf2puv4" path="res://scenes/environment/double_door_vertical.tscn" id="8_xjajn"]
+[ext_resource type="PackedScene" uid="uid://ctxoghdxeorky" path="res://scenes/environment/air_bubbles.tscn" id="9_l4cqm"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tc85r"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -594,6 +595,11 @@ position = Vector2(175, 188)
 
 [node name="Key2" parent="Background" unique_id=154495487 instance=ExtResource("7_15m5t")]
 position = Vector2(73, 204)
+
+[node name="AirBubbles" parent="Background" unique_id=650470531 instance=ExtResource("9_l4cqm")]
+light_mask = 2
+material = ExtResource("8_p6cfc")
+position = Vector2(196, 192)
 
 [node name="MonsterManager" type="Node2D" parent="." unique_id=574206714]
 y_sort_enabled = true
