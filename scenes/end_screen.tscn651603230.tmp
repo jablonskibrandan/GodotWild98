@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://cxoxc6eq13wot"]
+
+[ext_resource type="Script" uid="uid://dit77y3x3d3ql" path="res://scenes/end_screen.gd" id="1_4j4el"]
+[ext_resource type="Texture2D" uid="uid://cssfr01q2i2jq" path="res://visuals/ui/background.png" id="2_um0j2"]
+[ext_resource type="Texture2D" uid="uid://iflica40sxl6" path="res://visuals/ui/quit_button.png" id="4_qyl73"]
+[ext_resource type="Texture2D" uid="uid://dp4illl5bapcx" path="res://visuals/ui/air_release.png" id="5_7ycdd"]
+[ext_resource type="Shader" uid="uid://bogy8vvctkjss" path="res://visuals/crt_shader.gdshader" id="6_d62ht"]
+[ext_resource type="Texture2D" uid="uid://dndcvpwka1f57" path="res://visuals/ui/title.png" id="7_ilt1u"]
+[ext_resource type="AudioStream" uid="uid://bwbwc2wa5xmah" path="res://audio/sfx/Play Button.wav" id="8_7pwln"]
+[ext_resource type="Script" uid="uid://b0543d56khaqw" path="res://scripts/audio/button_sound.gd" id="9_4mba2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dvrs8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_28f0c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7jfqk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ln24"]
+atlas = ExtResource("5_7ycdd")
+region = Rect2(9.351307, 0.0532341, 5.241253, 7.946766)
+
+[sub_resource type="Curve" id="Curve_rtw2f"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.09473693), -0.22365329, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oa1go"]
+shader = ExtResource("6_d62ht")
+
+[sub_resource type="QuadMesh" id="QuadMesh_tbmy8"]
+size = Vector2(384, 216)
+center_offset = Vector3(192, 108, 0)
+
+[node name="EndScreen" type="Control" unique_id=1007356474]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -48.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_4j4el")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=927967946]
+modulate = Color(0, 0.25882354, 0.6, 1)
+texture_filter = 1
+layout_mode = 0
+offset_left = -394.0
+offset_top = -122.0
+offset_right = 390.0
+offset_bottom = 314.0
+texture = ExtResource("2_um0j2")
+
+[node name="ButtonContainer" type="CenterContainer" parent="." unique_id=589881563]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = 103.99999
+offset_right = 85.33333
+offset_bottom = 237.33334
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ButtonContainer" unique_id=722667133]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="QuitButton" type="Button" parent="ButtonContainer/VBoxContainer" unique_id=64806923]
+modulate = Color(0.8745098, 0.8745098, 0.85882354, 1)
+z_index = 10
+texture_filter = 1
+custom_minimum_size = Vector2(160, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_dvrs8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_28f0c")
+theme_override_styles/hover = SubResource("StyleBoxTexture_28f0c")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_7jfqk")
+icon = ExtResource("4_qyl73")
+icon_alignment = 1
+expand_icon = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1602688774]
+modulate = Color(1, 1, 1, 0.37300003)
+texture_filter = 1
+position = Vector2(4, 316)
+amount = 100
+texture = SubResource("AtlasTexture_8ln24")
+lifetime = 30.0
+preprocess = 10.0
+explosiveness = 0.15
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(400, 1)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 16.0
+scale_amount_curve = SubResource("Curve_rtw2f")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="." unique_id=886555231]
+modulate = Color(1, 1, 1, 0.37300003)
+texture_filter = 1
+position = Vector2(0, -122)
+amount = 100
+texture = SubResource("AtlasTexture_8ln24")
+lifetime = 30.0
+preprocess = 10.0
+explosiveness = 0.15
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(400, 1)
+direction = Vector2(0, 1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 16.0
+scale_amount_curve = SubResource("Curve_rtw2f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=739920361]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer" unique_id=205561566]
+material = SubResource("ShaderMaterial_oa1go")
+mesh = SubResource("QuadMesh_tbmy8")
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Sprite2D" parent="." unique_id=940965483]
+texture_filter = 1
+position = Vector2(-7.999996, 16.000004)
+scale = Vector2(1.5000002, 1.5714285)
+texture = ExtResource("7_ilt1u")
+
+[node name="PlayButtonSound" type="AudioStreamPlayer" parent="." unique_id=1093857462]
+stream = ExtResource("8_7pwln")
+bus = &"UI"
+script = ExtResource("9_4mba2")
