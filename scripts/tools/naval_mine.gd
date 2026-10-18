@@ -91,13 +91,10 @@ func explode(target: Node2D) -> void:
 		target.die()
 
 	# Damage the player using the existing BubbleHealth.
-	elif target is PlayerController:
-		var health := target.get_node_or_null(
-            "Bubble_Health"
-		) as BubbleHealth
-
-		if health != null:
-			health.take_bubble_hit(1)
-
+	elif (target.has_node("Bubble_Health")):
+		var breath = target.get_node("Bubble_Health")
+		breath.take_bubble_hit(1)
+		
+	
 	# Replace this with an explosion animation later.
 	queue_free()

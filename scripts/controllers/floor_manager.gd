@@ -4,6 +4,7 @@ var current_floor: int = -1
 var floors: Array[String] = [
 	"res://scenes/floors/floor_one.tscn",
 	"res://scenes/floors/floor_two.tscn",
+	"res://scenes/floors/floor_three.tscn"
 ]
 
 func get_next_floor() -> String:

@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cqjl0cwe3lhux" path="res://scenes/monsters/yellow_monster.tscn" id="7_tbcs5"]
 [ext_resource type="PackedScene" uid="uid://6px8vy48up1p" path="res://scenes/monsters/gray_monster.tscn" id="8_61te0"]
 [ext_resource type="PackedScene" uid="uid://be76k6irjrbbd" path="res://scenes/environment/double_door.tscn" id="9_61te0"]
+[ext_resource type="PackedScene" uid="uid://bwpdxk16drrhm" path="res://scenes/monsters/red_monster.tscn" id="12_7u6um"]
 [ext_resource type="Script" uid="uid://dsmqmerm578de" path="res://scripts/monsters/monster_manager.gd" id="15_acut0"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tc85r"]
@@ -581,21 +582,33 @@ position = Vector2(264, 184)
 [node name="Key" parent="Background" unique_id=1564157687 instance=ExtResource("7_ql2s2")]
 position = Vector2(248, 231)
 
-[node name="Yellow_Monster" parent="Background" unique_id=447894495 instance=ExtResource("7_tbcs5")]
-position = Vector2(230, 304)
-
 [node name="SeaweedPatch2" parent="Background" unique_id=1938339336 instance=ExtResource("4_03bdb")]
 position = Vector2(64, 304)
 
+[node name="SeaweedPatch5" parent="Background" unique_id=1855668885 instance=ExtResource("4_03bdb")]
+position = Vector2(-95, 191)
+
+[node name="SeaweedPatch6" parent="Background" unique_id=237132752 instance=ExtResource("4_03bdb")]
+position = Vector2(-63, 223)
+
+[node name="SeaweedPatch7" parent="Background" unique_id=903953249 instance=ExtResource("4_03bdb")]
+position = Vector2(-95, 223)
+
 [node name="SeaweedPatch4" parent="Background" unique_id=1740752901 instance=ExtResource("4_03bdb")]
 position = Vector2(32, 304)
+
+[node name="Door" parent="Background" unique_id=2059325993 instance=ExtResource("9_61te0")]
+position = Vector2(33, 139)
 
 [node name="MonsterManager" type="Node2D" parent="." unique_id=574206714]
 y_sort_enabled = true
 script = ExtResource("15_acut0")
 
+[node name="Yellow_Monster" parent="MonsterManager" unique_id=447894495 instance=ExtResource("7_tbcs5")]
+position = Vector2(230, 304)
+
 [node name="Gray_Monster" parent="MonsterManager" unique_id=2082595206 instance=ExtResource("8_61te0")]
 position = Vector2(182, 101)
 
-[node name="Door" parent="MonsterManager" unique_id=2059325993 instance=ExtResource("9_61te0")]
-position = Vector2(33, 139)
+[node name="Red_Monster" parent="MonsterManager" unique_id=861905486 instance=ExtResource("12_7u6um")]
+position = Vector2(27, 189)

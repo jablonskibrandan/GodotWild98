@@ -3,7 +3,7 @@ class_name NavalMineTool
 extends BaseTool
 
 const MINE_SCENE: PackedScene = preload(
-    "res://scenes/tools/naval_mine.tscn"
+    "res://scenes/environment/naval_mine.tscn"
 )
 
 @export var placement_radius: float = 12.0
