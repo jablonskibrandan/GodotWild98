@@ -94,6 +94,7 @@ func explode(target: Node2D) -> void:
 	elif (target.has_node("Bubble_Health")):
 		var breath = target.get_node("Bubble_Health")
 		breath.take_bubble_hit(1)
+		target.take_hit()
 		
 	
 	# Replace this with an explosion animation later.
