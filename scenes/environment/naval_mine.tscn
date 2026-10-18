@@ -89,7 +89,7 @@ bus = &"SFX"
 [node name="BeepSound" type="AudioStreamPlayer2D" parent="." unique_id=1759302841]
 stream = ExtResource("3_beep")
 volume_db = 24.0
-max_distance = 2500.0
+max_distance = 500.0
 bus = &"SFX"
 script = ExtResource("4_beep")
 
