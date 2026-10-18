@@ -119,6 +119,7 @@ func has_line_of_sight(target_position: Vector2, sneaking: bool) -> bool:
 	
 	return in_field_of_vision && !view_obstructed
 
+#this is backwards than it should be: basically higher volume = quiter, low volume = loud
 func hear(source_node: Node2D, volume: float):
 	var focus_hearing := hearing
 	if source_node.get_instance_id() == chosen_target:

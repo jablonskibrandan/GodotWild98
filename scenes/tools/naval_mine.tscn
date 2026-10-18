@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://cdv3udqskucdg" path="res://scripts/tools/naval_mine.gd" id="1_y6weo"]
 [ext_resource type="AudioStream" uid="uid://b8un1dgne3skm" path="res://audio/sfx/Mine Place.wav" id="2_place"]
 [ext_resource type="AudioStream" uid="uid://2538fcx3msbw" path="res://audio/sfx/Mine Beep.wav" id="3_beep"]
-[ext_resource type="Script" path="res://scripts/audio/mine_beep_sound.gd" id="4_beep"]
+[ext_resource type="Script" uid="uid://cobrx12fednju" path="res://scripts/audio/mine_beep_sound.gd" id="4_beep"]
 [ext_resource type="AudioStream" uid="uid://cycpmlk157iqr" path="res://audio/sfx/Mine Explosion.wav" id="5_boom"]
-[ext_resource type="Script" path="res://scripts/audio/mine_explosion_sound.gd" id="6_boom"]
+[ext_resource type="Script" uid="uid://jbpi0xs16a6f" path="res://scripts/audio/mine_explosion_sound.gd" id="6_boom"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y6weo"]
 atlas = ExtResource("1_ktgtt")

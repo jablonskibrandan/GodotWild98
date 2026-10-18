@@ -10,6 +10,8 @@ signal exploded(mine: NavalMine, target: Node2D)
 
 @onready var detection_area: Area2D = $Area2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+#var _effects_parent: DistractionManager
+@onready var beep_sound: BeepSound = $BeepSound
 
 var velocity: Vector2 = Vector2.ZERO
 var has_exploded: bool = false
@@ -25,6 +27,9 @@ func _ready() -> void:
 
 	sprite.play("default")
 
+func set_effects_parent(_effects_parent: DistractionManager):
+	if beep_sound != null:
+		beep_sound._effects_parent = _effects_parent
 
 func _physics_process(delta: float) -> void:
 	if has_exploded:

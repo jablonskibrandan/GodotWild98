@@ -11,9 +11,9 @@ modulate = Color(0.15935335, 0.14924654, 0.14250839, 1)
 scale = Vector2(1, 0.75)
 
 [node name="TargetFinder" parent="." index="1" unique_id=1955017602]
-vision = 33.0
+vision = 40.0
 field_of_vision = 225.0
-hearing = 100.0
+hearing = 125.0
 focus = 0.1
 
 [node name="PointLight2D" parent="." index="3" unique_id=2009398952]

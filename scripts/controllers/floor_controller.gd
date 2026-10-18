@@ -30,11 +30,11 @@ var starting_point: Node2D
 func _ready() -> void:
 	add_floor()
 	
-	player.configure(starting_point.global_position, cursor)
+	player.configure(starting_point.global_position, cursor, effects)
 	flashlight.configure(player, cursor)
 	distraction.configure(effects, player)
 	monster_manager.configure(player)
-	naval_mine.configure(naval_mines, player)
+	naval_mine.configure(naval_mines, player, effects)
 	player_keys.key_count_changed.connect(update_key_count)
 	update_key_count(player_keys.key_count)
 	

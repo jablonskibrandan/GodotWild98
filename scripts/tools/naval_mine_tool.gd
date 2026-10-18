@@ -10,11 +10,13 @@ const MINE_SCENE: PackedScene = preload(
 
 var _mines_parent: Node2D
 var _player: PlayerController
+var _effects_parent: DistractionManager
 
 
-func configure(mines_parent: Node2D, player: PlayerController) -> void:
+func configure(mines_parent: Node2D, player: PlayerController, effects_parent: DistractionManager) -> void:
 	_mines_parent = mines_parent
 	_player = player
+	_effects_parent = effects_parent
 
 func activate(target: Vector2) -> void:
 	if (_player.get_time_left(self) == 0):
@@ -37,6 +39,6 @@ func activate(target: Vector2) -> void:
 		var mine := MINE_SCENE.instantiate() as NavalMine
 		_mines_parent.add_child(mine)
 		mine.global_position = target
-		
+		mine.set_effects_parent(_effects_parent)
 		print("Mine placed at: ", target)
 		_player.toolUsed(self)

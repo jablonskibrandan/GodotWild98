@@ -1,3 +1,4 @@
+class_name BeepSound
 extends AudioStreamPlayer2D
 ## Beeps on a loop for as long as the mine exists. Put this node under the
 ## NavalMine. When the mine explodes it's removed, which stops the beeping.
@@ -8,6 +9,14 @@ extends AudioStreamPlayer2D
 @export_range(0.0, 5.0, 0.05, "suffix:s") var first_beep_delay: float = 0.6
 ## Random pitch change per beep (0.02 = +/-2%). Keep small for a mechanical beep.
 @export_range(0.0, 0.5, 0.01) var pitch_variation: float = 0.0
+
+
+############################
+# this is used for monster attention, not related to actual sound
+var _effects_parent: DistractionManager
+# volume is backwards and 100 is very quiet, 5 is super loud
+const mine_volume: float = 100.0
+############################
 
 var _time_left := 0.0
 
@@ -24,3 +33,5 @@ func _process(delta: float) -> void:
 		_time_left += interval
 		pitch_scale = 1.0 + randf_range(-pitch_variation, pitch_variation)
 		play()
+		if _effects_parent != null:
+			_effects_parent.broadcast_sound(get_parent(), mine_volume)

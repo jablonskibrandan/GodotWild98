@@ -47,8 +47,6 @@ center_offset = Vector3(192, 108, 0)
 [node name="BaseFloor" type="Node2D" unique_id=1776846106]
 y_sort_enabled = true
 script = ExtResource("1_8nu48")
-play_area = null
-grid_size = null
 
 [node name="ToolManager" type="Node2D" parent="." unique_id=1764216630]
 script = ExtResource("3_fbrfn")

@@ -12,6 +12,10 @@ var facing_animation : String = "down"
 @onready var sprite = $AnimatedSprite2D
 @onready var flashlight_sprite : FlashlightSprite = $FlashlightSprite
 
+var _effects_parent: DistractionManager
+# volume is backwards and 100 is very quiet, 5 is super loud
+const flashlight_volume: float = 120.0
+
 const DistractionSignalClass = preload("res://scripts/tools/distraction_tool.gd")
 const NavalMineSignalClass = preload("res://scripts/tools/naval_mine_tool.gd")
 
@@ -35,9 +39,10 @@ func set_shader_value(value: float) -> void:
 	return
 
 
-func configure(starting_position: Vector2, cursor: TargetCursor) -> void:
+func configure(starting_position: Vector2, cursor: TargetCursor, effects_parent: DistractionManager) -> void:
 	global_position = starting_position
 	_cursor = cursor
+	_effects_parent = effects_parent
 
 func toolUsed(tool: BaseTool) -> void:
 	if (tool is DistractionSignalClass):
@@ -95,6 +100,7 @@ func update_facing(direction: Vector2):
 
 func toggle_flashlight(enabled: bool):
 	flashlight_sprite.toggle(enabled)
+	_effects_parent.broadcast_sound(flashlight_sprite, flashlight_volume)
 
 func update_cursor():
 	if _cursor == null:
