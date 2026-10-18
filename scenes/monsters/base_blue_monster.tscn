@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bkpybvya36lat" path="res://scripts/audio/monster_alert_sound.gd" id="4_alert"]
 [ext_resource type="AudioStream" uid="uid://c6yuor817v64w" path="res://audio/sfx/Monster Alert Player.wav" id="5_alertp"]
 [ext_resource type="AudioStream" uid="uid://bschwhcq26xnw" path="res://audio/sfx/MOster Alert Distraction.wav" id="6_alertd"]
+[ext_resource type="AudioStream" uid="uid://tyjkc6egu6ok" path="res://audio/sfx/bite.tres" id="7_bite"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c47ug"]
 atlas = ExtResource("3_c47ug")
@@ -176,3 +177,12 @@ script = ExtResource("4_alert")
 player_alert = ExtResource("5_alertp")
 distraction_alert = ExtResource("6_alertd")
 pitch_variation = 0.09
+
+[node name="BiteSound" type="AudioStreamPlayer2D" parent="." unique_id=1650274913]
+stream = ExtResource("7_bite")
+volume_db = 17.32
+max_distance = 2500.0
+max_polyphony = 2
+bus = &"SFX"
+
+[connection signal="monster_bit_player" from="." to="BiteSound" method="play"]

@@ -10,9 +10,9 @@ release_ms = 413.0
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
 resource_name = "Reverb"
-room_size = 0.81
+room_size = 0.44
 hipass = 0.29
-wet = 0.34
+wet = 0.16
 
 [resource]
 bus/0/volume_db = 0.46499825

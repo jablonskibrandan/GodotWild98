@@ -1,2 +1,4 @@
 .godot/
 
+# macOS Finder files
+.DS_Store

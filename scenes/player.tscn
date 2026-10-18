@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dp4illl5bapcx" path="res://visuals/ui/air_release.png" id="4_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://deo156ulol0mh" path="res://visuals/player/flashlight_small.png" id="5_fjrip"]
 [ext_resource type="Script" uid="uid://cqng1rrye2of0" path="res://scripts/tools/flashlight_sprite.gd" id="6_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://dqei1wk0cwrvs" path="res://audio/sfx/bubble_pop.tres" id="7_bubpop"]
+[ext_resource type="Script" uid="uid://bx703t4x5j0k7" path="res://scripts/audio/bubble_pop_sound.gd" id="8_bubpop"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tuyoq"]
 shader = ExtResource("3_tuyoq")
@@ -405,3 +407,10 @@ one_shot = true
 [node name="FlashlightLight" type="PointLight2D" parent="." unique_id=418308655]
 texture = SubResource("GradientTexture2D_smehm")
 offset = Vector2(50, 50)
+
+[node name="BubblePopSound" type="AudioStreamPlayer" parent="." unique_id=1873402516]
+stream = ExtResource("7_bubpop")
+volume_db = -4.019
+max_polyphony = 4
+bus = &"SFX"
+script = ExtResource("8_bubpop")

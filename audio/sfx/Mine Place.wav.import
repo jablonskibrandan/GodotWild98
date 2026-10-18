@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b8un1dgne3skm"
+path="res://.godot/imported/Mine Place.wav-fe56526832fa38f58369a086a290edbc.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Mine Place.wav"
+dest_files=["res://.godot/imported/Mine Place.wav-fe56526832fa38f58369a086a290edbc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
