@@ -305,8 +305,6 @@ region = Rect2(9.351307, 0.0532341, 5.241253, 7.946766)
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.09473693), -0.22365329, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_msa8h"]
-
 [sub_resource type="Gradient" id="Gradient_smehm"]
 offsets = PackedFloat32Array(0, 0.970339, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.15254235, 0.15254235, 0.15254235, 1, 0, 0, 0, 1)
@@ -317,6 +315,8 @@ width = 100
 height = 100
 fill = 1
 fill_to = Vector2(0.55, 0.55)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_msa8h"]
 
 [node name="Player" type="CharacterBody2D" unique_id=2093951058]
 texture_filter = 1
@@ -349,10 +349,17 @@ shape = SubResource("RectangleShape2D_w3p8w")
 metadata/_edit_lock_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=568048671]
-position = Vector2(-1, 5)
 energy = 0.5
 shadow_color = Color(0, 0, 0, 1)
 texture = SubResource("GradientTexture2D_qr0ht")
+metadata/_edit_lock_ = true
+
+[node name="RevealLight" type="PointLight2D" parent="PointLight2D" unique_id=783380378]
+energy = 0.5
+range_item_cull_mask = 2
+shadow_color = Color(0, 0, 0, 1)
+texture = SubResource("GradientTexture2D_qr0ht")
+texture_scale = 0.25
 metadata/_edit_lock_ = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1705809615]
@@ -377,13 +384,21 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("5_fjrip")
 hframes = 2
 script = ExtResource("6_tuyoq")
-half_angle_degrees = 45.0
+half_angle_degrees = 35.0
 
 [node name="Flashlight_Point_Left" type="Node2D" parent="FlashlightSprite" unique_id=1116433502]
-position = Vector2(80, 20)
+position = Vector2(60, 50)
 
 [node name="Flashlight_Point_Right" type="Node2D" parent="FlashlightSprite" unique_id=1791227228]
-position = Vector2(80, -20)
+position = Vector2(60, -50)
+
+[node name="FlashlightLights" type="Node2D" parent="FlashlightSprite" unique_id=1532818090]
+rotation = -0.7853982
+
+[node name="FlashlightLight" type="PointLight2D" parent="FlashlightSprite/FlashlightLights" unique_id=418308655]
+range_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_smehm")
+offset = Vector2(50, 50)
 
 [node name="BitableArea" type="Area2D" parent="." unique_id=331601644]
 collision_layer = 2
@@ -401,7 +416,3 @@ one_shot = true
 [node name="MineSignal_Timer" type="Timer" parent="Timers" unique_id=629823347]
 wait_time = 45.0
 one_shot = true
-
-[node name="FlashlightLight" type="PointLight2D" parent="." unique_id=418308655]
-texture = SubResource("GradientTexture2D_smehm")
-offset = Vector2(50, 50)

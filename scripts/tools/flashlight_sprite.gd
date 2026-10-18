@@ -7,6 +7,7 @@ extends Sprite2D
 
 @onready var flashlight_point_left : Node2D = $Flashlight_Point_Left
 @onready var flashlight_point_right : Node2D = $Flashlight_Point_Right
+@onready var flashlight_light : Node2D = $FlashlightLights
 
 var enabled : bool = false
 var cursor_position : Vector2 = Vector2.ZERO
@@ -30,8 +31,10 @@ func toggle(_enabled: bool):
 	enabled = _enabled
 	if enabled:
 		frame = 1
+		flashlight_light.visible = true
 	else:
 		frame = 0
+		flashlight_light.visible = false
 	queue_redraw()
 
 func update_facing(facing_animation : String):

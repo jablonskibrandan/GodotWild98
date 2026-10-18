@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bw6hly1gbcf34" path="res://visuals/tilesets/wall_tiles.png" id="2_vnaoy"]
 [ext_resource type="Texture2D" uid="uid://dkqv01mpxtc8h" path="res://visuals/tilesets/floor_tiles.png" id="3_2xrr2"]
+[ext_resource type="Material" uid="uid://noayy00pn5l" path="res://visuals/hidden_object.tres" id="3_8u2m7"]
 [ext_resource type="PackedScene" uid="uid://weoo7vtkfd4t" path="res://scenes/environment/hidden_room_door.tscn" id="3_50rbi"]
 [ext_resource type="PackedScene" uid="uid://dpwd50owx3p4e" path="res://scenes/environment/seaweed_patch.tscn" id="4_03bdb"]
 [ext_resource type="PackedScene" uid="uid://45p1d6iama01" path="res://scenes/environment/stairs.tscn" id="5_jgglp"]
@@ -529,9 +530,6 @@ navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_gnqv8")
 sources/1 = SubResource("TileSetAtlasSource_fs03o")
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iff7v"]
-light_mode = 2
-
 [node name="Floor" type="Node2D" unique_id=931433416]
 
 [node name="StartingPoint" type="Node2D" parent="." unique_id=800198856]
@@ -556,7 +554,7 @@ tile_set = SubResource("TileSet_bhunq")
 light_mask = 2
 visibility_layer = 2
 texture_filter = 1
-material = SubResource("CanvasItemMaterial_iff7v")
+material = ExtResource("3_8u2m7")
 tile_map_data = PackedByteArray("AAAIAAkAAQAAAAAAAAAJAAkAAQAAAAAAAAAJAAoAAQAAAAAAAAAIAAoAAQAAAAAAAAAIAAsAAQAAAAAAAAAIAAwAAQAAAAAAAAAIAA0AAQAAAAAAAAAJAA0AAQAAAAAAAAAJAAwAAQAAAAAAAAAJAAsAAQAAAAAAAAAKAAsAAQAAAAAAAAALAAsAAQAAAAAAAAAMAAsAAQAAAAAAAAAMAAwAAQAAAAAAAAALAAwAAQAAAAAAAAAKAAwAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_bhunq")
 collision_enabled = false
