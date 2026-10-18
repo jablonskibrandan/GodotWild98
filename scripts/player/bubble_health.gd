@@ -57,7 +57,7 @@ func take_breath(heal_amount: int) -> void:
 		return
 	# Each hit removes X seconds of oxygen per bubble.
 	bubble_current_time = minf(
-		bubble_current_time + 3 * time_per_bubble_loss,
+		bubble_current_time + heal_amount * time_per_bubble_loss,
 		120.0
 	)
 	# Recalculate bubbles based on the remaining oxygen.
