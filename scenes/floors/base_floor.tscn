@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d1jgjcardmcp1" path="res://scenes/player.tscn" id="10_ka5f4"]
 [ext_resource type="Script" uid="uid://clc1phwuj8tqs" path="res://scripts/player/target_cursor.gd" id="14_mmpba"]
 [ext_resource type="Texture2D" uid="uid://qud7y6guapj7" path="res://visuals/ui/bubble_bar.png" id="15_kpit0"]
+[ext_resource type="Texture2D" uid="uid://d1o46o3t85g8k" path="res://visuals/ui/ui_flashlight_off.png" id="18_flashlight_off"]
 [ext_resource type="PackedScene" path="res://scenes/bubble_bar.tscn" id="16_rxbem"]
 [ext_resource type="Shader" uid="uid://bogy8vvctkjss" path="res://visuals/crt_shader.gdshader" id="17_xtii2"]
 
@@ -69,6 +70,15 @@ modulate = Color(0.11207495, 0.5847179, 1, 1)
 texture_filter = 1
 position = Vector2(44, 12)
 texture = ExtResource("15_kpit0")
+
+[node name="FlashlightIndicator" type="TextureRect" parent="HUD"]
+offset_left = 8.0
+offset_top = 22.0
+offset_right = 40.0
+offset_bottom = 54.0
+texture_filter = 1
+mouse_filter = 2
+texture = ExtResource("18_flashlight_off")
 
 [node name="Panel" type="PanelContainer" parent="HUD" unique_id=162088003]
 visible = false

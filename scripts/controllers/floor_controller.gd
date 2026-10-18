@@ -14,6 +14,10 @@ extends Node2D
 
 @onready var tool_label: Label = $HUD/Panel/VBox/Tool
 @onready var light_label: Label = $HUD/Panel/VBox/Light
+@onready var flashlight_indicator: TextureRect = $HUD/FlashlightIndicator
+
+const FLASHLIGHT_OFF_TEXTURE: Texture2D = preload("res://visuals/ui/ui_flashlight_off.png")
+const FLASHLIGHT_ON_TEXTURE: Texture2D = preload("res://visuals/ui/ui_flashlight_on.png")
 @onready var target_label: Label = $HUD/Panel/VBox/Target
 
 @onready var naval_mine: NavalMineTool = $ToolManager/NavalMine
@@ -55,7 +59,7 @@ func add_floor():
 
 func _on_out_of_breath():
 	## get_tree().reload_current_scene()
-	get_tree().change_scene_to_file.call_deferred("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file.call_deferred("res://scenes/death_screen.tscn")
 	return
 
 func _on_tool_changed(tool: BaseTool) -> void:
@@ -67,6 +71,7 @@ func _on_tool_changed(tool: BaseTool) -> void:
 
 func _on_flashlight_state_changed(is_enabled: bool) -> void:
 	light_label.text = "Flashlight: " + ("ON" if is_enabled else "OFF")
+	flashlight_indicator.texture = FLASHLIGHT_ON_TEXTURE if is_enabled else FLASHLIGHT_OFF_TEXTURE
 	player.toggle_flashlight(is_enabled)
 
 
