@@ -11,6 +11,8 @@ extends Node2D
 @onready var distraction: DistractionTool = $ToolManager/Distraction
 @onready var effects: DistractionManager = $DistractionEffects
 @onready var bubble_health: BubbleHealth = $Player/Bubble_Health
+@onready var key_count_label: Label = $HUD/HBoxContainer/KeyCountLabel
+@onready var player_keys: PlayerKeys = $Player/Keys
 
 @onready var tool_label: Label = $HUD/Panel/VBox/Tool
 @onready var light_label: Label = $HUD/Panel/VBox/Light
@@ -35,6 +37,8 @@ func _ready() -> void:
 	distraction.configure(play_area, effects, player)
 	monster_manager.configure(player)
 	naval_mine.configure(play_area, naval_mines, player)
+	player_keys.key_count_changed.connect(update_key_count)
+	update_key_count(player_keys.key_count)
 	
 	tool_manager.tool_changed.connect(_on_tool_changed)
 	flashlight.state_changed.connect(_on_flashlight_state_changed)
@@ -60,6 +64,7 @@ func add_floor():
 func _on_out_of_breath():
 	## get_tree().reload_current_scene()
 	get_tree().change_scene_to_file.call_deferred("res://scenes/death_screen.tscn")
+	FloorManager.floor_failed()
 	return
 
 func _on_tool_changed(tool: BaseTool) -> void:
@@ -86,3 +91,7 @@ func _on_player_bitten() -> void:
 	bubble_health.take_bubble_hit(1)
 	player.take_hit()
 	print("Bubbles remaining: ", bubble_health.bubble_amount)
+
+
+func update_key_count(count: int) -> void:
+	key_count_label.text = "x " + str(count)

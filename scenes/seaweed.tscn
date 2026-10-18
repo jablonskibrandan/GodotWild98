@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://6chlkvjf53jr"]
+
+[ext_resource type="Script" uid="uid://cskcentkhlqox" path="res://scripts/environment/seaweed.gd" id="1_wxdpm"]
+[ext_resource type="Texture2D" uid="uid://b6plao31u8mp8" path="res://visuals/environment/seaweed.png" id="2_spjjx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxdpm"]
+atlas = ExtResource("2_spjjx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spjjx"]
+atlas = ExtResource("2_spjjx")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wd5ij"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxdpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spjjx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wd5ij"]
+size = Vector2(16, 16)
+
+[node name="Seaweed" type="StaticBody2D" unique_id=1806494905]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_wxdpm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=322028798]
+y_sort_enabled = true
+sprite_frames = SubResource("SpriteFrames_wd5ij")
+frame_progress = 0.4092523
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1193375834]
+shape = SubResource("RectangleShape2D_wd5ij")
