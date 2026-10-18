@@ -188,9 +188,9 @@ pitch_variation = 0.09
 
 [node name="BiteSound" type="AudioStreamPlayer2D" parent="." unique_id=1650274913]
 stream = ExtResource("7_bite")
-volume_db = 24.0
+volume_db = 18.54
 max_distance = 2500.0
 max_polyphony = 2
-bus = &"SFX"
+bus = &"Impacts"
 
 [connection signal="monster_bit_player" from="." to="BiteSound" method="play"]
