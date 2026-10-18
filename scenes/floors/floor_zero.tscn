@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ctxoghdxeorky" path="res://scenes/environment/air_bubbles.tscn" id="9_mnoyy"]
 [ext_resource type="Script" uid="uid://dsmqmerm578de" path="res://scripts/monsters/monster_manager.gd" id="10_02461"]
 [ext_resource type="PackedScene" uid="uid://cqjl0cwe3lhux" path="res://scenes/monsters/yellow_monster.tscn" id="10_sblcc"]
+[ext_resource type="Texture2D" uid="uid://bqm2vwoh8ag2r" path="res://visuals/ui/arrow.png" id="10_voab5"]
 [ext_resource type="PackedScene" uid="uid://bwpdxk16drrhm" path="res://scenes/monsters/red_monster.tscn" id="11_jsfon"]
 [ext_resource type="PackedScene" uid="uid://dm48ti74qwqcc" path="res://scenes/monsters/base_blue_monster.tscn" id="12_a4fgg"]
 [ext_resource type="PackedScene" uid="uid://6px8vy48up1p" path="res://scenes/monsters/gray_monster.tscn" id="15_0rsmt"]
@@ -684,58 +685,117 @@ position = Vector2(3155, 160)
 [node name="AirBubbles16" parent="Background" unique_id=836296807 instance=ExtResource("9_mnoyy")]
 position = Vector2(3876, 171)
 
+[node name="Arrow" type="Sprite2D" parent="Background" unique_id=1556792840]
+position = Vector2(141, 147)
+scale = Vector2(0.50000006, 1)
+texture = ExtResource("10_voab5")
+
+[node name="Arrow2" type="Sprite2D" parent="Background" unique_id=806048480]
+position = Vector2(350, 192)
+scale = Vector2(0.50000006, 1)
+texture = ExtResource("10_voab5")
+
+[node name="Arrow3" type="Sprite2D" parent="Background" unique_id=498484796]
+position = Vector2(828, 134)
+scale = Vector2(0.50000006, 1)
+texture = ExtResource("10_voab5")
+
+[node name="Arrow4" type="Sprite2D" parent="Background" unique_id=866109923]
+position = Vector2(1200, 128)
+scale = Vector2(0.50000006, 1)
+texture = ExtResource("10_voab5")
+
+[node name="Arrow5" type="Sprite2D" parent="Background" unique_id=820220909]
+position = Vector2(1616, 180)
+scale = Vector2(0.50000006, 1)
+texture = ExtResource("10_voab5")
+
+[node name="Arrow6" type="Sprite2D" parent="Background" unique_id=312127845]
+position = Vector2(2240, 218)
+scale = Vector2(0.50000006, 1)
+texture = ExtResource("10_voab5")
+
+[node name="Arrow7" type="Sprite2D" parent="Background" unique_id=509090411]
+position = Vector2(2688, 163)
+scale = Vector2(0.50000006, 1)
+texture = ExtResource("10_voab5")
+
+[node name="Arrow8" type="Sprite2D" parent="Background" unique_id=1325304662]
+position = Vector2(3312, 184)
+scale = Vector2(0.50000006, 1)
+texture = ExtResource("10_voab5")
+
 [node name="Text" type="Node2D" parent="." unique_id=622965631]
 
 [node name="Label" type="Label" parent="Text" unique_id=471611483]
-offset_left = -124.0
-offset_top = 109.0
-offset_right = 196.0
-offset_bottom = 163.0
+offset_left = 64.0
+offset_top = 112.0
+offset_right = 226.0
+offset_bottom = 151.0
 theme_override_fonts/font = ExtResource("6_s5bol")
+theme_override_font_sizes/font_size = 8
 text = "Watch out for monsters!
 Stay out of sight and make it to the stairs
-           ------------>"
+    "
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="Text" unique_id=948982756]
+texture_filter = 1
+offset_left = -125.0
+offset_top = 208.0
+offset_right = 19.0
+offset_bottom = 224.0
+theme_override_fonts/font = ExtResource("6_s5bol")
+theme_override_font_sizes/font_size = 8
+text = "Use WASD to move"
 
 [node name="Label2" type="Label" parent="Text" unique_id=830109022]
-offset_left = 267.0
-offset_top = 108.0
-offset_right = 634.0
-offset_bottom = 200.0
+offset_left = 272.0
+offset_top = 112.0
+offset_right = 430.0
+offset_bottom = 208.0
 theme_override_fonts/font = ExtResource("6_s5bol")
+theme_override_font_sizes/font_size = 8
 text = "Take a quick breather
+
 
 Your air will run out over time
 Getting bit will lose you a whole bubble!
-           ------------>"
+"
+horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="Text" unique_id=1202231069]
 offset_left = 739.0
 offset_top = 62.0
-offset_right = 1106.0
+offset_right = 914.0
 offset_bottom = 173.0
 theme_override_fonts/font = ExtResource("6_s5bol")
+theme_override_font_sizes/font_size = 8
 text = "Stay in the seaweed to hide
-
 But watch out! 
+
 Once you are spotted the monsters 
 will find you even in the weeds!
-           ------------>"
+"
+horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="Text" unique_id=1583532141]
-offset_left = 1091.0
-offset_top = 107.0
-offset_right = 1458.0
-offset_bottom = 218.0
+offset_left = 1156.0
+offset_top = 104.0
+offset_right = 1252.0
+offset_bottom = 123.0
 theme_override_fonts/font = ExtResource("6_s5bol")
+theme_override_font_sizes/font_size = 8
 text = "Use keys to unlock doors
-           ------------>"
+"
 
 [node name="Label5" type="Label" parent="Text" unique_id=761615953]
-offset_left = 1342.0
-offset_top = 21.0
-offset_right = 1710.0
-offset_bottom = 132.0
+offset_left = 1352.0
+offset_top = 128.0
+offset_right = 1593.0
+offset_bottom = 380.0
 theme_override_fonts/font = ExtResource("6_s5bol")
+theme_override_font_sizes/font_size = 8
 text = "Use your tools!
 
 Left click to use a tool, right click to switch tools
@@ -744,40 +804,44 @@ Blue : Distraction Pulse - distracts enemies
 Red : Naval Mine - explodes on contact
 Yellow : Flashlight - reveals hidden rooms + attracts monsters
 
-           ------------>"
+"
+horizontal_alignment = 1
 
 [node name="Label6" type="Label" parent="Text" unique_id=1698591730]
 offset_left = 2116.0
-offset_top = 68.0
-offset_right = 2361.0
+offset_top = 206.0
+offset_right = 2224.0
 offset_bottom = 236.0
 theme_override_fonts/font = ExtResource("6_s5bol")
+theme_override_font_sizes/font_size = 8
 text = "Red Monsters are slow 
 
-Avoid them with ease!
-
-           ------------>"
+Avoid them with ease!"
+horizontal_alignment = 1
 
 [node name="Label7" type="Label" parent="Text" unique_id=338271341]
-offset_left = 2629.0
-offset_top = 67.0
-offset_right = 2906.0
-offset_bottom = 235.0
+offset_left = 2624.0
+offset_top = 88.0
+offset_right = 2763.0
+offset_bottom = 162.0
 theme_override_fonts/font = ExtResource("6_s5bol")
+theme_override_font_sizes/font_size = 8
 text = "Yellow Monsters have keen vision
 
 But they cannot hear a thing
 
 Use cover to get around their sights
 
-           ------------>"
+"
+horizontal_alignment = 1
 
 [node name="Label8" type="Label" parent="Text" unique_id=1792530920]
-offset_left = 3207.0
-offset_top = 46.0
-offset_right = 3672.0
-offset_bottom = 214.0
+offset_left = 3200.0
+offset_top = 96.0
+offset_right = 3434.0
+offset_bottom = 264.0
 theme_override_fonts/font = ExtResource("6_s5bol")
+theme_override_font_sizes/font_size = 8
 text = "Gray Monsters have powerful hearing and are lightning fast
 
 They can even hear the click of a flashlight!
@@ -785,17 +849,21 @@ They can even hear the click of a flashlight!
 But their vision is quite poor,
 and they are easily distracted
 
-           ------------>"
+
+"
+horizontal_alignment = 1
 
 [node name="Label9" type="Label" parent="Text" unique_id=1489289971]
-offset_left = 4118.0
-offset_top = 97.0
-offset_right = 4282.0
-offset_bottom = 177.0
+offset_left = 4152.0
+offset_top = 137.0
+offset_right = 4316.0
+offset_bottom = 217.0
 theme_override_fonts/font = ExtResource("6_s5bol")
+theme_override_font_sizes/font_size = 8
 text = "The stairs! Finally!
 
 Good luck..."
+horizontal_alignment = 1
 
 [node name="MonsterManager" type="Node2D" parent="." unique_id=574206714]
 y_sort_enabled = true
