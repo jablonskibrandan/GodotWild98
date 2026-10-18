@@ -12,6 +12,10 @@
 [ext_resource type="Script" uid="uid://clc1phwuj8tqs" path="res://scripts/player/target_cursor.gd" id="14_mmpba"]
 [ext_resource type="Texture2D" uid="uid://qud7y6guapj7" path="res://visuals/ui/bubble_bar.png" id="15_kpit0"]
 [ext_resource type="Texture2D" uid="uid://d1o46o3t85g8k" path="res://visuals/ui/ui_flashlight_off.png" id="18_flashlight_off"]
+[ext_resource type="Texture2D" path="res://visuals/ui/ui_distraction.png" id="19_distraction_ui"]
+[ext_resource type="Texture2D" path="res://visuals/ui/ui_mine_place.png" id="20_mine_ui"]
+[ext_resource type="Script" path="res://scripts/ui/tool_cooldown_indicator.gd" id="21_tool_cooldown"]
+[ext_resource type="Shader" path="res://visuals/ui/tool_cooldown.gdshader" id="22_cooldown_shader"]
 [ext_resource type="PackedScene" path="res://scenes/bubble_bar.tscn" id="16_rxbem"]
 [ext_resource type="Shader" uid="uid://bogy8vvctkjss" path="res://visuals/crt_shader.gdshader" id="17_xtii2"]
 
@@ -23,6 +27,12 @@ modulate_color = Color(1, 1, 1, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_riqys"]
 shader = ExtResource("17_xtii2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_distraction_cd"]
+shader = ExtResource("22_cooldown_shader")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mine_cd"]
+shader = ExtResource("22_cooldown_shader")
 
 [sub_resource type="QuadMesh" id="QuadMesh_bhunq"]
 size = Vector2(384, 216)
@@ -79,6 +89,54 @@ offset_bottom = 54.0
 texture_filter = 1
 mouse_filter = 2
 texture = ExtResource("18_flashlight_off")
+
+[node name="DistractionIndicator" type="TextureRect" parent="HUD"]
+offset_left = 44.0
+offset_top = 22.0
+offset_right = 76.0
+offset_bottom = 54.0
+texture_filter = 1
+mouse_filter = 2
+material = SubResource("ShaderMaterial_distraction_cd")
+texture = ExtResource("19_distraction_ui")
+script = ExtResource("21_tool_cooldown")
+cooldown_timer_path = NodePath("../../Player/Timers/DistractionSignal_Timer")
+
+[node name="CooldownText" type="Label" parent="HUD/DistractionIndicator"]
+offset_top = 9.0
+offset_right = 32.0
+offset_bottom = 26.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.02, 0.04, 0.08, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MineIndicator" type="TextureRect" parent="HUD"]
+offset_left = 80.0
+offset_top = 22.0
+offset_right = 112.0
+offset_bottom = 54.0
+texture_filter = 1
+mouse_filter = 2
+material = SubResource("ShaderMaterial_mine_cd")
+texture = ExtResource("20_mine_ui")
+script = ExtResource("21_tool_cooldown")
+cooldown_timer_path = NodePath("../../Player/Timers/MineSignal_Timer")
+
+[node name="CooldownText" type="Label" parent="HUD/MineIndicator"]
+offset_top = 9.0
+offset_right = 32.0
+offset_bottom = 26.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.02, 0.04, 0.08, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Panel" type="PanelContainer" parent="HUD" unique_id=162088003]
 visible = false
