@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bwpdxk16drrhm" path="res://scenes/monsters/red_monster.tscn" id="7_l4cqm"]
 [ext_resource type="PackedScene" uid="uid://dm48ti74qwqcc" path="res://scenes/monsters/base_blue_monster.tscn" id="8_15m5t"]
 [ext_resource type="PackedScene" uid="uid://dklvm2kf2puv4" path="res://scenes/environment/double_door_vertical.tscn" id="8_xjajn"]
+[ext_resource type="PackedScene" uid="uid://ctxoghdxeorky" path="res://scenes/environment/air_bubbles.tscn" id="9_l4cqm"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tc85r"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -606,3 +607,6 @@ position = Vector2(169, 118)
 
 [node name="Blue_Monster" parent="MonsterManager" unique_id=1751361016 instance=ExtResource("8_15m5t")]
 position = Vector2(187, 270)
+
+[node name="AirBubbles" parent="." unique_id=650470531 instance=ExtResource("9_l4cqm")]
+position = Vector2(35, 94)

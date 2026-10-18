@@ -51,6 +51,24 @@ func take_bubble_hit(damage_amount: int) -> void:
 
 	if bubble_current_time <= 0.0:
 		time_ran_out.emit()
-	
+
+func take_breath(heal_amount: int) -> void:
+	if bubble_current_time <= 0.0:
+		return
+	# Each hit removes X seconds of oxygen per bubble.
+	bubble_current_time = minf(
+		bubble_current_time + 3 * time_per_bubble_loss,
+		120.0
+	)
+	# Recalculate bubbles based on the remaining oxygen.
+	var new_amount: int = calculate_bubble_amount(bubble_current_time)
+
+	if new_amount != bubble_amount:
+		bubble_amount = new_amount
+		bubble_amount_changed.emit(bubble_amount)
+
+	if bubble_current_time <= 0.0:
+		time_ran_out.emit()
+
 func calculate_bubble_amount(current_time: float) -> int:
 	return int(ceil(current_time / time_per_bubble_loss))
