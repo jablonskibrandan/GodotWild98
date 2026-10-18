@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cnte4dhigh104" path="res://scripts/environment/door.gd" id="1_bnrjc"]
 [ext_resource type="Texture2D" uid="uid://dcpf5p4e3dma3" path="res://visuals/environment/locked_doors.png" id="2_26d5o"]
+[ext_resource type="AudioStream" uid="uid://bkgpjpa4xycwj" path="res://audio/sfx/DoorUnlock.wav" id="9_unlock"]
+[ext_resource type="Script" path="res://scripts/audio/detaching_sound.gd" id="9_unlocksnd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd5ij"]
 size = Vector2(32, 16)
@@ -37,5 +39,12 @@ shape = SubResource("RectangleShape2D_qxvjs")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1297359084]
 occluder = SubResource("OccluderPolygon2D_bnrjc")
+
+[node name="UnlockSound" type="AudioStreamPlayer2D" parent="." unique_id=1574028391]
+stream = ExtResource("9_unlock")
+max_distance = 2500.0
+bus = &"SFX"
+script = ExtResource("9_unlocksnd")
+pitch_variation = 0.04
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

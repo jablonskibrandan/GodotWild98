@@ -17,5 +17,5 @@ chase_min_level = 0.23
 tension_start_distance = 91.0
 tension_full_distance = 4.0
 tension_attack = 1.75
-tension_release = 3.45
+tension_release = 1.85
 max_pan = 0.33

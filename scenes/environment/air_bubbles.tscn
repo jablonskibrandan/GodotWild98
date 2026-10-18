@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ip6ofr81g4n6" path="res://scripts/environment/air_bubbles.gd" id="1_d46ch"]
 [ext_resource type="Texture2D" uid="uid://blpsq5kbbiwrs" path="res://visuals/ui/bubble.png" id="2_g67wv"]
+[ext_resource type="AudioStream" path="res://audio/sfx/bubble_pickup.tres" id="3_pickup"]
+[ext_resource type="Script" path="res://scripts/audio/pickup_sound.gd" id="4_pickup"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hbs1o"]
 
@@ -103,5 +105,11 @@ frame_progress = 0.73749983
 sprite_frames = SubResource("SpriteFrames_psrc2")
 autoplay = "default"
 frame_progress = 0.7207738
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="." unique_id=1938471025]
+stream = ExtResource("3_pickup")
+max_distance = 2500.0
+bus = &"SFX"
+script = ExtResource("4_pickup")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
