@@ -7,5 +7,8 @@ var floors: Array[String] = [
 ]
 
 func get_next_floor() -> String:
-	current_floor += 1;
-	return floors[clampi(current_floor, 0, floors.size() - 1)]
+	current_floor = clampi(current_floor+1, 0, floors.size() - 1)
+	return floors[current_floor]
+
+func floor_failed():
+	current_floor -= 1
