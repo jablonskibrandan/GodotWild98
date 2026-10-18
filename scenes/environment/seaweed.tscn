@@ -26,7 +26,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd5ij"]
-size = Vector2(16, 16)
+size = Vector2(18, 18)
 
 [node name="Seaweed" type="StaticBody2D" unique_id=1806494905]
 collision_layer = 32

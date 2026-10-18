@@ -4,7 +4,7 @@
 
 [node name="Gray_Monster" unique_id=447894495 instance=ExtResource("1_hopk4")]
 chase_speed = 85.0
-wander_speed = 20.0
+wander_speed = 15.0
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=174872278]
 modulate = Color(0.15935335, 0.14924654, 0.14250839, 1)
@@ -14,6 +14,7 @@ scale = Vector2(1, 0.75)
 vision = 40.0
 field_of_vision = 225.0
 hearing = 125.0
+memory = 3.0
 focus = 0.1
 
 [node name="PointLight2D" parent="." index="3" unique_id=2009398952]
