@@ -594,9 +594,6 @@ visibility_layer = 2
 material = ExtResource("8_p6cfc")
 position = Vector2(175, 188)
 
-[node name="Key2" parent="Background" unique_id=154495487 instance=ExtResource("7_15m5t")]
-position = Vector2(73, 204)
-
 [node name="AirBubbles" parent="Background" unique_id=650470531 instance=ExtResource("9_l4cqm")]
 light_mask = 2
 material = ExtResource("8_p6cfc")
