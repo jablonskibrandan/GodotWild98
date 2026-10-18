@@ -30,7 +30,6 @@ func take_hit() -> void:
 	hit_tween.tween_method(set_shader_value, 1, 2, .2)
 	hit_tween.tween_method(set_shader_value, 2, 1, .2)
 	return
-	
 
 func set_shader_value(value: float) -> void:
 	$AnimatedSprite2D.material.set_shader_parameter("progress", value)

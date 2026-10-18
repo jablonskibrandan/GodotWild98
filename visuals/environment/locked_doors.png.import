@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg5yuq5mndq30"
-path="res://.godot/imported/retry_button.png-3fa17cd51943d16cbb01828a55317939.ctex"
+uid="uid://dcpf5p4e3dma3"
+path="res://.godot/imported/locked_doors.png-be93731dfb9b6b56799fc742f4e6cea6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://visuals/ui/retry_button.png"
-dest_files=["res://.godot/imported/retry_button.png-3fa17cd51943d16cbb01828a55317939.ctex"]
+source_file="res://visuals/environment/locked_doors.png"
+dest_files=["res://.godot/imported/locked_doors.png-be93731dfb9b6b56799fc742f4e6cea6.ctex"]
 
 [params]
 

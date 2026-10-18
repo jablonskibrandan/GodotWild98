@@ -8,6 +8,7 @@ wander_speed = 20.0
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=174872278]
 modulate = Color(0.15935335, 0.14924654, 0.14250839, 1)
+scale = Vector2(1, 0.75)
 
 [node name="TargetFinder" parent="." index="1" unique_id=1955017602]
 vision = 33.0

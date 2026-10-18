@@ -89,6 +89,7 @@ tool_use={
 2d_physics/layer_5="hidden room door"
 2d_physics/layer_6="seaweed"
 2d_physics/layer_7="stairs"
+2d_physics/layer_8="doors"
 
 [rendering]
 

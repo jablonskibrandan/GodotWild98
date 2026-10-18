@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dpwd50owx3p4e" path="res://scenes/environment/seaweed_patch.tscn" id="4_q3cva"]
 [ext_resource type="PackedScene" uid="uid://45p1d6iama01" path="res://scenes/environment/stairs.tscn" id="5_l4cqm"]
 [ext_resource type="Script" uid="uid://dsmqmerm578de" path="res://scripts/monsters/monster_manager.gd" id="6_q3cva"]
+[ext_resource type="PackedScene" uid="uid://c832dr177y2mk" path="res://scenes/environment/door_key.tscn" id="7_15m5t"]
 [ext_resource type="PackedScene" uid="uid://bwpdxk16drrhm" path="res://scenes/monsters/red_monster.tscn" id="7_l4cqm"]
 [ext_resource type="PackedScene" uid="uid://dm48ti74qwqcc" path="res://scenes/monsters/base_blue_monster.tscn" id="8_15m5t"]
+[ext_resource type="PackedScene" uid="uid://dklvm2kf2puv4" path="res://scenes/environment/double_door_vertical.tscn" id="8_xjajn"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tc85r"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -582,6 +584,18 @@ position = Vector2(129, 81)
 
 [node name="Stairs" parent="Background" unique_id=15992408 instance=ExtResource("5_l4cqm")]
 position = Vector2(264, 200)
+
+[node name="Door" parent="Background" unique_id=176746150 instance=ExtResource("8_xjajn")]
+position = Vector2(105, 81)
+
+[node name="Door2" parent="Background" unique_id=291131560 instance=ExtResource("8_xjajn")]
+position = Vector2(104, 305)
+
+[node name="Key" parent="Background" unique_id=411297487 instance=ExtResource("7_15m5t")]
+position = Vector2(77, 104)
+
+[node name="Key2" parent="Background" unique_id=219879958 instance=ExtResource("7_15m5t")]
+position = Vector2(75, 177)
 
 [node name="MonsterManager" type="Node2D" parent="." unique_id=574206714]
 y_sort_enabled = true
