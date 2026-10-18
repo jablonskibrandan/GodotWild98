@@ -706,7 +706,7 @@ scale = Vector2(0.50000006, 1)
 texture = ExtResource("10_voab5")
 
 [node name="Arrow5" type="Sprite2D" parent="Background" unique_id=820220909]
-position = Vector2(1616, 180)
+position = Vector2(1616, 170)
 scale = Vector2(0.50000006, 1)
 texture = ExtResource("10_voab5")
 
@@ -735,8 +735,7 @@ offset_bottom = 151.0
 theme_override_fonts/font = ExtResource("6_s5bol")
 theme_override_font_sizes/font_size = 8
 text = "Watch out for monsters!
-Stay out of sight and make it to the stairs
-    "
+Stay out of sight and make it to the stairs"
 horizontal_alignment = 1
 
 [node name="Label10" type="Label" parent="Text" unique_id=948982756]
@@ -758,7 +757,6 @@ theme_override_fonts/font = ExtResource("6_s5bol")
 theme_override_font_sizes/font_size = 8
 text = "Take a quick breather
 
-
 Your air will run out over time
 Getting bit will lose you a whole bubble!
 "
@@ -772,7 +770,7 @@ offset_bottom = 173.0
 theme_override_fonts/font = ExtResource("6_s5bol")
 theme_override_font_sizes/font_size = 8
 text = "Stay in the seaweed to hide
-But watch out! 
+But watch out!
 
 Once you are spotted the monsters 
 will find you even in the weeds!
@@ -797,7 +795,6 @@ offset_bottom = 380.0
 theme_override_fonts/font = ExtResource("6_s5bol")
 theme_override_font_sizes/font_size = 8
 text = "Use your tools!
-
 Left click to use a tool, right click to switch tools
 
 Blue : Distraction Pulse - distracts enemies
@@ -815,19 +812,17 @@ offset_bottom = 236.0
 theme_override_fonts/font = ExtResource("6_s5bol")
 theme_override_font_sizes/font_size = 8
 text = "Red Monsters are slow 
-
 Avoid them with ease!"
 horizontal_alignment = 1
 
 [node name="Label7" type="Label" parent="Text" unique_id=338271341]
 offset_left = 2624.0
-offset_top = 88.0
+offset_top = 99.0
 offset_right = 2763.0
 offset_bottom = 162.0
 theme_override_fonts/font = ExtResource("6_s5bol")
 theme_override_font_sizes/font_size = 8
 text = "Yellow Monsters have keen vision
-
 But they cannot hear a thing
 
 Use cover to get around their sights
@@ -843,7 +838,6 @@ offset_bottom = 264.0
 theme_override_fonts/font = ExtResource("6_s5bol")
 theme_override_font_sizes/font_size = 8
 text = "Gray Monsters have powerful hearing and are lightning fast
-
 They can even hear the click of a flashlight!
 
 But their vision is quite poor,
