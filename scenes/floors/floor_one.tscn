@@ -12,6 +12,7 @@
 [ext_resource type="Material" uid="uid://noayy00pn5l" path="res://visuals/hidden_object.tres" id="8_p6cfc"]
 [ext_resource type="PackedScene" uid="uid://dklvm2kf2puv4" path="res://scenes/environment/double_door_vertical.tscn" id="8_xjajn"]
 [ext_resource type="PackedScene" uid="uid://ctxoghdxeorky" path="res://scenes/environment/air_bubbles.tscn" id="9_l4cqm"]
+[ext_resource type="FontFile" uid="uid://c2qpowkihwacx" path="res://visuals/ui/Minecraft.ttf" id="13_xjajn"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tc85r"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -607,3 +608,19 @@ position = Vector2(169, 118)
 
 [node name="Blue_Monster" parent="MonsterManager" unique_id=1751361016 instance=ExtResource("8_15m5t")]
 position = Vector2(187, 270)
+
+[node name="Text" type="Node2D" parent="." unique_id=1896519356]
+
+[node name="Label10" type="Label" parent="Text" unique_id=615063529]
+texture_filter = 1
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 160.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("13_xjajn")
+theme_override_font_sizes/font_size = 8
+text = "Captain's Log:
+Found a strange signal...
+Looking for it...
+No backup..."
+metadata/_edit_use_anchors_ = true

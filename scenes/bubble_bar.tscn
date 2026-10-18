@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://cllwib2suvwgx"]
 
-[ext_resource type="Script" path="res://scripts/ui/bubble_bar.gd" id="1_bubble_bar"]
+[ext_resource type="Script" uid="uid://3u4uxs3h46sl" path="res://scripts/ui/bubble_bar.gd" id="1_bubble_bar"]
 
-[node name="BubbleBar" type="HBoxContainer"]
+[node name="BubbleBar" type="HBoxContainer" unique_id=2064035086]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0

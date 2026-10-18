@@ -686,17 +686,17 @@ position = Vector2(3155, 160)
 position = Vector2(3876, 171)
 
 [node name="Arrow" type="Sprite2D" parent="Background" unique_id=1556792840]
-position = Vector2(141, 147)
+position = Vector2(141, 152)
 scale = Vector2(0.50000006, 1)
 texture = ExtResource("10_voab5")
 
 [node name="Arrow2" type="Sprite2D" parent="Background" unique_id=806048480]
-position = Vector2(350, 192)
+position = Vector2(344, 137)
 scale = Vector2(0.50000006, 1)
 texture = ExtResource("10_voab5")
 
 [node name="Arrow3" type="Sprite2D" parent="Background" unique_id=498484796]
-position = Vector2(828, 134)
+position = Vector2(824, 110)
 scale = Vector2(0.50000006, 1)
 texture = ExtResource("10_voab5")
 
@@ -706,7 +706,7 @@ scale = Vector2(0.50000006, 1)
 texture = ExtResource("10_voab5")
 
 [node name="Arrow5" type="Sprite2D" parent="Background" unique_id=820220909]
-position = Vector2(1616, 170)
+position = Vector2(1470, 175)
 scale = Vector2(0.50000006, 1)
 texture = ExtResource("10_voab5")
 
@@ -716,12 +716,12 @@ scale = Vector2(0.50000006, 1)
 texture = ExtResource("10_voab5")
 
 [node name="Arrow7" type="Sprite2D" parent="Background" unique_id=509090411]
-position = Vector2(2688, 163)
+position = Vector2(2688, 144)
 scale = Vector2(0.50000006, 1)
 texture = ExtResource("10_voab5")
 
 [node name="Arrow8" type="Sprite2D" parent="Background" unique_id=1325304662]
-position = Vector2(3312, 184)
+position = Vector2(3312, 144)
 scale = Vector2(0.50000006, 1)
 texture = ExtResource("10_voab5")
 
