@@ -308,8 +308,10 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.09473693), -0.22365329, 0.0
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_smehm"]
-offsets = PackedFloat32Array(0, 0.970339, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.15254235, 0.15254235, 0.15254235, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.75, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.15294118, 0.15294118, 0.15294118, 0.5019608, 0, 0, 0, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 35
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_smehm"]
 gradient = SubResource("Gradient_smehm")
@@ -386,7 +388,8 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("5_fjrip")
 hframes = 2
 script = ExtResource("6_tuyoq")
-half_angle_degrees = 35.0
+half_angle_degrees = 45.0
+beam_segments = 30
 
 [node name="Flashlight_Point_Left" type="Node2D" parent="FlashlightSprite" unique_id=1116433502]
 position = Vector2(60, 50)
