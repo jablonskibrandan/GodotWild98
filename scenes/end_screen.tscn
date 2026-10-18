@@ -34,7 +34,7 @@ center_offset = Vector3(192, 108, 0)
 [sub_resource type="LabelSettings" id="LabelSettings_hbs1o"]
 line_spacing = 5.0
 font = ExtResource("9_wke0n")
-font_size = 18
+font_size = 24
 
 [node name="EndScreen" type="Control" unique_id=1007356474 node_paths=PackedStringArray("quit_button")]
 layout_mode = 3
@@ -151,10 +151,10 @@ script = ExtResource("9_4mba2")
 
 [node name="Label" type="Label" parent="." unique_id=45982708]
 layout_mode = 1
-offset_left = -176.0
-offset_top = 120.0
-offset_right = 176.0
-offset_bottom = 198.0
+offset_left = -192.0
+offset_top = 136.0
+offset_right = 208.0
+offset_bottom = 212.0
 text = "And that was the last time that Captain was heard from..."
 label_settings = SubResource("LabelSettings_hbs1o")
 horizontal_alignment = 1
