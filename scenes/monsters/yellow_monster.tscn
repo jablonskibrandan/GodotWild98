@@ -19,9 +19,3 @@ hearing = 40.0
 
 [node name="BiteArea" parent="TargetFinder" index="0" unique_id=1093071369]
 scale = Vector2(1.2, 1.2)
-
-[node name="PointLight2D" parent="." index="3" unique_id=2009398952]
-texture_scale = 1.5
-
-[node name="PointLight2D" parent="PointLight2D" index="0" unique_id=1787844453]
-texture_scale = 0.3
