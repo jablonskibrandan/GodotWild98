@@ -8,7 +8,7 @@ var floors: Array[String] = [
 		"res://scenes/floors/floor_three.tscn",
 		"res://scenes/floors/floor_four.tscn",
 		"res://scenes/floors/floor_final.tscn",
-		"res://scenes/main_menu.tscn"
+		#"res://scenes/main_menu.tscn"
 ]
 
 func get_next_floor() -> String:

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://btjedcl7hqx2f" path="res://visuals/environment/stairs.png" id="1_iw8q3"]
 [ext_resource type="Script" uid="uid://dpn5wiawkp1s8" path="res://scripts/environment/stairs.gd" id="2_h7cp2"]
 [ext_resource type="AudioStream" uid="uid://bitkurk8jxepo" path="res://audio/sfx/Stairs.wav" id="9_stairs"]
-[ext_resource type="Script" path="res://scripts/audio/transition_sound.gd" id="9_stairsnd"]
+[ext_resource type="Script" uid="uid://cnao12umvhs2t" path="res://scripts/audio/transition_sound.gd" id="9_stairsnd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxvjs"]
 size = Vector2(16, 16)
