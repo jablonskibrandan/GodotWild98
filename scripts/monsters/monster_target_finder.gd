@@ -47,6 +47,11 @@ func get_chosen_target_position(): # -> Vector 2 or null
 		alert.visible = true
 		alert.modulate.a = 1 - (target_infos[chosen_target].last_noticed / memory)
 		
+		if facing == Vector2.RIGHT:
+			alert.position = Vector2(8, -radius)
+		else:
+			alert.position = Vector2(-8, -radius)
+		
 		return target_infos[chosen_target].position
 	else:
 		alert.visible = false

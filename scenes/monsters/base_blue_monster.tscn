@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://d1vvchxqlwit8" path="res://scripts/monsters/base_monster.gd" id="1_1cbnp"]
 [ext_resource type="Script" uid="uid://c6k0obt5upiwb" path="res://scripts/monsters/monster_target_finder.gd" id="2_c47ug"]
 [ext_resource type="Texture2D" uid="uid://bkjneps6wb5ph" path="res://visuals/enemies/enemy_fish.png" id="3_c47ug"]
-[ext_resource type="Texture2D" uid="uid://cuq6goqhlqtpw" path="res://visuals/ui/key.png" id="3_r6kah"]
 [ext_resource type="Script" uid="uid://bkpybvya36lat" path="res://scripts/audio/monster_alert_sound.gd" id="4_alert"]
+[ext_resource type="Texture2D" uid="uid://djhccgqdd8e3j" path="res://visuals/enemies/alert.png" id="4_r6kah"]
 [ext_resource type="AudioStream" uid="uid://c6yuor817v64w" path="res://audio/sfx/Monster Alert Player.wav" id="5_alertp"]
 [ext_resource type="AudioStream" uid="uid://bschwhcq26xnw" path="res://audio/sfx/MOster Alert Distraction.wav" id="6_alertd"]
 [ext_resource type="AudioStream" uid="uid://tyjkc6egu6ok" path="res://audio/sfx/bite.tres" id="7_bite"]
@@ -146,9 +146,9 @@ script = ExtResource("2_c47ug")
 [node name="Alert" type="Sprite2D" parent="TargetFinder" unique_id=772763009]
 visible = false
 modulate = Color(0.66010654, 0, 0.14604178, 1)
-position = Vector2(-8, -8)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_r6kah")
+position = Vector2(0, -8)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_r6kah")
 
 [node name="BiteArea" type="Area2D" parent="TargetFinder" unique_id=1093071369]
 position = Vector2(-8, 0)

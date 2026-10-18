@@ -19,5 +19,8 @@ hearing = 35.0
 memory = 8.0
 focus = 0.5
 
-[node name="BiteArea" parent="TargetFinder" index="0" unique_id=1093071369]
+[node name="Alert" parent="TargetFinder" index="0" unique_id=772763009]
+scale = Vector2(0.45, 0.45)
+
+[node name="BiteArea" parent="TargetFinder" index="1" unique_id=1093071369]
 scale = Vector2(1.2, 1.2)
