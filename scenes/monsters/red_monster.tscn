@@ -4,8 +4,8 @@
 
 [node name="Red_Monster" unique_id=447894495 instance=ExtResource("1_tx0i8")]
 radius = 20.0
-chase_speed = 35.0
-wander_speed = 6.0
+chase_speed = 15.0
+wander_speed = 5.0
 wander_distance = 40.0
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=174872278]

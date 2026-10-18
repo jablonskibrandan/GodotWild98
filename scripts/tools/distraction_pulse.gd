@@ -3,7 +3,7 @@ extends Node2D
 
 @export_range(0.1, 20.0, 0.1) var duration: float = 2.0
 @export_range(1.0, 500.0, 1.0) var max_radius: float = 95.0
-@export_range(1.0, 100.0, 1.0) var volume: float = 50.0
+@export_range(1.0, 100.0, 1.0) var volume: float = 40.0
 
 ## Plays where the pulse lands. Set the sound file on the "Sound" child node
 ## in distraction_pulse.tscn (Inspector > Stream).

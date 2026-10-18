@@ -15,7 +15,9 @@ scale = Vector2(1.2, 1)
 [node name="TargetFinder" parent="." index="1" unique_id=1955017602]
 vision = 150.0
 field_of_vision = 315.0
-hearing = 40.0
+hearing = 35.0
+memory = 8.0
+focus = 0.5
 
 [node name="BiteArea" parent="TargetFinder" index="0" unique_id=1093071369]
 scale = Vector2(1.2, 1.2)

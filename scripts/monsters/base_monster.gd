@@ -4,7 +4,7 @@ extends CharacterBody2D
 ## VARIATIONS
 ## blue - default
 ## red - larger and slower
-## yellow - a bit faster, high vision, low hearing
+## yellow - a bit faster, high vision, low hearing, high memory + focus
 ## gray - fast, very low vision, high hearing, low memory + focus
 
 
