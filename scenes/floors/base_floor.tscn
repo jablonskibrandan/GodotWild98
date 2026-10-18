@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://qud7y6guapj7" path="res://visuals/ui/bubble_bar.png" id="15_kpit0"]
 [ext_resource type="PackedScene" path="res://scenes/bubble_bar.tscn" id="16_rxbem"]
 [ext_resource type="Shader" uid="uid://bogy8vvctkjss" path="res://visuals/crt_shader.gdshader" id="17_xtii2"]
+[ext_resource type="FontFile" uid="uid://c2qpowkihwacx" path="res://visuals/ui/Minecraft.ttf" id="18_62pwa"]
 [ext_resource type="Texture2D" uid="uid://d1o46o3t85g8k" path="res://visuals/ui/ui_flashlight_off.png" id="18_flashlight_off"]
 [ext_resource type="Texture2D" uid="uid://crdgyk2v2tuf2" path="res://visuals/ui/ui_distraction.png" id="19_distraction_ui"]
 [ext_resource type="Texture2D" uid="uid://cuq6goqhlqtpw" path="res://visuals/ui/key.png" id="20_f5uve"]
@@ -74,6 +75,7 @@ target_color = Color(1, 0.07450981, 0, 1)
 script = ExtResource("9_psmdj")
 
 [node name="Player" parent="." unique_id=2093951058 instance=ExtResource("10_ka5f4")]
+position = Vector2(3, 0)
 
 [node name="TargetCursor" type="Node2D" parent="." unique_id=1575986569]
 script = ExtResource("14_mmpba")
@@ -113,10 +115,10 @@ texture = ExtResource("18_flashlight_off")
 [node name="DistractionIndicator" type="TextureRect" parent="HUD" unique_id=1673490547]
 texture_filter = 1
 material = SubResource("ShaderMaterial_distraction_cd")
-offset_left = 44.0
+offset_left = 43.0
 offset_top = 22.0
-offset_right = 76.0
-offset_bottom = 54.0
+offset_right = 59.0
+offset_bottom = 38.0
 mouse_filter = 2
 texture = ExtResource("19_distraction_ui")
 script = ExtResource("21_tool_cooldown")
@@ -124,23 +126,23 @@ cooldown_timer_path = NodePath("../../Player/Timers/DistractionSignal_Timer")
 
 [node name="CooldownText" type="Label" parent="HUD/DistractionIndicator" unique_id=900987828]
 layout_mode = 0
-offset_top = 9.0
-offset_right = 32.0
-offset_bottom = 26.0
+offset_left = 1.0
+offset_right = 17.0
+offset_bottom = 16.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.02, 0.04, 0.08, 1)
 theme_override_constants/outline_size = 3
-theme_override_font_sizes/font_size = 11
+theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MineIndicator" type="TextureRect" parent="HUD" unique_id=2043051229]
 texture_filter = 1
 material = SubResource("ShaderMaterial_mine_cd")
-offset_left = 80.0
+offset_left = 64.0
 offset_top = 22.0
-offset_right = 112.0
-offset_bottom = 54.0
+offset_right = 80.0
+offset_bottom = 38.0
 mouse_filter = 2
 texture = ExtResource("20_mine_ui")
 script = ExtResource("21_tool_cooldown")
@@ -148,35 +150,38 @@ cooldown_timer_path = NodePath("../../Player/Timers/MineSignal_Timer")
 
 [node name="CooldownText" type="Label" parent="HUD/MineIndicator" unique_id=2030021744]
 layout_mode = 0
-offset_top = 9.0
-offset_right = 32.0
-offset_bottom = 26.0
+offset_left = 1.0
+offset_right = 17.0
+offset_bottom = 16.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.02, 0.04, 0.08, 1)
 theme_override_constants/outline_size = 3
-theme_override_font_sizes/font_size = 11
+theme_override_fonts/font = ExtResource("18_62pwa")
+theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD" unique_id=1592217125]
 texture_filter = 1
-offset_left = 4.0
-offset_top = 60.0
-offset_right = 44.0
-offset_bottom = 100.0
+offset_left = 6.0
+offset_top = 61.0
+offset_right = 51.0
+offset_bottom = 80.0
 
 [node name="KeyCount" type="TextureRect" parent="HUD/HBoxContainer" unique_id=870965647]
 texture_filter = 1
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("20_f5uve")
+stretch_mode = 2
 
 [node name="KeyCountLabel" type="Label" parent="HUD/HBoxContainer" unique_id=55344875]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.02, 0.04, 0.08, 1)
+theme_override_colors/font_color = Color(1, 1, 0.40392157, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
-theme_override_font_sizes/font_size = 11
+theme_override_fonts/font = ExtResource("18_62pwa")
+theme_override_font_sizes/font_size = 8
 text = "x 0"
 horizontal_alignment = 1
 vertical_alignment = 1

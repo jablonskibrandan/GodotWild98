@@ -8,7 +8,7 @@
 [ext_resource type="Shader" uid="uid://bogy8vvctkjss" path="res://visuals/crt_shader.gdshader" id="6_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://dndcvpwka1f57" path="res://visuals/ui/title.png" id="7_oa1go"]
 [ext_resource type="AudioStream" uid="uid://bwbwc2wa5xmah" path="res://audio/sfx/Play Button.wav" id="9_playbtn"]
-[ext_resource type="Script" path="res://scripts/audio/button_sound.gd" id="9_playbtnsnd"]
+[ext_resource type="Script" uid="uid://b0543d56khaqw" path="res://scripts/audio/button_sound.gd" id="9_playbtnsnd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rgto8"]
 
